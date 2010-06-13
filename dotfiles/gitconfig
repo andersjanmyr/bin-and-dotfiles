@@ -1,0 +1,20 @@
+[user]
+	name = Anders Janmyr
+	email = anders@janmyr.com
+[apply]
+	whitespace = nowarn
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+[alias]
+	co = checkout
+	st = status
+	stat = status
+	br = branch
+	ci = commit
+	sta = stash
+	untracked = ls-files -o -X.gitignore --exclude=.*
+[core]
+	excludesfile = /Users/andersjanmyr/.gitignore
+	autocrlf = input
