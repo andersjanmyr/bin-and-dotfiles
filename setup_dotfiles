@@ -3,20 +3,16 @@
 echo ". ~/bin/dotfiles/bashrc" > ~/.bashrc
 echo ". ~/bin/dotfiles/bashrc" > ~/.bash_profile
 
-if [ ! -L "$HOME/.ssh/config" ]
-then
-  ln -s ~/bin/dotfiles/ssh/config ~/.ssh/config
-fi
+function replace_file() {
+  rm $1
+  ln -s $2 $1
+}
 
-if [ ! -L "$HOME/.gitconfig" ]
-then
-  ln -s ~/bin/dotfiles/gitconfig ~/.gitconfig
-fi
 
-if [ ! -L "$HOME/.gitignore" ]
-then
-  ln -s ~/bin/dotfiles/gitignore ~/.gitignore
-fi
+replace_file ~/.gitconfig ~/bin/dotfiles/gitconfig
+replace_file ~/.gitignore ~/bin/dotfiles/gitignore
+replace_file ~/.gemrc ~/bin/dotfiles/gemrc
+replace_file ~/.ssh/config ~/bin/dotfiles/ssh/config
 
 
 echo "source ~/.bashrc # to reload environment"
