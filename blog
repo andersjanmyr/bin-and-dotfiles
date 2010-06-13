@@ -1,0 +1,151 @@
+#!/usr/bin/env ruby
+# Author: Anders Janmyr
+require "rubygems"
+require 'optparse'
+require 'ostruct'
+require 'redcloth'
+require 'rdiscount'
+
+# This is the name of the script that is called
+PROGRAM_NAME = $0
+PROGRAM_VERSION = 1.0
+
+# Create an OpenStruct to save the options.
+def options
+  @options ||= OpenStruct.new
+end
+
+
+# This is the options of the program, see OptionParser
+# http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/classes/OptionParser.html
+def program_options
+  [
+          # The values of the array are,
+  # [long_option, short_option and parameter, description, code to execute]
+  ['--google', '-g', "Format for Google blogger.",
+   lambda { |value| options.google = true }
+  ],
+  ['--verbose', '-v', "Log to standard output.",
+   lambda { |value| options.verbose = true }
+  ],
+  ['--version', '-V', "Display the program version.",
+   lambda { |value|
+     puts "#{program_name}, version #{PROGRAM_VERSION}"
+     exit
+   }
+  ]
+  ]
+end
+
+option_parser = OptionParser.new do |opts|
+  opts.banner = "#{PROGRAM_NAME} [options] files..."
+  opts.separator ""
+  opts.separator "Options are ..."
+
+  # Add the command on_tail, to make it appear as the last option in the list.
+  opts.on_tail("-h", "--help", "-H", "Display this help message.") do
+    puts opts
+    exit
+  end
+
+  program_options.each { |args| opts.on(*args) }
+end
+
+begin
+  # Parse the options and remove them from the ARGV array
+  option_parser.parse!
+rescue OptionParser::ParseError => error
+  puts error.message
+  puts option_parser
+  exit
+end
+
+
+class Array
+  def split(str)
+    result = []
+    group = []
+    each do |item|
+      if item.include?(str)
+        result << group
+        group = []
+      else
+        group << item
+      end
+    end
+    result << group
+    result
+  end
+end
+
+def highlight(lang, source)
+  tempfile = 'tempfile.txt'
+  f = File.open(tempfile, "w") do |f|
+    f.puts "#{source}"
+  end
+  text = %x{source-highlight --src-lang #{lang} < #{tempfile}}
+  if options.google
+    text = text.sub(/(.*)(<pre>.*<\/pre>)(.*)/mi, '<blockquote>\2</blockquote>')
+  end
+  puts text
+ensure
+  File.delete(tempfile) if File.exist?(tempfile)
+end
+
+def convert_texts(all_texts)
+  all_texts.each do |pair|
+    if pair[0] == "textile"
+      rc = RedCloth.new(pair[1])
+      puts rc.to_html
+    elsif pair[0] == "markdown"
+      markdown = RDiscount.new(pair[1])
+      puts markdown.to_html
+    else
+      highlight(pair[0], pair[1])
+    end
+  end
+end
+
+
+def load_from_file(filename, snippet)
+  path = File.expand_path(filename)
+  raise "No such file error: " + path unless File.exist?(path)
+
+  snippet_file = File.open(path)
+  lines = snippet_file.readlines
+  return lines.join if snippet.nil?
+
+  before, between, *rest = lines.split(snippet.chomp)
+  return between.join
+end
+
+
+if ARGV.empty?
+  file = STDIN
+else
+  file = File.open(ARGV[0])
+end
+
+all_texts = []
+type = "markdown"
+str = ""
+file.each_line do |line|
+  if line =~ /(^src_code|^enscript)/
+    all_texts << [type, str]
+    ignore, type, filename, snippet = line.split
+    if filename
+      str = load_from_file(filename, snippet)
+      all_texts << [type, str]
+      type = "markdown" # reset the type
+    end
+    str = ""
+  else
+    if line =~ /^[#;]/ and type == "markdown"
+      line = line[1..-1]
+    end
+    str << line
+  end
+end
+all_texts << [type, str]
+convert_texts(all_texts)
+

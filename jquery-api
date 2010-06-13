@@ -1,0 +1,136 @@
+#!/usr/bin/env ruby
+# Author: Anders Janmyr
+require 'rubygems'
+require 'optparse'
+require 'ostruct'
+require 'nokogiri'
+require 'open-uri'
+
+# This is the name of the script that is called
+PROGRAM_NAME = $0
+PROGRAM_VERSION = 1.0
+
+
+# Create an OpenStruct to save the options.
+def options
+  @options ||= OpenStruct.new
+end
+options.format = 'text'
+
+
+def default_options
+  [
+          # The values of the array are,
+  # [long_option, short_option and parameter, description, code to execute]
+  ['--verbose', '-v', "Log to standard output.",
+   lambda { |value| options.verbose = true }
+  ],
+  ['--version', '-V', "Display the program version.",
+   lambda { |value|
+     puts "#{program_name}, version #{PROGRAM_VERSION}"
+     exit
+   }
+  ]
+  ]
+end
+
+# This is the options of the program, see OptionParser
+# http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/classes/OptionParser.html
+def program_options
+  [
+          ['--format', '-f FORMAT', 'Format as html or text(default)',
+           lambda { |value| options.format = value }
+          ]
+  ]
+end
+
+option_parser = OptionParser.new do |opts|
+  opts.banner = "#{PROGRAM_NAME} [options] file..."
+  opts.separator ""
+  opts.separator "Options are ..."
+
+  # Add the command on_tail, to make it appear as the last option in the list.
+  opts.on_tail("-h", "--help", "-H", "Display this help message.") do
+    puts opts
+    exit
+  end
+
+  default_options.each { |args| opts.on(*args) }
+  program_options.each { |args| opts.on(*args) }
+end
+
+begin
+  # Parse the options and remove them from the ARGV array
+  option_parser.parse!
+rescue OptionParser::ParseError => error
+  puts error.message
+  puts option_parser
+  exit
+end
+
+
+def parse_xml filename
+  File.open(filename) do |file|
+    doc = Nokogiri::XML(file)
+    doc.css("entry").sort_by{|e|e[:name]}.each do |entry|
+      name = entry[:name]
+      ret = entry[:return]
+      args = entry.css('argument').map {|a| a[:name] }.join(', ')
+      desc = entry.at_css('desc').text
+      code_cdata = entry.at_css('example > code')
+      category = entry.at_css('category')['name']
+      code =  if code_cdata then
+        strip_cdata(code_cdata.content).gsub(/\n\n/,"\n").gsub(/^\n/, '')
+      else
+        nil
+      end
+      print_entry(name, args, ret, category, desc, code)
+    end
+  end
+end
+
+def strip_cdata str
+  str.gsub(%r{<!\[CDATA\[},'').gsub(/\]\]>/, '')
+end
+
+
+def print_entry(name, args, ret, category, desc, code)
+  puts ''
+  if options.format == 'text'
+    puts "#{name}(#{args}) -> #{ret} (#{category})"
+    puts "# #{desc}"
+  else
+    puts "<p><b>#{name}(#{args}) -> #{ret}</b> (#{category})<br/>"
+    puts "# #{desc}"
+    highlight 'javascript', code if code
+    puts "</p>"
+  end
+end
+
+def highlight(lang, source)
+  tempfile = 'tempfile.txt'
+  f = File.open(tempfile, "w") do |f|
+    f.puts "#{source}"
+  end
+  text = %x{source-highlight --src-lang #{lang} < #{tempfile}}
+  if options.google
+    text = text.sub(/(.*)(<pre>.*<\/pre>)(.*)/mi, '<blockquote>\2</blockquote>')
+  end
+  puts text
+ensure
+  File.delete(tempfile) if File.exist?(tempfile)
+end
+
+# Only the non options (the filenames) are left in ARGV
+ARGV.each do|filename|
+  version = "Generated jQuery API from Raw XML API Dump (#{filename})"
+  author = "anders.janmyr@jayway.com"  
+  if options.format == 'text'
+    puts version
+    puts author
+  else
+    puts "<div style='font-size: 1.2em;font-weight: bold;'>#{version}</div>"
+    puts "<div>#{author}</div>"
+  end
+  parse_xml filename
+end

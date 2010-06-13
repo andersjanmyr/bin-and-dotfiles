@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo ". ~/bin/dotfiles/bashrc" > ~/.bashrc
+echo ". ~/bin/dotfiles/bashrc" > ~/.bash_profile
+
+source ~/.bashrc
+if [ ! -L "$HOME/.ssh/config" ]
+then
+  ln -s ~/bin/dotfile/ssh/config ~/.ssh/config
+fi
+
+echo "source ~/.bashrc # to reload environment"
+
+

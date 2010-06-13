@@ -1,0 +1,19 @@
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=$SCALA_HOME/bin:$JRUBY_HOME/bin:$M2_HOME/bin:$PATH
+
+# Maglev
+export MAGLEV_HOME=/Users/andersjanmyr/External_Projects/maglev
+export PATH=$PATH:$MAGLEV_HOME/bin:$HOME/bin
+
+export EDITOR="/usr/bin/mate -w"
+
+export CLICOLOR=1
+
+# RVM 
+if [[ -s /Users/andersjanmyr/.rvm/scripts/rvm ]] ; then 
+        source /Users/andersjanmyr/.rvm/scripts/rvm ; 
+fi
+[[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
+        
+source /etc/bash_completion.d/rake-completion.sh
+

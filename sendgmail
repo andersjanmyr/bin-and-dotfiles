@@ -1,0 +1,98 @@
+#!/usr/bin/env ruby
+# Author: Anders Janmyr
+require 'rubygems'
+require 'optparse'
+require 'ostruct'
+require 'growl'
+
+# This is the name of the script that is called
+PROGRAM_NAME = $0
+PROGRAM_VERSION = 1.0
+
+def options
+  @options ||= OpenStruct.new
+end
+
+
+# This is the options of the program, see OptionParser
+# http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/classes/OptionParser.html
+def program_options
+  [
+          # The values of the array are,
+          # [long_option, short_option and parameter, description, code to execute]          
+          ['--to', '-t TO', "Send email to recipent",
+           lambda { |value| options.to = value }
+          ],
+          ['--message', '-m MESSAGE', "Include the message.",
+           lambda { |value| options.message = value }
+          ],
+          ['--subject', '-s SUBJECT', "Include the subject.",
+           lambda { |value| options.subject = value }
+          ],
+          ['--verbose', '-v', "Log to standard output.",
+           lambda { |value| options.verbose = true }
+          ],
+          ['--version', '-V', "Display the program version.",
+           lambda { |value|
+             puts "#{program_name}, version #{PROGRAM_VERSION}"
+             exit
+           }
+          ]
+  ]
+end
+
+option_parser = OptionParser.new do |opts|
+  opts.banner = "#{PROGRAM_NAME} [options] attachments..."
+  opts.separator ""
+  opts.separator "Options are ..."
+
+  # Add the command on_tail, to make it appear as the last option in the list.
+  opts.on_tail("-h", "--help", "-H", "Display this help message.") do
+    puts opts
+    exit
+  end
+
+  program_options.each { |args| opts.on(*args) }
+end
+
+begin
+  load "#{ENV['HOME']}/.gmail"
+rescue LoadError
+  puts "You need to have GMAIL_USER and GMAIL_PASSWORD set in file '~/.gmail'"
+  exit
+end
+
+begin
+  # Parse the options and remove them from the ARGV array
+  option_parser.parse!
+rescue OptionParser::ParseError => error
+  puts error.message
+  puts option_parser
+  exit
+end
+
+unless options.to
+  puts 'Missing required argument --to or -t'
+  puts option_parser
+  exit
+end
+
+options.subject = 'No subject' unless options.subject
+options.message = 'No message' unless options.message
+
+command = "sendemail -o tls=yes -s smtp.gmail.com -f #{GMAIL_USER} -xu #{GMAIL_USER} -xp #{GMAIL_PASSWORD}"
+command += " -t '#{options.to}' -u '#{options.subject}' -m '#{options.message}' "
+
+# Only the non options (the filenames) are left in ARGV
+unless ARGV.empty?
+  command += " -a #{ARGV.join(' ')}"
+end
+
+puts command if options.verbose
+system command
+Growl.notify "#{options.subject}\n#{options.message}", :icon => :jpeg, :title => "Email sent to #{options.to}"
+
+
+
+
+

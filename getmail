@@ -1,0 +1,122 @@
+#!/usr/bin/env ruby
+# Author: Anders Janmyr
+require 'rubygems'
+require 'optparse'
+require 'ostruct'
+require 'net/imap'
+require 'net/http'
+require 'uri'
+require 'cgi'
+
+# This is the name of the script that is called
+PROGRAM_NAME = $0
+PROGRAM_VERSION = 1.0
+
+begin
+  load "#{ENV['HOME']}/.gmail"
+rescue LoadError
+  puts "You need to have GMAIL_USER and GMAIL_PASSWORD set in file '~/.gmail'"
+  exit
+end
+# Source server connection info.
+SOURCE_NAME = GMAIL_USER
+SOURCE_HOST = 'imap.gmail.com'
+SOURCE_PORT = 993
+SOURCE_SSL  = true
+
+
+
+# Create an OpenStruct to save the options.
+def options
+  @options ||= OpenStruct.new
+end
+
+
+# This is the options of the program, see OptionParser
+# http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/classes/OptionParser.html
+def program_options
+  [
+          # The values of the array are,
+  # [long_option, short_option and parameter, description, code to execute]
+  ['--verbose', '-v', "Log to standard output.",
+   lambda { |value| options.verbose = true }
+  ],
+  ['--version', '-V', "Display the program version.",
+   lambda { |value|
+     puts "#{program_name}, version #{PROGRAM_VERSION}"
+     exit
+   }
+  ]
+  ]
+end
+
+option_parser = OptionParser.new do |opts|
+  opts.banner = "#{PROGRAM_NAME} [options] file..."
+  opts.separator ""
+  opts.separator "Options are ..."
+
+  # Add the command on_tail, to make it appear as the last option in the list.
+  opts.on_tail("-h", "--help", "-H", "Display this help message.") do
+    puts opts
+    exit
+  end
+
+  program_options.each { |args| opts.on(*args) }
+end
+
+begin
+  # Parse the options and remove them from the ARGV array
+  option_parser.parse!
+rescue OptionParser::ParseError => error
+  puts error.message
+  puts option_parser
+  exit
+end
+
+UID_BLOCK_SIZE = 1024
+def uid_fetch_block(server, uids, *args)
+  pos = 0
+
+  while pos < uids.size
+    server.uid_fetch(uids[pos, UID_BLOCK_SIZE], *args).each {|data| yield data }
+    pos += UID_BLOCK_SIZE
+  end
+end
+
+
+def fetch_todays_messages
+  source = Net::IMAP.new(SOURCE_HOST, SOURCE_PORT, SOURCE_SSL)
+  source.login(GMAIL_USER, GMAIL_PASSWORD)
+
+  source_folder = 'Kindle'
+  puts "Selecting folder '#{source_folder}'..."
+  source.examine(source_folder)
+  uids = source.uid_search(['SINCE', Date.today.strftime('%d-%b-%Y')])
+#  uids = source.uid_search(['ON', '22-JAN-2010'])
+  messages = []
+  if uids.length > 0
+    uid_fetch_block(source, uids, ['ENVELOPE']) do |data|
+      mid = data.attr['ENVELOPE'].message_id
+      msg = source.uid_fetch(data.attr['UID'], ['RFC822', 'FLAGS', 'INTERNALDATE']).first
+      messages << msg
+    end
+  end
+  source.close
+  messages
+end
+
+def get_book_info message
+  match_data = /You can download the file\(s\) here \<a href=\\".*location=(.*)\\\"\>(.*)\.azw</.match(message.to_s)
+  match_data[1..2]
+end
+
+messages = fetch_todays_messages()
+messages.each do |message|
+  puts message
+  url, name = get_book_info message
+  clean_url = CGI::unescape(url)
+  puts clean_url, name
+
+  system "curl '#{clean_url}' > #{name}.pdf"
+
+end
