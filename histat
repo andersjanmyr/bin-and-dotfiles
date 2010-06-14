@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "$0" != "-bash" ]
+then
+  echo "This file must be sourced, usage: '. histat'"
+  exit
+fi
+history | awk '{print $2}' | awk 'BEGIN {FS="|"}{print $1}' | sort | uniq -c | sort -n | tail | sort -nr
