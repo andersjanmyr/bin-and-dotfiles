@@ -1,10 +1,22 @@
 #!/usr/bin/ruby
 
 begin
-  require 'hirb' # sudo gem install cldwalker-hirb --source http://gems.github.com
+  require 'hirb' 
   Hirb.enable
 rescue LoadError
+  puts "Missing hirb, gem install cldwalker-hirb --source http://gems.github.com"
 end
+
+rails_root = File.basename(Dir.pwd)
+IRB.conf[:PROMPT] ||= {}
+IRB.conf[:PROMPT][:RAILS] = {
+  :PROMPT_I => "#{rails_root}> ",
+  :PROMPT_S => "#{rails_root}* ",
+  :PROMPT_C => "#{rails_root}? ",
+  :RETURN   => "=> %s\n" 
+}
+IRB.conf[:PROMPT_MODE] = :RAILS
+
 
 def change_log(stream)
   ActiveRecord::Base.logger = Logger.new(stream)
@@ -17,4 +29,11 @@ end
 
 def hide_log
   change_log(nil)
+end
+
+# Called after the irb session is initialized and Rails has
+# been loaded (props: Mike Clark).
+IRB.conf[:IRB_RC] = Proc.new do
+  show_log
+  ActiveRecord::Base.instance_eval { alias :[] :find }
 end

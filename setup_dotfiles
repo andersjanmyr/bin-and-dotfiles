@@ -11,8 +11,11 @@ function replace_file() {
 
 replace_file ~/.gitconfig ~/bin/dotfiles/gitconfig
 replace_file ~/.gitignore ~/bin/dotfiles/gitignore
-replace_file ~/.gemrc ~/bin/dotfiles/gemrc
+
 replace_file ~/.ssh/config ~/bin/dotfiles/ssh/config
+
+replace_file ~/.gemrc ~/bin/dotfiles/gemrc
+replace_file ~/.irbrc ~/bin/dotfiles/irbrc
 
 
 echo "source ~/.bashrc # to reload environment"

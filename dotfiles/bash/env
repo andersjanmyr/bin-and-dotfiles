@@ -15,5 +15,6 @@ if [[ -s /Users/andersjanmyr/.rvm/scripts/rvm ]] ; then
 fi
 [[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
         
+source /etc/bash_completion.d/git-completion.sh
 source /etc/bash_completion.d/rake-completion.sh
 
