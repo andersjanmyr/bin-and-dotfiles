@@ -16,7 +16,7 @@ IRB.conf[:PROMPT_MODE]  = :SIMPLE
 IRB.conf[:AUTO_INDENT]=true
 
 def h 
-   Readline::HISTORY.entries[0..-2].join("\n")
+   puts Readline::HISTORY.entries[0..-2].join("\n")
 end
 
 def paste
