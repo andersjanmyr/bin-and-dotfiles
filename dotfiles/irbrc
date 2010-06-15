@@ -26,6 +26,10 @@ end
 def local_methods(obj = self)
   (obj.methods - obj.class.superclass.instance_methods).sort
 end
+
+Wirble.init
+Wirble.colorize
+
 # Just for Rails...
 load "#{ENV['HOME']}/bin/dotfiles/railsrc" if $0 == 'irb' && ENV['RAILS_ENV']
 
