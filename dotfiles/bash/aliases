@@ -82,7 +82,7 @@ alias gdm='git diff | mate'
 alias gl='git pull'
 alias gnp="git-notpushed"
 alias gp='git push'
-alias g='git status'
+alias g='git status -sb'
 alias eg='mate .git/config'
 # Git clone from GitHub
 function gch() {
