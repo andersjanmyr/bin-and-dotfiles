@@ -1,9 +1,8 @@
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH=$SCALA_HOME/bin:$JRUBY_HOME/bin:$M2_HOME/bin:$PATH
 
 # Maglev
 export MAGLEV_HOME=/Users/andersjanmyr/External_Projects/maglev
-export PATH=$PATH:$MAGLEV_HOME/bin:$HOME/bin
+
+export PATH=$HOME/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin:$MAGLEV_HOME/bin
 
 export EDITOR="/usr/bin/mate -w"
 
@@ -16,5 +15,7 @@ fi
 [[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
         
 source /etc/bash_completion.d/git-completion.sh
-source /etc/bash_completion.d/rake-completion.sh
+
+# Don't use this version of rake-completion, too slow
+# source /etc/bash_completion.d/rake-completion.sh
 
