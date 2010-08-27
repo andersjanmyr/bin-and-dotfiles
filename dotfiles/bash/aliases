@@ -4,8 +4,8 @@ alias kindle='sendgmail -t anders.janmyr@free.kindle.com'
 alias tree=redwood
 
 # MySql
-alias mysqlstart='sudo /opt/local/bin/mysqld_safe5 &amp;'   
-alias mysqlstop='/opt/local/bin/mysqladmin5 -u root -p shutdown'
+alias mysqlstart='sudo /usr/local/Cellar/mysql/5.1.49/share/mysql/mysql.server start'   
+alias mysqlstop='sudo /usr/local/Cellar/mysql/5.1.49/share/mysql/mysql.server stop'
 
 # Utility
 alias reload='source ~/bin/dotfiles/bash/aliases'
