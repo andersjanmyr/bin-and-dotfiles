@@ -1,4 +1,4 @@
-Host example
-  HostName example.com
-  User my_username
+Host dcmc
+  HostName matrix-dcmc.dyndns.org
+  User ubuntu
 
