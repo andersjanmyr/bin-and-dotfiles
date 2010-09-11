@@ -1,6 +1,6 @@
 # Command Enhancements
 
-alias kindle='sendgmail -t anders.janmyr@free.kindle.com'
+alias kindle='sendgmail -t anders.janmyr@free.kindle.com -s Convert'
 alias tree=redwood
 
 # MySql
