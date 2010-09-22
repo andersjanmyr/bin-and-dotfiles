@@ -1,20 +1,25 @@
 [user]
-	name = Anders Janmyr
-	email = anders@janmyr.com
+  name = Anders Janmyr
+  email = anders@janmyr.com
 [apply]
-	whitespace = nowarn
+  whitespace = nowarn
 [color]
-	status = auto
-	diff = auto
-	branch = auto
+  status = auto
+  diff = auto
+  branch = auto
+[github]
+  user = andersjanmyr
+  token = 084236cc4e86c10b200beeb0bede88dc
 [alias]
-	co = checkout
-	st = status
-	stat = status
-	br = branch
-	ci = commit
-	sta = stash
-	untracked = ls-files -o -X.gitignore --exclude=.*
+  co = checkout
+  st = status
+  stat = status
+  br = branch
+  ci = commit
+  sta = stash
+  untracked = ls-files -o -X.gitignore --exclude=.*
+  ####
+  amend = commit --amend -C HEAD
 [core]
-	excludesfile = /Users/andersjanmyr/.gitignore
-	autocrlf = input
+  excludesfile = /Users/andersjanmyr/.gitignore
+  autocrlf = input
