@@ -18,7 +18,6 @@
   ci = commit
   sta = stash
   untracked = ls-files -o -X.gitignore --exclude=.*
-  ####
   amend = commit --amend -C HEAD
 [core]
   excludesfile = /Users/andersjanmyr/.gitignore

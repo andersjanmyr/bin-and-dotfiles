@@ -9,3 +9,8 @@ Host bob
 Host mini
   Hostname mini.jayway.com
   User admin
+
+Host official.heroku.com
+  HostName heroku.com
+  User git
+  IdentitiesOnly yes

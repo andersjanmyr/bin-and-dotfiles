@@ -1,8 +1,10 @@
+require 'rubygems' # only needed in 1.8
+require 'irbtools'
 require 'irb/completion'
 require 'irb/ext/save-history'
 require 'pp'
 
-%w[rubygems looksee/shortcuts wirble map_by_method what_methods ap].each do |gem|
+%w[looksee/shortcuts map_by_method what_methods].each do |gem|
   begin
     require gem
   rescue LoadError
@@ -11,11 +13,11 @@ require 'pp'
 end
 
 IRB.conf[:SAVE_HISTORY] = 100
-IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history" 
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 IRB.conf[:PROMPT_MODE]  = :SIMPLE
 IRB.conf[:AUTO_INDENT]=true
 
-def h 
+def h
    puts Readline::HISTORY.entries[0..-2].join("\n")
 end
 
