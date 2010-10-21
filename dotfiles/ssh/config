@@ -3,7 +3,7 @@ Host dcmc
   User ubuntu
 
 Host bob
-  Hostname 213.50.11.49  
+  Hostname 213.50.11.49
   User kperson
 
 Host mini
@@ -14,3 +14,11 @@ Host official.heroku.com
   HostName heroku.com
   User git
   IdentitiesOnly yes
+
+Host semc-dev
+  HostName ec2-79-125-119-107.eu-west-1.compute.amazonaws.com
+  User ubuntu
+
+Host semc-prot
+  HostName ec2-46-51-187-148.eu-west-1.compute.amazonaws.com
+  User ubuntu
