@@ -1,0 +1,10 @@
+OLDEXT=${2/#.}
+NEWEXT=${3/#.}
+
+find "${1}" -iname "*.${OLDEXT}" |
+while read F
+do
+  NEWFILE="${F/%${OLDEXT}/${NEWEXT}}"
+  echo "mv \"${F}\" \"${NEWFILE}\""
+  mv -f "${F}" "${NEWFILE}"
+done

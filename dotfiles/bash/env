@@ -8,14 +8,15 @@ export EDITOR="/usr/bin/mate -w"
 
 export CLICOLOR=1
 
-# RVM 
-if [[ -s /Users/andersjanmyr/.rvm/scripts/rvm ]] ; then 
-        source /Users/andersjanmyr/.rvm/scripts/rvm ; 
+# RVM
+if [[ -s /Users/andersjanmyr/.rvm/scripts/rvm ]] ; then
+        source /Users/andersjanmyr/.rvm/scripts/rvm ;
 fi
 [[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
-        
+
 source /etc/bash_completion.d/git-completion.sh
 
 # Don't use this version of rake-completion, too slow
 # source /etc/bash_completion.d/rake-completion.sh
 
+export UDS_HOME=~/tmp
