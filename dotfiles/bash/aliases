@@ -4,8 +4,12 @@ alias kindle='sendgmail -t anders.janmyr@free.kindle.com -s Convert'
 alias tree=redwood
 
 # MySql
-alias mysqlstart='sudo /usr/local/Cellar/mysql/5.1.49/share/mysql/mysql.server start'   
+alias mysqlstart='sudo /usr/local/Cellar/mysql/5.1.49/share/mysql/mysql.server start'
 alias mysqlstop='sudo /usr/local/Cellar/mysql/5.1.49/share/mysql/mysql.server stop'
+
+# Postgres
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # Utility
 alias reload='source ~/bin/dotfiles/bash/aliases'
@@ -18,8 +22,8 @@ alias a='ls -A' # -A all except literal . ..
 alias la="ls -A -l -G"
 alias c='clear'
 alias cl='clear; l'
-function cdc() { 
-    cd $1; ls 
+function cdc() {
+    cd $1; ls
 }
 alias cls='clear; ls'
 alias h='history'
@@ -33,9 +37,9 @@ alias lt='ls -lt' # sort with recently modified first
 alias md='mkdir -p'
 alias s='cd ..'   # up one dir
 
-function mcd() { 
+function mcd() {
     mkdir -p "$1"
-    cd "$1" 
+    cd "$1"
 }
 
 function pd() {
@@ -45,8 +49,8 @@ function pd() {
 alias po="popd"
 
 alias k9="killall -9"
-function killnamed () { 
-    ps ax | grep $1 | cut -d ' ' -f 2 | xargs kill 
+function killnamed () {
+    ps ax | grep $1 | cut -d ' ' -f 2 | xargs kill
 }
 function zipr() {
   zip -r $1.zip $1
@@ -73,7 +77,7 @@ alias gba='git branch -a'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 # Commit pending changes and quote all args as message
-function gg() { 
+function gg() {
     git commit -v -m "$*"
 }
 alias gco='git checkout'
@@ -90,8 +94,8 @@ function gch() {
 }
 
 # Setup a tracking branch from [remote] [branch_name]
-function gbt() { 
-  git branch --track $2 $1/$2 && git checkout $2 
+function gbt() {
+  git branch --track $2 $1/$2 && git checkout $2
 }
 
 # Call from inside an initialized Git repo, with the name of the repo.
@@ -127,15 +131,15 @@ alias aas="./script/autospec"
 alias watch="watchr ~/bin/watchr/rails.rb"
 
 # Syntax check Javascript
-function jsc() { 
-  jsl -conf /etc/jsl/jsl.conf -process $1 
+function jsc() {
+  jsl -conf /etc/jsl/jsl.conf -process $1
 }
 
-function aiff2mp3() { 
-  lame -h -V 0 $1.aif $1.mp3 
+function aiff2mp3() {
+  lame -h -V 0 $1.aif $1.mp3
 }
-function wav2mp3() { 
-  lame -h -V 0 $1.wav $1.mp3 
+function wav2mp3() {
+  lame -h -V 0 $1.wav $1.mp3
 }
 
 
