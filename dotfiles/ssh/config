@@ -27,3 +27,8 @@ Host semc-stage
   HostName ec2-46-51-187-148.eu-west-1.compute.amazonaws.com
   User ubuntu
   IdentityFile ~/.ssh/semc-touch-jayway.pem
+
+Host gerrit
+  Host gerrit.jayway.com
+  Port 29418
+  User andersjanmyr
