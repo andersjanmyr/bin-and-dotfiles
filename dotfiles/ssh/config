@@ -9,6 +9,7 @@ Host bob
 Host mini
   Hostname mini.jayway.com
   User admin
+  IdentityFile ~/.ssh/macmini
 
 Host official.heroku.com
   HostName heroku.com

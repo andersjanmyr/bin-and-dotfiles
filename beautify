@@ -1,11 +1,11 @@
-#!/bin/env ruby
+#!/usr/bin/env ruby
 
 # Ruby beautifier, version 2.1, 09/11/2006
 # Copyright (c) 2006, P. Lutus
 # Released under the GPL
 
 # To use in TextMate:
-# Make a command that calls "~/bin/beautify" with 
+# Make a command that calls "~/bin/beautify" with
 # Input: Selected Text or Document
 # Output: Replace Selected Text
 # Scope Selector: source.ruby
