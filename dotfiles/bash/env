@@ -4,7 +4,7 @@ export MAGLEV_HOME=/Users/andersjanmyr/External_Projects/maglev
 
 export PATH=$HOME/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin:$MAGLEV_HOME/bin
 
-export EDITOR="/usr/bin/mate -w"
+export EDITOR="/usr/local/bin/mvim -f"
 
 export CLICOLOR=1
 
