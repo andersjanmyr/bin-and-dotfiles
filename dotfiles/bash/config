@@ -38,7 +38,7 @@ BMAGENTA='\e[45m'
 BCYAN='\e[46m'
 BWHITE='\e[47m'
 
-export PS1='[\!:\W$(__git_ps1 " (%s)")]\$ '
+export PS1='[$? \!:\W$(__git_ps1 " (%s)")]\$ '
 
 
 
