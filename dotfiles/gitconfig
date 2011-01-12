@@ -22,3 +22,5 @@
 [core]
   excludesfile = /Users/andersjanmyr/.gitignore
   autocrlf = input
+[heroku]
+	account = anders

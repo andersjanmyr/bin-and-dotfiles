@@ -6,6 +6,11 @@ Host bob
   Hostname 213.50.11.49
   User kperson
 
+# Host mini.jayway.com
+#   Hostname mini.jayway.com
+#   User admin
+#   IdentityFile ~/.ssh/macmini
+
 Host mini
   Hostname mini.jayway.com
   User admin
@@ -14,6 +19,21 @@ Host mini
 Host official.heroku.com
   HostName heroku.com
   User git
+  IdentitiesOnly yes
+
+Host heroku.anders
+  HostName heroku.com
+  IdentityFile ~/.ssh/anders.identity
+  IdentitiesOnly yes
+
+Host heroku.helios-server
+  HostName heroku.com
+  IdentityFile ~/.ssh/helios-server.identity
+  IdentitiesOnly yes
+
+Host heroku.oredev
+  HostName heroku.com
+  IdentityFile ~/.ssh/oredev-heroku.identity
   IdentitiesOnly yes
 
 Host semc-dev
@@ -33,3 +53,9 @@ Host gerrit
   Host gerrit.jayway.com
   Port 29418
   User andersjanmyr
+
+Host anders-ec2
+    Host ec2-46-51-167-11.eu-west-1.compute.amazonaws.com
+    User ubuntu
+    IdentityFile ~/.ssh/anders-ec2.pem
+
