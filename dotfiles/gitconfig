@@ -19,6 +19,10 @@
   sta = stash
   untracked = ls-files -o -X.gitignore --exclude=.*
   amend = commit --amend -C HEAD
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  
 [core]
   excludesfile = /Users/andersjanmyr/.gitignore
   autocrlf = input

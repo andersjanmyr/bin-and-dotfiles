@@ -50,7 +50,7 @@ alias po="popd"
 
 alias k9="killall -9"
 function killnamed () {
-    ps ax | grep $1 | cut -d ' ' -f 2 | xargs kill
+    ps ax | grep -i $1 | cut -d ' ' -f 2 | xargs kill
 }
 function zipr() {
   zip -r $1.zip $1
@@ -83,7 +83,8 @@ function gg() {
 alias gco='git checkout'
 alias gd='git diff'
 alias gdm='git diff | mate'
-alias gl='git pull'
+alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias glo='git log --pretty=oneline'
 alias gnp="git-notpushed"
 alias gp='git push'
 alias g='git status -sb'
