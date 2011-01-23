@@ -1,0 +1,100 @@
+silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#helptags()
+
+filetype plugin indent on " load filetype plugins/indent settings
+"colorscheme light
+if has("mac")
+  silent! set nomacatsui
+else
+  set lazyredraw
+end
+
+set autoindent "indent in a smart way"
+set background=light " we plan to use a light background
+set backspace=indent,eol,start " make backspace a more flexible
+set backup " make backup files
+set backupdir=~/.vim/backup " where to put backup files
+" set clipboard+=unnamed " share windows clipboard
+" set completeopt= " don't use a pop up menu for completions
+set directory=~/.vim/tmp " directory to place swap files in
+set enc=utf-8
+set expandtab " no real tabs please!
+set fileformats=unix,dos,mac " support all three, in this order
+set formatoptions=l
+set grepprg=ack
+set hidden " you can change buffers without saving
+set hlsearch "Highlight search"
+set ignorecase " case insensitive by default
+set incsearch "incremental search
+set infercase " case inferred by default
+set laststatus=2 " always show the status line
+set lbr
+set nocompatible " explicitly get out of vi-compatible mode
+set noexrc " don't use local version of .(g)vimrc, .exrc
+set number " enable line numbers
+set ruler " Always show current positions along the bottom
+set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
+set showcmd " show the command being typed
+set showmatch " show matching brackets
+set smartcase " if there are caps, go case-sensitive
+set spell
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+set tabstop=2
+set shiftwidth=2
+set wildmenu "Magic completion menu"
+syntax on " syntax highlighting on
+
+" Autocommands
+augroup RUBY
+  autocmd!
+  " Enable rspec support
+  autocmd BufNewFile,BufRead */spec/**/*.rb,*_spec.rb compiler rspec
+  autocmd BufNewFile,BufRead */test/**/*.rb,*_test.rb compiler rubyunit
+  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+augroup END
+
+augroup MARKDOWN
+  autocmd!
+  autocmd FileType markdown,man map <Leader>p :w<CR>:!markdown < % > %.html && open %.html<CR><CR>
+  autocmd FileType markdown,man map <Leader>h1 :.g/.\+/copy. <Bar> s/./=/g <CR>
+  autocmd FileType markdown,man map <Leader>h2 :.g/.\+/copy. <Bar> s/./-/g <CR>
+augroup END
+
+" Plugins
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+inoremap <M-o>       <Esc>o
+inoremap <C-j>       <Down>
+let g:ragtag_global_maps = 1
+
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+
+let NERDSpaceDelims = 1
+
+
+" Remappings
+" Visual tabbing should stay in visual
+vmap > >gv
+vmap < <gv
+
+
+" allow a more natural style of line editing in :ex mode
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-L> <Right>
+cnoremap <C-H> <Left>
+cnoremap <C-B> <S-Left>
+cnoremap <C-W> <S-Right>
+
+" Enable saving with :W too
+command! W :w
+
+" , is a more accessible leader
+let mapleader = ","
+
