@@ -14,13 +14,16 @@ set background=light " we plan to use a light background
 set backspace=indent,eol,start " make backspace a more flexible
 set backup " make backup files
 set backupdir=~/.vim/backup " where to put backup files
-" set clipboard+=unnamed " share windows clipboard
+set clipboard+=unnamed " share windows clipboard
+set cursorline
+set colorcolumn=85
 " set completeopt= " don't use a pop up menu for completions
 set directory=~/.vim/tmp " directory to place swap files in
 set enc=utf-8
 set expandtab " no real tabs please!
 set fileformats=unix,dos,mac " support all three, in this order
-set formatoptions=l
+set formatoptions=qrn1
+set gdefault
 set grepprg=ack
 set hidden " you can change buffers without saving
 set hlsearch "Highlight search"
@@ -29,9 +32,12 @@ set incsearch "incremental search
 set infercase " case inferred by default
 set laststatus=2 " always show the status line
 set lbr
+" set list
+set listchars=tab:▸\ ,eol:¬
 set nocompatible " explicitly get out of vi-compatible mode
 set noexrc " don't use local version of .(g)vimrc, .exrc
 set number " enable line numbers
+set relativenumber
 set ruler " Always show current positions along the bottom
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
 set showcmd " show the command being typed
@@ -39,9 +45,14 @@ set showmatch " show matching brackets
 set smartcase " if there are caps, go case-sensitive
 set spell
 set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+set textwidth=79
 set tabstop=2
+set softtabstop=2
+set undofile
 set shiftwidth=2
 set wildmenu "Magic completion menu"
+set wrap
+
 syntax on " syntax highlighting on
 
 " Autocommands
@@ -95,6 +106,43 @@ cnoremap <C-W> <S-Right>
 " Enable saving with :W too
 command! W :w
 
+nnoremap / /\v
+vnoremap / /\v
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+inoremap § <ESC>
+nnoremap § <ESC>
+vnoremap § <ESC>
+inoremap jj <ESC>
+inoremap :w <ESC>:w
+
+" Window movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+au FocusLost * :wa
+
 " , is a more accessible leader
 let mapleader = ","
+
+nnoremap <leader>a :Ack
+nnoremap <leader><space> :noh<cr>
+nnoremap <leader>v V`]
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+
 
