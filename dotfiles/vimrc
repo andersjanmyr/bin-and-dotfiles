@@ -150,5 +150,5 @@ map <Leader>n :NERDTreeToggle<CR>
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-
+map <Leader>y :YRShow<CR> 
 
