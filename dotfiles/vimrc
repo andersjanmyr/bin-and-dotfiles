@@ -16,7 +16,6 @@ set backup " make backup files
 set backupdir=~/.vim/backup " where to put backup files
 set clipboard+=unnamed " share windows clipboard
 set cursorline
-set colorcolumn=85
 " set completeopt= " don't use a pop up menu for completions
 set directory=~/.vim/tmp " directory to place swap files in
 set enc=utf-8
@@ -37,7 +36,11 @@ set listchars=tab:▸\ ,eol:¬
 set nocompatible " explicitly get out of vi-compatible mode
 set noexrc " don't use local version of .(g)vimrc, .exrc
 set number " enable line numbers
-set relativenumber
+if v:version > 720
+  set colorcolumn=85
+  set relativenumber
+  set undofile
+end
 set ruler " Always show current positions along the bottom
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
 set showcmd " show the command being typed
@@ -48,7 +51,6 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set textwidth=79
 set tabstop=2
 set softtabstop=2
-set undofile
 set shiftwidth=2
 set wildmenu "Magic completion menu"
 set wrap
