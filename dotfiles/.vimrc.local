@@ -1,6 +1,10 @@
 set formatoptions=qrn1
 set gdefault
 set laststatus=2 " always show the status line
+set hidden " you can change buffers without saving
+set grepprg=ack
+set ruler " Always show current positions along the bottom
+set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 
 color desert
 
@@ -58,7 +62,7 @@ let mapleader = ","
 nnoremap <leader>a :Ack
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>v V`]
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC.local<cr>
 map <Leader>n :NERDTreeToggle<CR>
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>

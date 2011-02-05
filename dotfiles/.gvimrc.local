@@ -1,7 +1,7 @@
 if has("gui_running")
     set guifont=Monaco:h16
     set guioptions=egmrt
-    color jellybeans
+    color jellybeans+
     set fuopt=maxhorz,maxvert
     syntax on
     set lines=38
