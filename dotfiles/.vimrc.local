@@ -1,0 +1,69 @@
+set formatoptions=qrn1
+set gdefault
+set laststatus=2 " always show the status line
+
+color desert
+
+" Remappings
+" Visual tabbing should stay in visual
+vmap > >gv
+vmap < <gv
+
+
+" allow a more natural style of line editing in :ex mode
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-L> <Right>
+cnoremap <C-H> <Left>
+cnoremap <C-B> <S-Left>
+cnoremap <C-W> <S-Right>
+
+" Enable saving with :W too
+command! W :w
+
+nnoremap / /\v
+vnoremap / /\v
+
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+inoremap § <ESC>
+nnoremap § <ESC>
+vnoremap § <ESC>
+inoremap jj <ESC>
+inoremap :w<CR> <ESC>:w<CR>
+
+" Window movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+au FocusLost * :wa
+
+" , is a more accessible leader
+let mapleader = ","
+
+nnoremap <leader>a :Ack
+nnoremap <leader><space> :noh<cr>
+nnoremap <leader>v V`]
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+map <Leader>n :NERDTreeToggle<CR>
+" Normal mode: <Leader>e
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>y :YRShow<CR> 
+
+set relativenumber
+

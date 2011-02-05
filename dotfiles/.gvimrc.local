@@ -1,0 +1,20 @@
+if has("gui_running")
+    set guifont=Monaco:h16
+    set guioptions=egmrt
+    color jellybeans
+    set fuopt=maxhorz,maxvert
+    syntax on
+    set lines=38
+    set antialias
+endif
+
+if has("gui_macvim")
+  macmenu &File.New\ Tab key=<nop>
+  map <D-t> <Plug>PeepOpen
+  imap <D-t> <ESC><Plug>PeepOpen
+end
+
+set cursorline
+set colorcolumn=85
+set undofile
+
