@@ -28,3 +28,7 @@
   autocrlf = input
 [heroku]
 	account = anders
+[mergetool "gvimdiff3"]
+	cmd = gvim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+[merge]
+	tool = gvimdiff3
