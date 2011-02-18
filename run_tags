@@ -1,6 +1,6 @@
 #!/usr/bin/ruby
 #-*-ruby-*-
-# A script to run ctags on all .rb files in a project. Can be run on
+# A script to run ctags on all .rb and .js files in a project. Can be run on
 # the current dir, called from a git callback, or install itself as a
 # git post-merge and post-commit callback.
 
@@ -19,7 +19,7 @@ end
 
 def run_tags(dir)
   if File.executable?(CTAGS) and File.writable?(dir)
-    %x{find #{dir} -name \\*.rb | #{CTAGS} -e -f #{dir}/tags -L - 2>>/dev/null}
+    %x{find #{dir} -name \\*.rb -o -name \\*.js | #{CTAGS} -e -f #{dir}/tags -L - 2>>/dev/null}
   else
     $stderr.print "FAILED to write tags file to #{dir}\n"
   end
