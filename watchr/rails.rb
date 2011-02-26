@@ -22,43 +22,57 @@ def run(cmd)
   `#{cmd}`
 end
 
-def run_test_file(file)
+def run_spec(file)
   system('clear')
-  result = run(%Q(ruby -I"lib:test" -rubygems #{file}))
+  unless File.exist?(file)
+    puts "#{file} does not exist"
+    return
+  end
+  puts "Running #{file}"
+  result = run("bundle exec rspec #{file}")
   growl result.split("\n").last rescue nil
   puts result
 end
 
-def run_all_tests
+watch("spec/.*/*_spec\.rb") do |match|
+  run_spec match[0]
+end
+
+watch("app/(.*/.*)\.rb") do |match|
+  run_spec %{spec/#{match[1]}_spec.rb}
+end
+
+def run_all_specs
   system('clear')
-  result = run "rake test"
+  result = run "rake spec"
   growl result.split("\n").last rescue nil
   puts result
 end
 
-def run_all_features
-  system('clear')
-  system("cucumber")
+def run_spec(file)
+  unless File.exist?(file)
+    puts "#{file} does not exist"
+    return
+  end
+  puts "Running #{file}"
+  system "bundle exec rspec #{file}"
+  puts
 end
 
-def related_test_files(path)
-  Dir['test/**/*.rb'].select { |file| file =~ /#{File.basename(path).split(".").first}_test.rb/ }
+watch("spec/.*/*_spec\.rb") do |match|
+  run_spec match[0]
 end
 
-def run_suite
-  run_all_tests
-  run_all_features
+watch("app/(.*/.*)\.rb") do |match|
+  run_spec %{spec/#{match[1]}_spec.rb}
 end
 
-watch('test/test_helper\.rb') { run_all_tests }
-watch('test/.*/.*_test\.rb') { |m| run_test_file(m[0]) }
-watch('app/.*/.*\.rb') { |m| related_test_files(m[0]).map {|tf| run_test_file(tf) } }
-watch('features/.*/.*\.feature') { run_all_features }
+watch('spec/spec_helper\.rb') { run_all_tests }
 
 # Ctrl-\
 Signal.trap 'QUIT' do
   puts " --- Running all tests ---\n\n"
-  run_all_tests
+  run_all_specs
 end
 
 @interrupted = false
@@ -73,6 +87,6 @@ Signal.trap 'INT' do
     @interrupted = true
     Kernel.sleep 1.5
     # raise Interrupt, nil # let the run loop catch it
-    run_suite
+    run_all_specs
   end
 end
