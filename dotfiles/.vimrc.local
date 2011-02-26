@@ -1,4 +1,5 @@
-set formatoptions=qrn1
+set formatoptions=taqrn1
+set textwidth=79
 set gdefault
 set laststatus=2 " always show the status line
 set hidden " you can change buffers without saving
@@ -54,6 +55,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Javascript
+au FileType javascript set tabstop=4
+au FileType javascript set shiftwidth=4
+au FileType javascript set softtabstop=4
+
 au FocusLost * :wa
 
 " , is a more accessible leader
@@ -69,6 +75,7 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>y :YRShow<CR>
 map <Leader>w :%s/\s\+$//<CR>
+map <Leader>tl :TlistToggle <CR>
 
 set relativenumber
 
