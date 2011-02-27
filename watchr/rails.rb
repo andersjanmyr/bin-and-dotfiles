@@ -67,7 +67,7 @@ watch("app/(.*/.*)\.rb") do |match|
   run_spec %{spec/#{match[1]}_spec.rb}
 end
 
-watch('spec/spec_helper\.rb') { run_all_tests }
+watch('spec/spec_helper\.rb') { run_all_specs }
 
 # Ctrl-\
 Signal.trap 'QUIT' do
