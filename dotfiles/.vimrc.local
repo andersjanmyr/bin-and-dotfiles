@@ -5,7 +5,7 @@ set laststatus=2 " always show the status line
 set hidden " you can change buffers without saving
 set grepprg=ack
 set ruler " Always show current positions along the bottom
-set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+set statusline=%F%m%r%h%w%y%{fugitive#statusline()}[%{&ff}][%p%%][%04l,%04v][%L]
 
 color desert
 
