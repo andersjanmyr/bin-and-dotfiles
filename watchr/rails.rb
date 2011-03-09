@@ -88,5 +88,6 @@ Signal.trap 'INT' do
     Kernel.sleep 1.5
     # raise Interrupt, nil # let the run loop catch it
     run_all_specs
+    @interrupted = false
   end
 end
