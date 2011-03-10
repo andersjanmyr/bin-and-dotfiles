@@ -20,3 +20,5 @@ source /etc/bash_completion.d/git-completion.sh
 # source /etc/bash_completion.d/rake-completion.sh
 
 export UDS_HOME=~/tmp
+
+export PGDATA=/usr/local/var/postgres
