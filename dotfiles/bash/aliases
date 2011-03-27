@@ -82,6 +82,7 @@ function gg() {
 }
 alias gco='git checkout'
 alias gd='git diff'
+alias gds='git diff --staged'
 alias gdm='git diff | mate'
 alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias glo='git log --pretty=oneline'
