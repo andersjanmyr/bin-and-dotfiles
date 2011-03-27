@@ -17,6 +17,7 @@ replace_file ~/.ssh/config ~/bin/dotfiles/ssh/config
 replace_file ~/.gemrc ~/bin/dotfiles/gemrc
 replace_file ~/.irbrc ~/bin/dotfiles/irbrc
 replace_file ~/.vimrc ~/bin/dotfiles/vimrc
+replace_file ~/.ackrc ~/bin/dotfiles/ackrc
 
 
 echo "source ~/.bashrc # to reload environment"
