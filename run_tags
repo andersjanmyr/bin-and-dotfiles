@@ -19,7 +19,8 @@ end
 
 def run_tags(dir)
   if File.executable?(CTAGS) and File.writable?(dir)
-    %x{find #{dir} \\( -name \\*.rb -o -name \\*.js \\) -not -path \\*/vendor/\\* | #{CTAGS} -e -f #{dir}/tags -L - 2>>/dev/null}
+    vendor_exclude = Dir.pwd =~ /vendor$/ ? '' : '-not -path \\*/vendor/\\*'
+    %x{find #{dir} \\( -name \\*.rb -o -name \\*.js \\) #{vendor_exclude}| #{CTAGS} -e -f #{dir}/tags -L - 2>>/dev/null}
   else
     $stderr.print "FAILED to write tags file to #{dir}\n"
   end
