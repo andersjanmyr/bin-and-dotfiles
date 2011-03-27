@@ -6,6 +6,7 @@ set hidden " you can change buffers without saving
 set grepprg=ack
 set ruler " Always show current positions along the bottom
 set statusline=%F%m%r%h%w%y%{fugitive#statusline()}[%{&ff}][%p%%][%04l,%04v][%L]
+set tags=tags,vendor/tags
 
 color desert
 
