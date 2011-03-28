@@ -64,3 +64,8 @@ Host sds-ec2
   User ubuntu
   IdentityFile ~/.ssh/anders-sds
 
+Host heroku.sds
+  HostName heroku.com
+  IdentityFile  ~/.ssh/sds-webbutveckling
+  IdentitiesOnly yes
+
