@@ -11,6 +11,9 @@ alias mysqlstop='sudo /usr/local/Cellar/mysql/5.1.49/share/mysql/mysql.server st
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
+# MongoDB
+alias mongostart='mongod run --config /usr/local/Cellar/mongodb/1.8.1-x86_64/mongod.conf'
+
 # Utility
 alias reload='source ~/bin/dotfiles/bash/aliases'
 alias ea='mate -w ~/bin/dotfiles/bash/aliases && reload' # Edit aliases
