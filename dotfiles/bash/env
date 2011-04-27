@@ -14,7 +14,7 @@ if [[ -s /Users/andersjanmyr/.rvm/scripts/rvm ]] ; then
 fi
 [[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 
-source /etc/bash_completion.d/git-completion.sh
+source /usr/local/etc/bash_completion.d/git-completion.bash
 
 # Don't use this version of rake-completion, too slow
 # source /etc/bash_completion.d/rake-completion.sh
@@ -25,4 +25,6 @@ export PGDATA=/usr/local/var/postgres
 
 export NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules
 export NODE_ENV=development
+
+export HISTIGNORE="&:[a-z]:[a-z][a-z]:[a-z][a-z][a-z]"
 
