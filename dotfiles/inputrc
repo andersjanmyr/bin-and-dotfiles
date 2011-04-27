@@ -1,0 +1,39 @@
+set editing-mode vi
+set keymap vi-insert
+
+# Shows all files instead of beep when tab-completing
+set show-all-if-ambiguous on
+# Ignore case when completing, very nice!
+set completion-ignore-case on
+
+"\e\C-h": backward-kill-word
+"\e\C-?": backward-kill-word
+
+#"\e1": "©"
+#"\e2": "@"
+#"\e3": "£"
+#"\e4": "$"
+#"\e5": "∞"
+#"\e6": "§"
+#"\e7": "|"
+#"\e8": "["
+#"\e9": "]"
+#"\e0": "≈"
+#"\e/": "\\"
+#"\e(": "{"
+#"\e)": "}"
+
+
+#"\e[1~": beginning-of-line       # Home key
+#"\e[4~": end-of-line       # End key
+#"\e[3~": delete-char       # Delete key
+#"\e[5C": forward-word        # Ctrl+right
+#"\e[5D": backward-word       # Ctrl+left
+"\e\e[C": forward-word        # Alt+right
+"\e\e[D": backward-word       # Alt+left
+#"\C-K": unix-line-discard      # Ctrl+K
+#"\e\"": "@{}\e[D"          # Insert @{} move cursor into braces
+#"\e€": "$()\e[D"         # Insert $()  move cursor into braces
+#"\e[5~": history-search-backward
+#"\e[6~": history-search-forward
+

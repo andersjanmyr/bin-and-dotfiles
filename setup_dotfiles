@@ -4,7 +4,7 @@ echo ". ~/bin/dotfiles/bashrc" > ~/.bashrc
 echo ". ~/bin/dotfiles/bashrc" > ~/.bash_profile
 
 function replace_file() {
-  rm $1
+  rm -f $1
   ln -s $2 $1
 }
 
@@ -16,8 +16,9 @@ replace_file ~/.ssh/config ~/bin/dotfiles/ssh/config
 
 replace_file ~/.gemrc ~/bin/dotfiles/gemrc
 replace_file ~/.irbrc ~/bin/dotfiles/irbrc
-replace_file ~/.vimrc ~/bin/dotfiles/vimrc
+replace_file ~/.vimrc.local ~/bin/dotfiles/vimrc.local
 replace_file ~/.ackrc ~/bin/dotfiles/ackrc
+replace_file ~/.inputrc ~/bin/dotfiles/inputrc
 
 
 echo "source ~/.bashrc # to reload environment"
