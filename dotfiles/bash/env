@@ -28,3 +28,5 @@ export NODE_ENV=development
 
 export HISTIGNORE="&:[a-z]:[a-z][a-z]:[a-z][a-z][a-z]"
 
+export SHOWOFF_EVAL_RUBY=1
+
