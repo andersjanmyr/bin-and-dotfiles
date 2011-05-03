@@ -85,7 +85,7 @@ inoremap § <ESC>
 nnoremap § <ESC>
 vnoremap § <ESC>
 inoremap jj <ESC>
-inoremap :w <ESC>:w
+inoremap :w<CR> <ESC>:w<CR>
 
 " Window movement
 nnoremap <C-h> <C-w>h
@@ -107,4 +107,26 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>y :YRShow<CR> 
+nmap <silent> <buffer> <leader>s :set spell!<CR>
+
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
+
+" Commenting {{{2
+" requires NERDCommenter plugin
+vmap <D-/> ,c<space>gv
+map <D-/> ,c<space>
+
+nmap <C-n> :cn<CR>
+nmap <C-p> :cp<CR>
+
+:helptags ~/.vim/doc 
+
+set tags=tags,vendor/tags
+
+
 
