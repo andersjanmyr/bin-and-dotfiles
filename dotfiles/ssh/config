@@ -69,3 +69,10 @@ Host heroku.sds
   IdentityFile  ~/.ssh/sds-webbutveckling
   IdentitiesOnly yes
 
+Host node
+  HostName andersjanmyr.no.de
+  User node
+  IdentityFile ~/.ssh/anders.identity
+  IdentitiesOnly yes
+
+
