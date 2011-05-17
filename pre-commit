@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# A pre-commit hook that prevents accidentally committing files
+# that contain words that shouldn't be in source files.
+#
+
+if git grep -n -F -e NO_COMMIT --or -e debugger
+then
+  echo 'Commit aborted due to invalid content in files'
+	exit 1
+fi
+

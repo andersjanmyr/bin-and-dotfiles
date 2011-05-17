@@ -126,6 +126,12 @@ nmap <C-p> :cp<CR>
 
 :helptags ~/.vim/doc 
 
+autocmd User fugitive
+  \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+  \   nnoremap <buffer> .. :edit %:h<CR> |
+  \ endif
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
 set tags=tags,vendor/tags
 
 
