@@ -4,7 +4,7 @@ require "rubygems"
 require 'optparse'
 require 'ostruct'
 require 'redcloth'
-require 'rdiscount'
+require 'redcarpet'
 
 # This is the name of the script that is called
 PROGRAM_NAME = $0
@@ -98,7 +98,7 @@ def convert_texts(all_texts)
       rc = RedCloth.new(pair[1])
       puts rc.to_html
     elsif pair[0] == "markdown"
-      markdown = RDiscount.new(pair[1])
+      markdown = Redcarpet.new(pair[1], :smart, :autolink, :tables)
       puts markdown.to_html
     else
       highlight(pair[0], pair[1])
