@@ -4,7 +4,7 @@
 # that contain words that shouldn't be in source files.
 #
 
-if git grep -n -F -e NO_COMMIT --or -e debugger
+if git diff --staged | egrep '(NO_COMMIT|debugger)'
 then
   echo 'Commit aborted due to invalid content in files'
 	exit 1
