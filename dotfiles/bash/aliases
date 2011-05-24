@@ -81,6 +81,9 @@ alias gc='git commit -v'
 alias gca='git commit -v -a'
 # Commit pending changes and quote all args as message
 function gg() {
+    git commit -v -m "$*"
+}
+function gga() {
     git commit -v -am "$*"
 }
 alias gco='git checkout'

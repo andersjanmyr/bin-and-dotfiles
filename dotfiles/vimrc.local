@@ -14,7 +14,6 @@ set list
 set listchars=tab:▸\ ,eol:¬
 
 set colorcolumn=85
-set relativenumber
 set undofile
 
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
