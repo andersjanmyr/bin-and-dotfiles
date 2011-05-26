@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+hosts = %w(github.com heroku.com)
+
+hosts.concat(ARGV)
+
+hosts.each do |host|
+  puts "Routing #{host} over the iPhone"
+  `sudo route add -host #{host} 172.20.10.1`
+end
+
