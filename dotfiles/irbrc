@@ -5,7 +5,7 @@ require 'irb/ext/save-history'
 require 'pp'
 require 'interactive_editor'
 
-%w[looksee/shortcuts map_by_method what_methods].each do |gem|
+%w[map_by_method what_methods].each do |gem|
   begin
     require gem
   rescue LoadError
@@ -29,9 +29,6 @@ end
 def local_methods(obj = self)
   (obj.methods - obj.class.superclass.instance_methods).sort
 end
-
-Wirble.init
-Wirble.colorize
 
 # Just for Rails...
 load "#{ENV['HOME']}/bin/dotfiles/railsrc" if $0 == 'irb' && ENV['RAILS_ENV']

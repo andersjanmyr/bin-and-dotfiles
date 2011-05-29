@@ -59,6 +59,8 @@ function zipr() {
   zip -r $1.zip $1
 }
 
+alias v='mvim'
+
 # Finder
 alias o='open . &'
 alias ff='open -a Firefox'
