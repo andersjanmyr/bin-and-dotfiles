@@ -129,8 +129,9 @@ alias etr="mate app config lib db schema public spec test vendor/gems vendor/plu
 alias r="rails"
 
 # Rails
-alias rdbm="rake db:migrate"
-alias rdbr="rake db:reset"
+alias rdbm="bundle exec rake db:migrate"
+alias rdbr="bundle exec rake db:reset"
+alias be="bundle exec"
 
 
 # TDD / BDD
