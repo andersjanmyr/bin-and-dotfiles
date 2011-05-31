@@ -6,6 +6,10 @@ Host bob
   Hostname 213.50.11.49
   User kperson
 
+Host kperson
+  Hostname 213.50.11.41
+  User kperson
+
 # Host mini.jayway.com
 #   Hostname mini.jayway.com
 #   User admin
@@ -34,6 +38,11 @@ Host heroku.helios-server
 Host heroku.oredev
   HostName heroku.com
   IdentityFile ~/.ssh/oredev-heroku.identity
+  IdentitiesOnly yes
+
+Host heroku.jayway-ruby
+  HostName heroku.com
+  IdentityFile ~/.ssh/jayway-ruby.identity
   IdentitiesOnly yes
 
 Host semc-dev
