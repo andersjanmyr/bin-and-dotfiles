@@ -15,6 +15,7 @@ fi
 [[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 
 source /usr/local/etc/bash_completion.d/git-completion.bash
+source /Users/andersjanmyr/bin/dotfiles/git-flow-completion.bash
 
 # Don't use this version of rake-completion, too slow
 # source /etc/bash_completion.d/rake-completion.sh
