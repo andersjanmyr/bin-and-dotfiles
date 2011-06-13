@@ -40,6 +40,9 @@ def program_options
   [
           ['--format', '-f FORMAT', 'Format as html or text(default)',
            lambda { |value| options.format = value }
+          ],
+          ['--coffee', '-c', 'Show code as coffeescript',
+           lambda { |value| options.coffee = true }
           ]
   ]
 end
@@ -108,17 +111,20 @@ def print_entry(name, args, ret, category, desc, code)
 end
 
 def highlight(lang, source)
-  tempfile = 'tempfile.txt'
-  f = File.open(tempfile, "w") do |f|
+  tempfile1 = 'tempfile1.txt'
+  f = File.open(tempfile1, "w") do |f|
     f.puts "#{source}"
   end
-  text = %x{source-highlight --src-lang #{lang} < #{tempfile}}
-  if options.google
-    text = text.sub(/(.*)(<pre>.*<\/pre>)(.*)/mi, '<blockquote>\2</blockquote>')
+  if options.coffee
+    tempfile2 = 'tempfile2.txt'
+    text = %x{js2coffee #{tempfile1} > #{tempfile2}}
+    File.delete(tempfile1) if File.exist?(tempfile1)
+    tempfile1 = tempfile2
   end
+  text = %x{source-highlight --src-lang #{lang} < #{tempfile1}}
   puts text
 ensure
-  File.delete(tempfile) if File.exist?(tempfile)
+  File.delete(tempfile1) if File.exist?(tempfile1)
 end
 
 # Only the non options (the filenames) are left in ARGV
