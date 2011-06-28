@@ -139,7 +139,7 @@ alias be="bundle exec"
 alias aa='autotest'
 alias aaf='autotest -f' # Don't run all at start
 alias aas="./script/autospec"
-alias watch="watchr ~/bin/watchr/rails.rb"
+alias wat="watchr ~/bin/watchr/rails.rb"
 
 # Syntax check Javascript
 function jsc() {

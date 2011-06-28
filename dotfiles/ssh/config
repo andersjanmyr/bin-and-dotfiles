@@ -63,8 +63,8 @@ Host gerrit
   Port 29418
   User andersjanmyr
 
-Host anders-ec2
-  HostName ec2-79-125-61-254.eu-west-1.compute.amazonaws.com
+Host cf
+  HostName ec2-46-137-55-92.eu-west-1.compute.amazonaws.com
   User ubuntu
   IdentityFile ~/.ssh/anders-ec2.pem
 
