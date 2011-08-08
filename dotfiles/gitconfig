@@ -1,5 +1,5 @@
 [user]
-  name = Anders Janmyr
+	name = Anders Janmyr
   email = anders@janmyr.com
 [apply]
   whitespace = nowarn

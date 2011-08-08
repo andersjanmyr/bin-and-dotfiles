@@ -31,3 +31,6 @@ export HISTIGNORE="&:[a-z]:[a-z][a-z]:[a-z][a-z][a-z]"
 
 export SHOWOFF_EVAL_RUBY=1
 
+# Rubinius
+export RBXOPT='-X19'
+
