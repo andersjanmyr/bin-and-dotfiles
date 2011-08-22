@@ -84,4 +84,9 @@ Host node
   IdentityFile ~/.ssh/anders.identity
   IdentitiesOnly yes
 
+Host demo
+  HostName demo-bnw.se-mc.com
+  User ubuntu
+  IdentityFile ~/.ssh/anders.identity
+  IdentitiesOnly yes
 
