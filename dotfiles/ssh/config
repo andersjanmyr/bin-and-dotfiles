@@ -45,27 +45,14 @@ Host heroku.jayway-ruby
   IdentityFile ~/.ssh/jayway-ruby.identity
   IdentitiesOnly yes
 
-Host semc-dev
-  HostName ec2-79-125-119-107.eu-west-1.compute.amazonaws.com
-  User ubuntu
-
-Host semc-prot
-  HostName ec2-46-51-187-148.eu-west-1.compute.amazonaws.com
-  User ubuntu
-
-Host semc-stage
-  HostName ec2-46-51-187-148.eu-west-1.compute.amazonaws.com
-  User ubuntu
-  IdentityFile ~/.ssh/semc-touch-jayway.pem
-
 Host gerrit
   HostName gerrit.jayway.com
   Port 29418
   User andersjanmyr
 
-Host cf
-  HostName ec2-46-137-55-92.eu-west-1.compute.amazonaws.com
-  User ubuntu
+Host anders-ec2
+  HostName ec2-46-137-135-183.eu-west-1.compute.amazonaws.com
+  User ec2-user
   IdentityFile ~/.ssh/anders-ec2.pem
 
 Host sds-ec2
