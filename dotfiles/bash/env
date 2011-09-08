@@ -34,3 +34,5 @@ export SHOWOFF_EVAL_RUBY=1
 # Rubinius
 export RBXOPT='-X19'
 
+export AWS_CREDENTIALS_FILE=/Users/andersjanmyr/.aws-credentials
+
