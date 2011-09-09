@@ -158,3 +158,6 @@ alias jsdoc='jsdoc -a -p -t=/usr/local/Cellar/jsdoc-toolkit/2.3.2/libexec/jsdoc-
 
 alias tweet='mvim ~/DropBox/work/tweet.txt'
 
+alias flushhosts='sudo dscacheutil -flushcache'
+
+
