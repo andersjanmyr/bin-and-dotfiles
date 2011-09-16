@@ -1,3 +1,7 @@
+Host *
+  ServerAliveInterval 60
+
+
 Host dcmc
   HostName matrix-dcmc.dyndns.org
   User ubuntu
@@ -73,6 +77,12 @@ Host node
 
 Host demo
   HostName demo-bnw.se-mc.com
+  User ubuntu
+  IdentityFile ~/.ssh/anders.identity
+  IdentitiesOnly yes
+
+Host buildbox
+  HostName semcbnw.dev.buildbox
   User ubuntu
   IdentityFile ~/.ssh/anders.identity
   IdentitiesOnly yes
