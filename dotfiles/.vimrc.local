@@ -77,7 +77,7 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>y :YRShow<CR>
-map <Leader>w :%s/\s\+$//<CR>
+map <Leader>w :%s/\v\s+$//<CR>
 map <Leader>tl :TlistToggle <CR>
 
 set relativenumber
