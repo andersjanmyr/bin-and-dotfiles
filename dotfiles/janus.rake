@@ -17,4 +17,7 @@ skip_vim_plugin "snipmate"
 
 vim_plugin_task "anders-snipmate", "git://github.com/andersjanmyr/snipmate.vim.git"
 # vim_plugin_task "scratch", "http://www.vim.org/scripts/download_script.php?src_id=2050"
+vim_plugin_task "nginx" do
+  sh 'curl http://www.vim.org/scripts/download_script.php?src_id=14376 > syntax/nginx.vim'
+end
 
