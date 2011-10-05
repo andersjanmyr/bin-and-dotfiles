@@ -20,6 +20,7 @@ replace_file ~/.vimrc.local ~/bin/dotfiles/vimrc.local
 replace_file ~/.ackrc ~/bin/dotfiles/ackrc
 replace_file ~/.inputrc ~/bin/dotfiles/inputrc
 replace_file ~/.jshintrc ~/bin/dotfiles/jshintrc
+replace_file ~/.jslintrc ~/bin/dotfiles/jslintrc
 
 
 echo "source ~/.bashrc # to reload environment"
