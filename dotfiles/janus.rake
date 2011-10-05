@@ -20,4 +20,6 @@ vim_plugin_task "anders-snipmate", "git://github.com/andersjanmyr/snipmate.vim.g
 vim_plugin_task "nginx" do
   sh 'curl http://www.vim.org/scripts/download_script.php?src_id=14376 > syntax/nginx.vim'
 end
-
+vim_plugin_task 'jslint-patch' do
+  sh 'curl https://raw.github.com/douglascrockford/JSLint/master/jslint.js > ftplugin/javascript/jslint/jslint-core.js'
+end
