@@ -148,5 +148,7 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 set tags=tags,vendor/tags
 
+xmap s <Plug>VSurround
 
-
+nmap <Leader>u viwUe
+inoremap <Leader>fn <C-R>=expand("%")<CR>
