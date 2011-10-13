@@ -24,7 +24,8 @@
   dump = cat-file -p
   fd = rev-list -n 1 HEAD --
   ld = log --diff-filter=D --summary
-  
+  conflicts = !git ls-files -u | cut -f 2 | sort -u  
+
 [core]
   excludesfile = /Users/andersjanmyr/.gitignore
   autocrlf = input
