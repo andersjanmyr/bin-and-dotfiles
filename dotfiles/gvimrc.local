@@ -1,6 +1,7 @@
 if has("gui_running")
     set guifont=Monaco:h14
     set guioptions=egmrt
+    set background=light
     color solarized
     set fuopt=maxhorz,maxvert
     syntax on
