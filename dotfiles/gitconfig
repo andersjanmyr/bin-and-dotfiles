@@ -35,3 +35,5 @@
 	cmd = mvim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [merge]
 	tool = mvimdiff3
+[push]
+	default = tracking
