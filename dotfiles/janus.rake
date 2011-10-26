@@ -23,3 +23,6 @@ end
 vim_plugin_task 'jslint-patch' do
   sh 'curl https://raw.github.com/douglascrockford/JSLint/master/jslint.js > ftplugin/javascript/jslint/jslint-core.js'
 end
+
+vim_plugin_task 'autoclose-vim' 'git://github.com/Townk/vim-autoclose.git'
+
