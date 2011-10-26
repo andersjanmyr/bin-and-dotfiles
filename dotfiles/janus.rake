@@ -26,3 +26,8 @@ end
 
 vim_plugin_task 'autoclose-vim' 'git://github.com/Townk/vim-autoclose.git'
 
+vim_plugin_task 'github-colors' do
+  sh 'curl https://raw.github.com/xonecas/github-vim-colorscheme/master/github.vim> colors/github.vim'
+end
+
+

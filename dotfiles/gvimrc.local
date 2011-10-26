@@ -2,7 +2,7 @@ if has("gui_running")
     set guifont=Monaco:h14
     set guioptions=egmrt
     set background=light
-    color solarized
+    color github
     set fuopt=maxhorz,maxvert
     syntax on
     set lines=38
