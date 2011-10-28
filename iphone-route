@@ -2,7 +2,7 @@
 
 hosts = %w(github.com heroku.com)
 
-hosts.concat(ARGV)
+hosts = ARGV if ARGV.size > 0
 
 hosts.each do |host|
   puts "Routing #{host} over the iPhone"
