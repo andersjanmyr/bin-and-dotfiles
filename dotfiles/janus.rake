@@ -24,10 +24,13 @@ vim_plugin_task 'jslint-patch' do
   sh 'curl https://raw.github.com/douglascrockford/JSLint/master/jslint.js > ftplugin/javascript/jslint/jslint-core.js'
 end
 
-vim_plugin_task 'autoclose-vim' 'git://github.com/Townk/vim-autoclose.git'
+vim_plugin_task 'autoclose-vim', 'git://github.com/Townk/vim-autoclose.git'
 
 vim_plugin_task 'github-colors' do
   sh 'curl https://raw.github.com/xonecas/github-vim-colorscheme/master/github.vim> colors/github.vim'
 end
 
+vim_plugin_task 'vim-jade', 'git://github.com/digitaltoad/vim-jade.git'
+
+vim_plugin_task 'vim-stylus', 'git://github.com/wavded/vim-stylus.git
 
