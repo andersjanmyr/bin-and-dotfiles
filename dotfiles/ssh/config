@@ -75,14 +75,23 @@ Host node
   IdentityFile ~/.ssh/anders.identity
   IdentitiesOnly yes
 
-Host demo
-  HostName demo-bnw.se-mc.com
+
+##### SEMC
+
+Host buildbox
+  HostName semcbnw.dev.buildbox
   User ubuntu
   IdentityFile ~/.ssh/anders.identity
   IdentitiesOnly yes
 
-Host buildbox
-  HostName semcbnw.dev.buildbox
+Host demo
+  HostName semcbnw.demo.backend
+  User ubuntu
+  IdentityFile ~/.ssh/anders.identity
+  IdentitiesOnly yes
+
+Host prod
+  HostName semcbnw.prod.backend
   User ubuntu
   IdentityFile ~/.ssh/anders.identity
   IdentitiesOnly yes
