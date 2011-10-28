@@ -32,5 +32,5 @@ end
 
 vim_plugin_task 'vim-jade', 'git://github.com/digitaltoad/vim-jade.git'
 
-vim_plugin_task 'vim-stylus', 'git://github.com/wavded/vim-stylus.git
+vim_plugin_task 'vim-stylus', 'git://github.com/wavded/vim-stylus.git'
 
