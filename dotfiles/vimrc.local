@@ -107,30 +107,6 @@ nnoremap <C-l> <C-w>l
 
 au FocusLost * :wa
 
-" , is a more accessible leader
-let mapleader = ","
-
-nnoremap <leader>a :Ack
-nnoremap <leader><space> :noh<cr>
-nnoremap <leader>v V`]
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC.local<cr>
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-
-map <Leader>n :NERDTreeToggle<CR>
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>y :YRShow<CR> 
-map <Leader>y :YRShow<CR> 
-nmap <silent> <buffer> <leader>s :set spell!<CR>
-
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-endif
-
 " Commenting {{{2
 " requires NERDCommenter plugin
 vmap <D-/> ,c<space>gv
@@ -150,9 +126,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 set tags=tags,vendor/tags
 
 xmap s <Plug>VSurround
-
-nmap <Leader>u viwUe
-inoremap <Leader>fn <C-R>=expand("%")<CR>
 
 
 " Syntax of these languages is fussy over tabs Vs spaces
@@ -176,6 +149,33 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+" , is a more accessible leader
+let mapleader = ","
+
+nnoremap <leader>a :Ack
+nnoremap <leader><space> :noh<cr>
+nnoremap <leader>v V`]
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC.local<cr>
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+map <Leader>n :NERDTreeToggle<CR>
+" Normal mode: <Leader>e
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>y :YRShow<CR> 
+map <Leader>y :YRShow<CR> 
+nmap <silent> <buffer> <leader>s :set spell!<CR>
+
+nmap <Leader>u viwUe
+inoremap <Leader>fn <C-R>=expand("%")<CR>
+
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+endif
 
 nnoremap <Leader>w :call <SID>StripTrailingWhitespaces()<CR>
 
