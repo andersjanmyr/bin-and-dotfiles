@@ -34,3 +34,6 @@ vim_plugin_task 'vim-jade', 'git://github.com/digitaltoad/vim-jade.git'
 
 vim_plugin_task 'vim-stylus', 'git://github.com/wavded/vim-stylus.git'
 
+vim_plugin_task 'vim-scratch' do
+  sh 'curl http://www.vim.org/scripts/download_script.php?src_id=2050 > plugin/scratch.vim'
+end
