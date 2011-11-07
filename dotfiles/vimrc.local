@@ -76,8 +76,10 @@ cnoremap <C-W> <S-Right>
 " Enable saving with :W too
 command! W :w
 
+nnoremap ? ?\v
 nnoremap / /\v
-vnoremap / /\v
+nnoremap // //
+nnoremap ?? ??
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -109,8 +111,8 @@ au FocusLost * :wa
 
 " Commenting {{{2
 " requires NERDCommenter plugin
-vmap <D-/> ,c<space>gv
-map <D-/> ,c<space>
+vnoremap <Leader>cc :call NERDComment(1, 'toggle')<CR>gv
+noremap <Leader>cc :call NERDComment(0, 'toggle')
 
 nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
@@ -158,12 +160,11 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>v V`]
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC.local<cr>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+nmap <leader>l :set list!<CR>
 
 map <Leader>n :NERDTreeToggle<CR>
-" Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>y :YRShow<CR> 
+map <Leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>y :YRShow<CR> 
 nmap <silent> <buffer> <leader>s :set spell!<CR>
 
@@ -180,4 +181,22 @@ endif
 nnoremap <Leader>w :call <SID>StripTrailingWhitespaces()<CR>
 
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>viw
+nnoremap <leader><leader> <c-^>
 
+
+" Setup window change behavior
+set winwidth=84
+set winheight=5
+set winminheight=5
+set winheight=999
+
+
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+
+function! s:VSetSearch()
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
