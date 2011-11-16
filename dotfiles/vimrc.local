@@ -149,6 +149,7 @@ endfunction
 let mapleader = ","
 
 nnoremap <leader>a :Ack
+nnoremap <leader>h :Hammer<CR>
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>v V`]
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC.local<cr>
