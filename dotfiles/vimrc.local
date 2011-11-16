@@ -76,11 +76,6 @@ cnoremap <C-W> <S-Right>
 " Enable saving with :W too
 command! W :w
 
-nnoremap ? ?\v
-nnoremap / /\v
-nnoremap // //
-nnoremap ?? ??
-
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>

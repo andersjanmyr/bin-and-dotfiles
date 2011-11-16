@@ -1,4 +1,4 @@
-# Copy this file to .janus.rake and use it to specify additional vim bundles 
+# Copy this file to .janus.rake and use it to specify additional vim bundles
 # that should be installed when running rake.
 
 # e.g.
@@ -11,8 +11,8 @@ vim_plugin_task "git-grep-vim", "git://github.com/tjennings/git-grep-vim.git"
 #  vim_plugin_task "vim-yankring", "git://github.com/chrismetcalf/vim-yankring.git"
 vim_plugin_task "vim-tabular", "https://github.com/godlygeek/tabular.git"
 # skip_vim_plugin "hammer"
+skip_vim_plugin 'nerdtree'
 # vim_plugin_task "vim-markdown-preview", "git://github.com/nelstrom/vim-markdown-preview.git"
-skip_vim_plugin "command_t"
 skip_vim_plugin "snipmate"
 
 vim_plugin_task "anders-snipmate", "git://github.com/andersjanmyr/snipmate.vim.git"
@@ -23,8 +23,6 @@ end
 vim_plugin_task 'jslint-patch' do
   sh 'curl https://raw.github.com/douglascrockford/JSLint/master/jslint.js > ftplugin/javascript/jslint/jslint-core.js'
 end
-
-vim_plugin_task 'autoclose-vim', 'git://github.com/Townk/vim-autoclose.git'
 
 vim_plugin_task 'github-colors' do
   sh 'curl https://raw.github.com/xonecas/github-vim-colorscheme/master/github.vim> colors/github.vim'
@@ -37,3 +35,4 @@ vim_plugin_task 'vim-stylus', 'git://github.com/wavded/vim-stylus.git'
 vim_plugin_task 'vim-scratch' do
   sh 'curl http://www.vim.org/scripts/download_script.php?src_id=2050 > plugin/scratch.vim'
 end
+
