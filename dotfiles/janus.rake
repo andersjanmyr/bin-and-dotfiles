@@ -10,7 +10,6 @@ vim_plugin_task "vim-ragtag", "git://github.com/tpope/vim-ragtag.git"
 vim_plugin_task "git-grep-vim", "git://github.com/tjennings/git-grep-vim.git"
 #  vim_plugin_task "vim-yankring", "git://github.com/chrismetcalf/vim-yankring.git"
 vim_plugin_task "vim-tabular", "https://github.com/godlygeek/tabular.git"
-skip_vim_plugin 'nerdtree'
 skip_vim_plugin "snipmate"
 vim_plugin_task "hammer", "git://github.com/robgleeson/hammer.vim.git"
 

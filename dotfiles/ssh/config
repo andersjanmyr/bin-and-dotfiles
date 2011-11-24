@@ -96,7 +96,7 @@ Host prod
   IdentityFile ~/.ssh/anders.identity
   IdentitiesOnly yes
 
-Host dev
+Host sdev
   HostName semcbnw.dev
   User ubuntu
   IdentityFile ~/.ssh/anders.identity
