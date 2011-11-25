@@ -9,6 +9,8 @@ set hidden " you can change buffers without saving
 set infercase " case inferred by default
 set lbr
 
+" , is a more accessible leader
+let mapleader = ","
 
 set list
 set listchars=tab:▸\ ,eol:¬
@@ -107,6 +109,9 @@ au FocusLost * :wa
 vnoremap <Leader>cc :call NERDComment(1, 'toggle')<CR>gv
 noremap <Leader>cc :call NERDComment(0, 'toggle')
 
+let NERDTreeIgnore=['\.rbc$', '\~$']
+map <Leader>n :NERDTreeToggle<CR>
+
 nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
 
@@ -146,8 +151,6 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-" , is a more accessible leader
-let mapleader = ","
 
 nnoremap <leader>a :Ack
 nnoremap <leader>h :Hammer<CR>
