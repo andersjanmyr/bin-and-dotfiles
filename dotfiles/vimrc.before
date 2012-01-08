@@ -1,3 +1,6 @@
+" Use my own snipmate
+call janus#disable_plugin('snipmate')"
+
 " , is a more accessible leader
 let mapleader = ","
 
