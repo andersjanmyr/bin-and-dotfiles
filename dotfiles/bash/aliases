@@ -59,10 +59,6 @@ function zipr() {
   zip -r $1.zip $1
 }
 
-function v() {
-  (unset GEM_PATH GEM_HOME; mvim "$*" )
-}
-
 # Finder
 alias o='open . &'
 alias ff='open -a Firefox'
