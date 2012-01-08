@@ -16,8 +16,9 @@ replace_file ~/.ssh/config ~/bin/dotfiles/ssh/config
 
 replace_file ~/.gemrc ~/bin/dotfiles/gemrc
 replace_file ~/.irbrc ~/bin/dotfiles/irbrc
-replace_file ~/.vimrc.local ~/bin/dotfiles/vimrc.local
-replace_file ~/.gvimrc.local ~/bin/dotfiles/gvimrc.local
+replace_file ~/.vimrc.after ~/bin/dotfiles/vimrc.after
+replace_file ~/.vimrc.before ~/bin/dotfiles/vimrc.before
+replace_file ~/.gvimrc.after ~/bin/dotfiles/gvimrc.after
 replace_file ~/.ackrc ~/bin/dotfiles/ackrc
 replace_file ~/.inputrc ~/bin/dotfiles/inputrc
 replace_file ~/.jshintrc ~/bin/dotfiles/jshintrc

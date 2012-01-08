@@ -9,8 +9,6 @@ set hidden " you can change buffers without saving
 set infercase " case inferred by default
 set lbr
 
-" , is a more accessible leader
-let mapleader = ","
 
 set list
 set listchars=tab:▸\ ,eol:¬

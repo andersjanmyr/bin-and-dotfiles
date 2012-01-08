@@ -1,0 +1,3 @@
+" , is a more accessible leader
+let mapleader = ","
+
