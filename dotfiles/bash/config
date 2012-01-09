@@ -38,7 +38,15 @@ BMAGENTA='\e[45m'
 BCYAN='\e[46m'
 BWHITE='\e[47m'
 
-export PS1='[$? \!:\W$(__git_ps1 " (%s)")]\$ '
+function prompt {
+  if [[ "$?" -eq "0" ]]; then
+    local smiley=$(echo -ne "${GREEN}☺${NO_COLOR}")
+  else
+    local smiley=$(echo -ne "${RED}$? ☹${NO_COLOR}")
+  fi
+  export PS1="[\!:\W$(__git_ps1 ' (%s)')] $smiley "
+}
 
+PROMPT_COMMAND='prompt'
 
 
