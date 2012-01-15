@@ -91,7 +91,7 @@ alias gco='git checkout'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gdm='git diff | mate'
-alias gl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias gl='git hist'
 alias glo='git log --pretty=oneline'
 alias gnp="git-notpushed"
 alias gp='git push'

@@ -19,7 +19,7 @@
   sta = stash
   untracked = ls-files -o -X.gitignore --exclude=.*
   amend = commit --amend -C HEAD
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  hist = log --pretty='format:%Cblue%h%d%Creset %s %Cgreen%an%Creset, %ar' --graph
   type = cat-file -t
   dump = cat-file -p
   fd = rev-list -n 1 HEAD --
