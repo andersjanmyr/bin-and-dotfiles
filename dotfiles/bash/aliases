@@ -94,6 +94,8 @@ alias gds='git diff --staged'
 alias gdm='git diff | mate'
 alias gl='git hist'
 alias glo='git log --pretty=oneline'
+alias gmf='git merge --ff-only'
+alias gm='git merge --no-ff'
 alias gnp="git log origin/master..master"
 alias gpf='git pull --ff-only'
 alias g='git status -sb'
