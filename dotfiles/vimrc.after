@@ -29,7 +29,7 @@ function s:setupWrapping()
   set shiftwidth=2
 endfunction
 
-"Added Qargs function from 
+"Added Qargs function from
 "http://stackoverflow.com/questions/7203963/
 command! -nargs=0 -bar Qargs execute 'args ' . QuickfixFilenames()
 function! QuickfixFilenames()
@@ -113,7 +113,7 @@ map <Leader>n :NERDTreeToggle<CR>
 nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
 
-:helptags ~/.vim/doc 
+:helptags ~/.vim/doc
 
 autocmd User fugitive
   \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
@@ -154,13 +154,13 @@ nnoremap <leader>a :Ack
 nnoremap <leader>h :Hammer<CR>
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>v V`]
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC.local<cr>
+nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC.after<cr>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nmap <leader>l :set list!<CR>
 
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 map <Leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>y :YRShow<CR> 
+map <Leader>y :YRShow<CR>
 nmap <silent> <buffer> <leader>s :set spell!<CR>
 
 nmap <Leader>u viwUe
@@ -195,3 +195,32 @@ function! s:VSetSearch()
   let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
   let @s = temp
 endfunction
+
+" Set tabstop, softtabstop and shiftwidth to the same value
+command! -nargs=* Stab call Stab()
+function! Stab()
+  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+  if l:tabstop > 0
+    let &l:sts = l:tabstop
+    let &l:ts = l:tabstop
+    let &l:sw = l:tabstop
+  endif
+  call SummarizeTabs()
+endfunction
+
+function! SummarizeTabs()
+  try
+    echohl ModeMsg
+    echon 'tabstop='.&l:ts
+    echon ' shiftwidth='.&l:sw
+    echon ' softtabstop='.&l:sts
+    if &l:et
+      echon ' expandtab'
+    else
+      echon ' noexpandtab'
+    endif
+  finally
+    echohl None
+  endtry
+endfunction
+
