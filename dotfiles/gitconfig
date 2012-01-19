@@ -11,29 +11,26 @@
   user = andersjanmyr
   token = 084236cc4e86c10b200beeb0bede88dc
 [alias]
-  co = checkout
-  st = status
-  stat = status
+  amend = commit --amend -C HEAD
   br = branch
   ci = commit
-  sta = stash
-  untracked = ls-files -o -X.gitignore --exclude=.*
-  amend = commit --amend -C HEAD
-  hist = log --pretty='format:%Cblue%h%d%Creset %s %Cgreen%an%Creset, %ar' --graph
-  type = cat-file -t
+  co = checkout
+  conflicts = !git ls-files -u | cut -f 2 | sort -u  
   dump = cat-file -p
   fd = rev-list -n 1 HEAD --
+  hist = log --pretty='format:%Cblue%h%d%Creset %s %Cgreen%an%Creset, %ar' --graph
   ld = log --diff-filter=D --summary
-  conflicts = !git ls-files -u | cut -f 2 | sort -u  
+  m = merge --no-ff
+  st = status
+  sta = stash
+  stat = status
+  type = cat-file -t
+  untracked = ls-files -o -X.gitignore --exclude=.*
 
 [core]
   excludesfile = /Users/andersjanmyr/.gitignore
   autocrlf = input
 [heroku]
 	account = anders
-[mergetool "mvimdiff3"]
-	cmd = mvim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
-[merge]
-	tool = mvimdiff3
 [push]
-	default = tracking
+	default = matching
