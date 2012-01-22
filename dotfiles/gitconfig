@@ -18,7 +18,7 @@
   conflicts = !git ls-files -u | cut -f 2 | sort -u  
   dump = cat-file -p
   fd = rev-list -n 1 HEAD --
-  hist = log --pretty='format:%Cblue%h%d%Creset %s %Cgreen%an%Creset, %ar' --graph
+  hist = log --pretty='format:%Cblue%h%d%C(yellow) %s %Cgreen%an%Creset, %ar' --graph
   ld = log --diff-filter=D --summary
   m = merge --no-ff
   st = status
