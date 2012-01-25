@@ -20,6 +20,7 @@
   fd = rev-list -n 1 HEAD --
   hist = log --pretty='format:%Cblue%h%d%C(yellow) %s %Cgreen%an%Creset, %ar' --graph
   ld = log --diff-filter=D --summary
+  ls = ls-files
   m = merge --no-ff
   st = status
   sta = stash
