@@ -98,8 +98,9 @@ def convert_texts(all_texts)
       rc = RedCloth.new(pair[1])
       puts rc.to_html
     elsif pair[0] == "markdown"
-      markdown = Redcarpet.new(pair[1], :smart, :autolink, :tables)
-      puts markdown.to_html
+      markdown =  Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+        :smart => true, :autolink => true, :tables => true) 
+      puts markdown.render(pair[1])
     else
       highlight(pair[0], pair[1])
     end
