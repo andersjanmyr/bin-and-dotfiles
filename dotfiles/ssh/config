@@ -102,3 +102,8 @@ Host sdev
   IdentityFile ~/.ssh/anders.identity
   IdentitiesOnly yes
 
+Host minecraft
+  HostName ec2-79-125-101-203.eu-west-1.compute.amazonaws.com
+  User ec2-user
+  IdentityFile ~/.ssh/anders-ec2.pem
+
