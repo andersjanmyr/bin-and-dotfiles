@@ -97,7 +97,7 @@ Host prod
   IdentitiesOnly yes
 
 Host sdev
-  HostName semcbnw.dev
+  HostName www-dev.sonymobile.com
   User ubuntu
   IdentityFile ~/.ssh/anders.identity
   IdentitiesOnly yes
