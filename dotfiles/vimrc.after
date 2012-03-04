@@ -62,6 +62,15 @@ let NERDSpaceDelims = 1
 vmap > >gv
 vmap < <gv
 
+" Make Y behave like D
+map Y y$
+
+" Save with sudo
+cmap w!! %!sudo tee > /dev/null %
+
+" Use sane Regexes
+nnoremap / /\v
+vnoremap / /\v
 
 " allow a more natural style of line editing in :ex mode
 cnoremap <C-A> <Home>
