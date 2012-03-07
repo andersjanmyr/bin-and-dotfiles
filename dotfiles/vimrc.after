@@ -1,3 +1,5 @@
+set background=dark
+colorscheme wombat
 set autoindent "indent in a smart way"
 set backup " make backup files
 set clipboard+=unnamed " share windows clipboard
