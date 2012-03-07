@@ -1,16 +1,18 @@
-silent! call pathogen#runtime_append_all_bundles()
-silent! call pathogen#helptags()
-
-filetype plugin indent on " load filetype plugins/indent settings
-"colorscheme light
+call pathogen#infect()
+syntax on
+filetype plugin indent on
+colorscheme wombat
 if has("mac")
   silent! set nomacatsui
 else
   set lazyredraw
 end
 
+" , is a more accessible leader
+let mapleader = ","
+
 set autoindent "indent in a smart way"
-set background=light " we plan to use a light background
+set background=dark " we plan to use a light background
 set backspace=indent,eol,start " make backspace a more flexible
 set backup " make backup files
 set backupdir=~/.vim/backup " where to put backup files
@@ -36,18 +38,17 @@ set listchars=tab:▸\ ,eol:¬
 set nocompatible " explicitly get out of vi-compatible mode
 set noexrc " don't use local version of .(g)vimrc, .exrc
 set number " enable line numbers
-if v:version > 720
-  set colorcolumn=85
-  set relativenumber
-  set undofile
-end
+set colorcolumn=85
+set relativenumber
+set undofile
+
 set ruler " Always show current positions along the bottom
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
 set showcmd " show the command being typed
 set showmatch " show matching brackets
 set smartcase " if there are caps, go case-sensitive
 set spell
-set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set textwidth=79
 set tabstop=2
 set softtabstop=2
@@ -90,6 +91,12 @@ let g:gist_open_browser_after_post = 1
 
 let NERDSpaceDelims = 1
 let NERDTreeIgnore=['\.rbc$', '\~$']
+
+" Make Y behave like D
+map Y y$
+
+" Save with sudo
+cmap w!! %!sudo tee > /dev/null %
 
 
 
@@ -141,16 +148,35 @@ nnoremap <C-l> <C-w>l
 
 au FocusLost * :wa
 
-" , is a more accessible leader
-let mapleader = ","
-
-nnoremap <leader>a :Ack
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>v V`]
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 map <Leader>n :NERDTreeToggle<CR>
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
-map <Leader>y :YRShow<CR> 
+
+" CtrlP Options
+let g:ctrlp_working_path_mode = 2
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip  " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+
+" TComment Options
+map <Leader>c :TComment<CR>
+
+" Fugitive
+autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd User fugitive
+  if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+     nnoremap <buffer> .. :edit %:h<CR> |
+  endif
+
+endif
+
+"Ragtag
+let g:ragtag_global_maps = 1
+
+"Gist
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
 

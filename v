@@ -1,4 +1,4 @@
 #!/bin/bash
 
-unset GEM_PATH GEM_HOME; /usr/local/bin/mvim "$@"
+unset GEM_PATH GEM_HOME; /usr/local/bin/mvim -v "$@"
 
