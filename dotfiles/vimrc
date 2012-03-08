@@ -1,7 +1,7 @@
 call pathogen#infect()
 syntax on
 filetype plugin indent on
-colorscheme wombat
+colorscheme wombat256i
 if has("mac")
   silent! set nomacatsui
 else
@@ -33,13 +33,12 @@ set incsearch "incremental search
 set infercase " case inferred by default
 set laststatus=2 " always show the status line
 set lbr
-" set list
+set list
 set listchars=tab:▸\ ,eol:¬
 set nocompatible " explicitly get out of vi-compatible mode
 set noexrc " don't use local version of .(g)vimrc, .exrc
 set number " enable line numbers
 set colorcolumn=85
-set relativenumber
 set undofile
 
 set ruler " Always show current positions along the bottom
@@ -166,11 +165,10 @@ map <Leader>c :TComment<CR>
 " Fugitive
 autocmd BufReadPost fugitive://* set bufhidden=delete
 autocmd User fugitive
-  if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
-     nnoremap <buffer> .. :edit %:h<CR> |
-  endif
+   \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+   \  nnoremap <buffer> .. :edit %:h<CR> |
+   \ endif
 
-endif
 
 "Ragtag
 let g:ragtag_global_maps = 1
@@ -179,4 +177,6 @@ let g:ragtag_global_maps = 1
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
+
+Helptags
 
