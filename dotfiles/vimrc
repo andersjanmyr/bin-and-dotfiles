@@ -76,6 +76,8 @@ augroup MARKDOWN
   autocmd FileType markdown,man map <Leader>h2 :.g/.\+/copy. <Bar> s/./-/g <CR>
 augroup END
 
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
+
 " Plugins
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
@@ -148,11 +150,13 @@ nnoremap <C-l> <C-w>l
 au FocusLost * :wa
 
 nnoremap <leader><space> :noh<cr>
+nnoremap <leader>h :Hammer<CR>
 nnoremap <leader>v V`]
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 map <Leader>n :NERDTreeToggle<CR>
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " CtrlP Options
 let g:ctrlp_working_path_mode = 2
@@ -179,4 +183,70 @@ let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 
 Helptags
+
+
+xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
+
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+nnoremap <Leader>w :call <SID>StripTrailingWhitespaces()<CR>
+
+function! s:VSetSearch()
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, '/\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+
+" Set tabstop, softtabstop and shiftwidth to the same value
+command! -nargs=* Stab call Stab()
+function! Stab()
+  let l:tabstop = 1 * input('set tabstop = softtabstop = shiftwidth = ')
+  if l:tabstop > 0
+    let &l:sts = l:tabstop
+    let &l:ts = l:tabstop
+    let &l:sw = l:tabstop
+  endif
+  call SummarizeTabs()
+endfunction
+
+function! SummarizeTabs()
+  try
+    echohl ModeMsg
+    echon 'tabstop='.&l:ts
+    echon ' shiftwidth='.&l:sw
+    echon ' softtabstop='.&l:sts
+    if &l:et
+      echon ' expandtab'
+    else
+      echon ' noexpandtab'
+    endif
+  finally
+    echohl None
+  endtry
+endfunction
+
+"CtrlP
+let g:ctrlp_prompt_mappings = {
+      \ 'ToggleRegex()':        ['<c-t>'],
+      \ 'PrtClearCache()':      ['<c-r>'],
+      \ }
+nnoremap <silent> <Leader>t :CtrlP<cr>
+
+"Surround
+xmap s <Plug>VSurround
+
+nmap <C-n> :cn<CR>
+nmap <C-p> :cp<CR>
+
 
