@@ -35,7 +35,6 @@ export RBXOPT='-X19'
 
 export AWS_CREDENTIALS_FILE=/Users/andersjanmyr/.aws-credentials
 
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source
-$HOME/.tmuxinator/scripts/tmuxinator
-# source tmuxinator completion
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+source /Users/andersjanmyr/.rvm/gems/ruby-1.9.3-p125/gems/tmuxinator-0.5.0/bin/tmuxinator_completion
 
