@@ -46,7 +46,7 @@ function prompt {
     local status=" ${RED}$?${NO_COLOR} "
     local sign=$(echo -ne "${RED}\$${NO_COLOR}")
   fi
-  export PS1="[\!:\W$(__git_ps1 ' (%s)')$status] $sign "
+  export PS1="[\!:\W$(__git_ps1 ' (%s)')$status]\n$sign "
 }
 
 PROMPT_COMMAND='prompt'
