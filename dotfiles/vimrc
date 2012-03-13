@@ -158,10 +158,6 @@ map <Leader>n :NERDTreeToggle<CR>
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
-" CtrlP Options
-let g:ctrlp_working_path_mode = 2
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip  " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 " TComment Options
 map <Leader>c :TComment<CR>
@@ -237,11 +233,17 @@ function! SummarizeTabs()
 endfunction
 
 "CtrlP
+" CtrlP Options
+let g:ctrlp_working_path_mode = 2
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~  " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_map = '<<Leader>-t>'
+let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_prompt_mappings = {
       \ 'ToggleRegex()':        ['<c-t>'],
       \ 'PrtClearCache()':      ['<c-r>'],
       \ }
-nnoremap <silent> <Leader>t :CtrlP<cr>
+nnoremap <silent> <Leader>t :CtrlPMRU<cr>
 
 "Surround
 xmap s <Plug>VSurround

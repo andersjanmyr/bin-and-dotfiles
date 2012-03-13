@@ -18,7 +18,8 @@
     "dojo"          : false,
 
     "predef"        : [  // Extra globals.
-        "Strophe", "_"
+        "Strophe", "_", "$",
+        "describe", "it", "expect", "beforeEach", "afterEach" // Jasmine
     ],
 
 
