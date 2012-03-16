@@ -18,8 +18,13 @@
     "dojo"          : false,
 
     "predef"        : [  // Extra globals.
-        "Strophe", "_", "$",
-        "describe", "it", "expect", "beforeEach", "afterEach" // Jasmine
+        "tre",
+        "Strophe", "_",
+        // Jasmine
+        "it", "describe", "beforeEach", "afterEach", "expect",
+        "spyOn", "runs", "waitsFor",
+        // Node
+        "require", "process"
     ],
 
 
@@ -31,7 +36,7 @@
     // EcmaScript 5.
     "es5"           : true,   // Allow EcmaScript 5 syntax.
     "strict"        : true,  // Require `use strict` pragma in every file.
-    "globalstrict"  : false,  // Allow global "use strict" (also enables 'strict').
+    "globalstrict"  : true,  // Allow global "use strict" (also enables 'strict').
 
 
     // The Good Parts.

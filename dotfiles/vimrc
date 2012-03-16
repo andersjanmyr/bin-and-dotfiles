@@ -1,7 +1,7 @@
 call pathogen#infect()
 syntax on
 filetype plugin indent on
-colorscheme wombat256i
+colorscheme github
 if has("mac")
   silent! set nomacatsui
 else
@@ -12,7 +12,7 @@ end
 let mapleader = ","
 
 set autoindent "indent in a smart way"
-set background=dark " we plan to use a light background
+set background=light " we plan to use a light background
 set backspace=indent,eol,start " make backspace a more flexible
 set backup " make backup files
 set backupdir=~/.vim/backup " where to put backup files
@@ -237,7 +237,7 @@ endfunction
 let g:ctrlp_working_path_mode = 2
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
-let g:ctrlp_map = '<<Leader>-t>'
+let g:ctrlp_map = '<D-t>'
 let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_prompt_mappings = {
       \ 'ToggleRegex()':        ['<c-t>'],

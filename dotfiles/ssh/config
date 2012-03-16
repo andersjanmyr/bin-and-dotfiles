@@ -107,3 +107,6 @@ Host minecraft
   User ec2-user
   IdentityFile ~/.ssh/anders-ec2.pem
 
+host hudson
+  user administrator
+  hostname hudson.waygroup.se

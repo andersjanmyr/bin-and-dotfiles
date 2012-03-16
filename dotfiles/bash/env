@@ -10,7 +10,7 @@ export CLICOLOR=1
 if [[ -s /Users/andersjanmyr/.rvm/scripts/rvm ]] ; then
         source /Users/andersjanmyr/.rvm/scripts/rvm ;
 fi
-[[ -r $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
+[[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
     . `brew --prefix`/etc/bash_completion.d/git-completion.bash  
@@ -23,8 +23,7 @@ export UDS_HOME=~/tmp
 
 export PGDATA=/usr/local/var/postgres
 
-export
-NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules:/usr/local/lib/jsctags
+export NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules:/usr/local/lib/jsctags
 export NODE_ENV=development
 
 export HISTIGNORE="&:[a-z]:[a-z][a-z]:[a-z][a-z][a-z]"
