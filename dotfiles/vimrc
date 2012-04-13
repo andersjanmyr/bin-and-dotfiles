@@ -1,6 +1,8 @@
 call pathogen#infect()
+
 syntax on
 filetype plugin indent on
+set t_Co=256
 colorscheme github
 if has("mac")
   silent! set nomacatsui
@@ -40,6 +42,7 @@ set noexrc " don't use local version of .(g)vimrc, .exrc
 set number " enable line numbers
 set colorcolumn=85
 set undofile
+set shell=bash
 
 set ruler " Always show current positions along the bottom
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
@@ -77,6 +80,12 @@ augroup MARKDOWN
 augroup END
 
 autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
+
+" Jump to last position unless it is invalid or event handler
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 
 " Plugins
 let g:SuperTabDefaultCompletionType = "context"
@@ -147,8 +156,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-au FocusLost * :wa
-
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>h :Hammer<CR>
 nnoremap <leader>v V`]
@@ -169,6 +176,7 @@ autocmd User fugitive
    \  nnoremap <buffer> .. :edit %:h<CR> |
    \ endif
 
+"autocmd FileType gitcommit DiffGitCached | wincmd p
 
 "Ragtag
 let g:ragtag_global_maps = 1
@@ -178,7 +186,6 @@ let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
 
-Helptags
 
 
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
@@ -235,15 +242,16 @@ endfunction
 "CtrlP
 " CtrlP Options
 let g:ctrlp_working_path_mode = 2
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~  " MacOSX/Linux
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:ctrlp_map = '<D-t>'
-let g:ctrlp_cmd = 'CtrlPMRU'
 let g:ctrlp_prompt_mappings = {
       \ 'ToggleRegex()':        ['<c-t>'],
       \ 'PrtClearCache()':      ['<c-r>'],
       \ }
-nnoremap <silent> <Leader>t :CtrlPMRU<cr>
+let g:ctrlp_switch_buffer = 1
+nnoremap <silent> <Leader>t :CtrlP<cr>
+nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
 
 "Surround
 xmap s <Plug>VSurround
@@ -251,4 +259,10 @@ xmap s <Plug>VSurround
 nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
 
+autocmd FileType sass setlocal ts=4 sts=4 sw=4 expandtab
+
+au FocusLost * :silent! wall                 " Save on FocusLost
+au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLost
+
+Helptags
 
