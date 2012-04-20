@@ -53,6 +53,7 @@ Host gerrit
   HostName gerrit.jayway.com
   Port 29418
   User andersjanmyr
+  IdentityFile ~/.ssh/anders.identity
 
 Host anders-ec2
   HostName ec2-46-137-135-183.eu-west-1.compute.amazonaws.com
