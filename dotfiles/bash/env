@@ -7,13 +7,15 @@ export EDITOR="/Users/andersjanmyr/bin/v -f"
 export CLICOLOR=1
 
 # RVM
-if [[ -s /Users/andersjanmyr/.rvm/scripts/rvm ]] ; then
-        source /Users/andersjanmyr/.rvm/scripts/rvm ;
+if [[ -s ~/.rvm/scripts/rvm ]] ; then
+        source ~/.rvm/scripts/rvm ;
 fi
 [[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 
-if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-    . `brew --prefix`/etc/bash_completion.d/git-completion.bash  
+if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    . /usr/local/etc/bash_completion.d/git-completion.bash  
+elsif [ -f /etc/bash_completion.d/git ]; then
+    . /etc/bash_completion.d/git
 fi
 
 # Don't use this version of rake-completion, too slow
