@@ -49,6 +49,12 @@ Host heroku.jayway-ruby
   IdentityFile ~/.ssh/jayway-ruby.identity
   IdentitiesOnly yes
 
+Host gerrit.jayway.com
+  HostName gerrit.jayway.com
+  Port 29418
+  User andersjanmyr
+  IdentityFile ~/.ssh/anders.identity
+
 Host gerrit
   HostName gerrit.jayway.com
   Port 29418
