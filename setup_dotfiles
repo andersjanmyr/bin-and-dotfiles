@@ -21,6 +21,8 @@ replace_file ~/.ackrc ~/bin/dotfiles/ackrc
 replace_file ~/.inputrc ~/bin/dotfiles/inputrc
 replace_file ~/.jshintrc ~/bin/dotfiles/jshintrc
 replace_file ~/.jslintrc ~/bin/dotfiles/jslintrc
+mkdir -p .vim/tmp
+mkdir -p .vim/backup
 replace_file ~/.vim/spell ~/bin/dotfiles/vim/spell
 
 replace_file ~/.tmux.conf ~/bin/dotfiles/tmux.conf
