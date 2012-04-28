@@ -41,10 +41,10 @@ BWHITE='\e[47m'
 function prompt {
   if [[ "$?" -eq "0" ]]; then
     local status=""
-    local sign=$(echo -ne "${GREEN}\$${NO_COLOR}")
+    local sign=$(echo -ne "\[${GREEN}\]\$\[${NO_COLOR}\]")
   else
-    local status=" ${RED}$?${NO_COLOR} "
-    local sign=$(echo -ne "${RED}\$${NO_COLOR}")
+    local status=" \[${RED}\]$?\[${NO_COLOR}\] "
+    local sign=$(echo -ne "\[${RED}\]\$\[${NO_COLOR}\]")
   fi
   export PS1="[\!:\W$(__git_ps1 ' (%s)')$status]\n$sign "
 }
