@@ -18,11 +18,16 @@
     "dojo"          : false,
 
     "predef"        : [  // Extra globals.
+        "Mpbase",
         "tre",
         "Strophe", "_",
         // Jasmine
         "it", "describe", "beforeEach", "afterEach", "expect",
-        "spyOn", "runs", "waitsFor"
+        "spyOn", "runs", "waitsFor",
+        // Sinon.js
+        "sinon",
+        // Knockout
+        "ko"
     ],
 
 
