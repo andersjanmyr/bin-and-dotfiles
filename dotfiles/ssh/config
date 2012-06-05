@@ -117,3 +117,10 @@ Host minecraft
 host hudson
   user administrator
   hostname hudson.waygroup.se
+
+Host lexicon-jenkins
+  HostName ec2-46-51-167-84.eu-west-1.compute.amazonaws.com
+  User ubuntu
+  IdentityFile ~/.ssh/anders-ec2.pem
+
+
