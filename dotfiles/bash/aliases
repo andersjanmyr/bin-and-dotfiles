@@ -45,10 +45,9 @@ function mcd() {
 }
 
 function pd() {
-  pushd $1
-  dirs
+  dir=`find ~ -name $1 -maxdepth 3 | head -1`
+  cd $dir
 }
-alias po="popd"
 
 alias k9="killall -9"
 function killnamed () {
