@@ -12,6 +12,7 @@ end
 
 " , is a more accessible leader
 let mapleader = ","
+nnoremap \ ,
 
 set autoindent "indent in a smart way"
 set background=light " we plan to use a light background
