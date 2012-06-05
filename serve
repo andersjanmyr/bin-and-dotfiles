@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+
+var express = require('express');
+var fs = require('fs');
+
+var app = express.createServer();
+
+app.configure(function() {
+  app.use(express.static(__dirname));
+});
+
+app.listen(4000);
+
+app.get('/', function(req, resp) {
+  fs.readdir('.', function(err, files) {
+    if (err) return resp.end(err.inspect())
+      var anchors = files.map(function(f) {
+        return '<a href="' + f  + '">' + f + '</a>';
+      });
+      resp.end(anchors.join('<br/>\n'));
+  });
+});
