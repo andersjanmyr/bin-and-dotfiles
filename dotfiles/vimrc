@@ -242,7 +242,7 @@ endfunction
 "CtrlP
 " CtrlP Options
 let g:ctrlp_working_path_mode = 2
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gem.tags,*/.sass-cache/*
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 let g:ctrlp_map = '<D-t>'
 let g:ctrlp_prompt_mappings = {
