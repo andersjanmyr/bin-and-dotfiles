@@ -45,8 +45,12 @@ function mcd() {
 }
 
 function pd() {
-  dir=`find ~ -name $1 -maxdepth 3 | head -1`
-  cd $dir
+  dir=`find ~ -name "*$1*" -type d -maxdepth 3 | head -1`
+  if [ "$dir" != '' ]; then
+    cd $dir
+  else
+    echo "Cannot find project dir with name: $1"
+  fi
 }
 
 alias k9="killall -9"
