@@ -7,9 +7,8 @@
   status = auto
   diff = auto
   branch = auto
-[github]
-  user = andersjanmyr
-  token = 084236cc4e86c10b200beeb0bede88dc
+[include]
+    path = /Users/andersjanmyr/bin/dotfiles/git-secret.conf
 [alias]
   amend = commit --amend -C HEAD
   br = branch
