@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+main() {
+  git log "$@" --numstat | egrep '^[0-9]+'  | cut -f 3 |sort | uniq -c |sort -r 
+}
+
+main "$@"
+
