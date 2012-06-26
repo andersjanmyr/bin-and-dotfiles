@@ -18,6 +18,7 @@ alias mongostart='mongod run --config /usr/local/Cellar/mongodb/1.8.1-x86_64/mon
 alias reload='source ~/.bashrc'
 alias eb='v  ~/bin'
 
+alias less='less -FRSX'
 
 # Common -- Some are from Damian Conway
 alias a='ls -A' # -A all except literal . ..
@@ -47,7 +48,7 @@ function mcd() {
 function pd() {
   dir=`find ~ -name "*$1*" -type d -maxdepth 3 | head -1`
   if [ "$dir" != '' ]; then
-    cd $dir
+    cd "$dir"
   else
     echo "Cannot find project dir with name: $1"
   fi
