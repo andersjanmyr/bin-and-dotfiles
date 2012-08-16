@@ -5,15 +5,20 @@ var fs = require('fs');
 
 var app = express.createServer();
 
+var dir = '.';
+var port = 4000;
+
 app.configure(function() {
-  app.use(express.static(__dirname));
+  app.use(express.static(dir));
 });
 
-app.listen(4000);
+console.log('Serving files from ' + dir + ' on port ' + port);
+app.listen(port);
 
 app.get('/', function(req, resp) {
-  fs.readdir('.', function(err, files) {
+  fs.readdir(dir, function(err, files) {
     if (err) return resp.end(err.inspect())
+    console.log(files);
       var anchors = files.map(function(f) {
         return '<a href="' + f  + '">' + f + '</a>';
       });
