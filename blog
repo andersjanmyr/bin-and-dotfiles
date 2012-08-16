@@ -25,6 +25,9 @@ def program_options
   ['--google', '-g', "Format for Google blogger.",
    lambda { |value| options.google = true }
   ],
+  ['--stylesheet', '-s', "Format for Google blogger.",
+   lambda { |value| options.stylesheet = true }
+  ],
   ['--verbose', '-v', "Log to standard output.",
    lambda { |value| options.verbose = true }
   ],
@@ -93,6 +96,7 @@ ensure
 end
 
 def convert_texts(all_texts)
+  puts '<link href="md.css" rel="stylesheet" type="text/css">' if options.stylesheet
   all_texts.each do |pair|
     if pair[0] == "textile"
       rc = RedCloth.new(pair[1])
