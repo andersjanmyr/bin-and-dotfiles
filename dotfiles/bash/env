@@ -1,6 +1,6 @@
 export JAVA_HOME=/Library/Java/Home
 
-export PATH=$HOME/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin:$MAGLEV_HOME/bin
+export PATH=$HOME/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
 
 export EDITOR="/Users/andersjanmyr/bin/v -f"
 
@@ -13,9 +13,13 @@ fi
 [[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    . /usr/local/etc/bash_completion.d/git-completion.bash  
+    . /usr/local/etc/bash_completion.d/git-completion.bash
 elif [ -f /etc/bash_completion.d/git ]; then
     . /etc/bash_completion.d/git
+fi
+
+if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
+    . /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
 
 # Don't use this version of rake-completion, too slow
@@ -27,6 +31,8 @@ export PGDATA=/usr/local/var/postgres
 
 export NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules:/usr/local/lib/jsctags
 export NODE_ENV=development
+export PATH=/usr/local/share/npm/bin:$PATH
+
 
 export HISTIGNORE="&:[a-z]:[a-z][a-z]:[a-z][a-z][a-z]"
 
