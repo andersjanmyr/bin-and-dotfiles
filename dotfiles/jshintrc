@@ -26,8 +26,8 @@
         "spyOn", "runs", "waitsFor",
         // Sinon.js
         "sinon",
-        // Knockout
-        "ko"
+        // Backbone
+        "Backbone
     ],
 
 
