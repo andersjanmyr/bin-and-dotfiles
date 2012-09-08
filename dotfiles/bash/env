@@ -45,3 +45,5 @@ export AWS_CREDENTIALS_FILE=/Users/andersjanmyr/.aws-credentials
 
 [[ -s `rvm gemdir`/bin/tmuxinator_completion ]] && source `rvm gemdir`/bin/tmuxinator_completion
 
+export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
+
