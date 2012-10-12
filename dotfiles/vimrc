@@ -81,7 +81,7 @@ augroup MARKDOWN
 augroup END
 
 "autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
-autocmd FileType php setlocal ts=2 sts=2 sw=2 noexpandtab
+autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
 
 " Jump to last position unless it is invalid or event handler
 autocmd BufReadPost *
@@ -262,6 +262,7 @@ let g:ctrlp_prompt_mappings = {
 let g:ctrlp_switch_buffer = 1
 nnoremap <silent> <Leader>t :CtrlP<cr>
 nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
+"let g:ctrlp_working_path_mode = 'c'
 
 "Surround
 xmap s <Plug>VSurround
