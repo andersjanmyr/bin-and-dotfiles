@@ -23,11 +23,12 @@
         "Strophe", "_",
         // Jasmine
         "it", "describe", "beforeEach", "afterEach", "expect",
-        "spyOn", "runs", "waitsFor",
+        "spyOn", "runs", "waitsFor", "xit",
         // Sinon.js
         "sinon",
-        // Backbone
-        "Backbone
+        "Backbone",
+        "define",
+        "jq8"
     ],
 
 
@@ -47,11 +48,11 @@
     "laxbreak"      : true,   // Tolerate unsafe line breaks
     "bitwise"       : true,   // Prohibit bitwise operators (&, |, ^, etc.).
     "boss"          : false,  // Tolerate assignments inside if, for & while.
-    "curly"         : false,   // Don't require {} for every new block or scope.
+    "curly"         : false,  // Don't require {} for every new block or scope.
     "eqeqeq"        : true,   // Require triple equals i.e. `===`.
     "eqnull"        : false,  // Tolerate use of `== null`.
     "evil"          : false,  // Tolerate use of `eval`.
-    "expr"          : false,  // Tolerate `ExpressionStatement` as Programs.
+    "expr"          : true,   // Tolerate `ExpressionStatement` as Programs.
     "forin"         : false,  // Tolerate `for in` loops without `hasOwnPrototype`.
     "immed"         : true,   // Require immediate invocations to be wrapped in parens
     "latedef"       : true,   // Prohibit variable use before definition.
@@ -74,6 +75,13 @@
     "sub"           : true,   // Tolerate subscript notation besides dot notation 
     "trailing"      : true,   // Prohibit trailing whitespaces.
     "white"         : false,  // Check against strict whitespace and indentation rules.
-    "onecase"       : true    // Don't warn if switch can be replaced with if.
+    "onecase"       : true,   // Don't warn if switch can be replaced with if.
+
+    // Complexity
+    "maxparams"     : 4,      // Don't allow too many params.
+    "maxdepth"      : 2,      // Don't allow too deep nesting.
+    "maxstatements" : 5,      // Don't allow large methods.
+    "maxcomplexity" : 3       // Don't allow complexity.
+
 }
 
