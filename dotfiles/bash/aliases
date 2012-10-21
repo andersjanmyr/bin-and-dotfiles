@@ -154,8 +154,9 @@ function wav2mp3() {
 alias jsdoc='jsdoc -a -p -t=/usr/local/Cellar/jsdoc-toolkit/2.3.2/libexec/jsdoc-toolkit/templates/jsdoc'
 
 alias tweet='v ~/DropBox/work/tweet.txt'
-alias tweet='v ~/DropBox/work/tweet.txt'
 
 alias flushhosts='sudo dscacheutil -flushcache'
 
+alias dc='drush -r /Users/andersjanmyr/External_Projects/ne/web/sites/ne.se cc all'
+alias ne='pushd /Users/andersjanmyr/External_Projects/ne/ne_se-profile/themes/ne_bs'
 
