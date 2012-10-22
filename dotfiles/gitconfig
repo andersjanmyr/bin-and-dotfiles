@@ -12,7 +12,8 @@
 [alias]
   amend = commit --amend -C HEAD
   br = branch
-  ci = commit
+  c = commit -v
+  ca = commit -va
   co = checkout
   conflicts = !git ls-files -u | cut -f 2 | sort -u  
   dump = cat-file -p

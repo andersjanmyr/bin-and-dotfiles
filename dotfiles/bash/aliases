@@ -78,6 +78,7 @@ alias tm='top -o vsize' # memory
 # Git
 alias ungit="find . -name '.git' -exec rm -rf {} \;"
 alias ga='git add'
+alias gap='git add -p'
 alias gai='git add -i'
 alias gaa='git add --all'
 alias gau='git add --update'
@@ -95,7 +96,6 @@ function gga() {
 alias gco='git checkout'
 alias gd='git diff'
 alias gds='git diff --staged'
-alias gdm='git diff | mate'
 alias gl='git hist'
 alias glo='git log --pretty=oneline'
 alias gmf='git merge --ff-only'
@@ -104,6 +104,7 @@ alias gnp="git log origin/master..master"
 alias gpf='git pull --ff-only'
 alias g='git status -sb'
 alias vg='v .git/config'
+
 # Git clone from GitHub
 function gch() {
   git clone git://github.com/$USER/$1.git
