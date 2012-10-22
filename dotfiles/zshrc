@@ -16,9 +16,16 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew bundler git github heroku history-substring-search node npm osx rake rvm vagrant vi-mode)
+plugins=(andersjanmyr brew bundler git github heroku history-substring-search node npm osx rake rails rvm vagrant vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/share/npm/bin:/Users/andersjanmyr/.rvm/gems/ruby-1.9.3-p194-perf/bin:/Users/andersjanmyr/.rvm/gems/ruby-1.9.3-p194-perf@global/bin:/Users/andersjanmyr/.rvm/rubies/ruby-1.9.3-p194-perf/bin:/Users/andersjanmyr/.rvm/bin:/Users/andersjanmyr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/sbin:/usr/local/share/scala-2.7.6.final/bin
+export PATH=/usr/local/share/npm/bin:/Users/andersjanmyr/.rvm/bin:/Users/andersjanmyr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/usr/local/sbin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+source $HOME/bin/dotfiles/zshcustom/env.zsh
+source $HOME/bin/dotfiles/zshcustom/aliases.zsh
+
+
