@@ -3,7 +3,7 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 set t_Co=256
-colorscheme github
+colorscheme solarized
 if has("mac")
   silent! set nomacatsui
 else
@@ -15,7 +15,7 @@ let mapleader = ","
 nnoremap \ ,
 
 set autoindent "indent in a smart way"
-set background=light " we plan to use a light background
+set background=dark " we plan to use a light background
 set backspace=indent,eol,start " make backspace a more flexible
 set backup " make backup files
 set backupdir=~/.vim/backup " where to put backup files
