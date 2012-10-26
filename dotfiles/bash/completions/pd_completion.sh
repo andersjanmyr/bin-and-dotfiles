@@ -3,8 +3,10 @@ _pd() {
     local cmd=${COMP_WORDS[0]}
     local cur=${COMP_WORDS[COMP_CWORD]}
 
-    words=`ls ~/Projects ~/External_Projects | awk '{ print $1 }'`
-    echo -n $words > .pd_completion
+    project_dir=`ls -d ~/Projects/*/ | xargs -n1 basename`
+    external_dir=`ls -d ~/External_Projects/*/ | xargs -n1 basename`
+    words="$project_dir $external_dir"
+
     COMPREPLY=($(compgen -W "$words" -- $cur))
     return 0
 }

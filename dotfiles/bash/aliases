@@ -42,9 +42,12 @@ function mcd() {
     cd "$1"
 }
 function pd() {
-  dir=`find ~ -name "*$1*" -type d -maxdepth 3 | head -1`
+  dir=`find ~/Projects -name "$1" -type d -maxdepth 1 | head -1`
+  if [ "$dir" == '' ]; then
+    dir=`find ~/External_Projects -name "$1" -type d -maxdepth 1 | head -1`
+  fi
   if [ "$dir" != '' ]; then
-    cd "$dir"
+    pushd "$dir"
   else
     echo "Cannot find project dir with name: $1"
   fi
