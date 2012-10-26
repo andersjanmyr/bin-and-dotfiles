@@ -92,6 +92,7 @@ alias gnp="git log origin/master..master"
 alias gpf='git pull --ff-only'
 alias g='git status -sb'
 alias vg='v .git/config'
+alias gpnp='git pull --rebase && git push'
 
 
 
@@ -115,6 +116,10 @@ alias tweet='v ~/DropBox/work/tweet.txt'
 alias flushhosts='sudo dscacheutil -flushcache'
 
 # NE
-alias dc='drush -r /Users/andersjanmyr/External_Projects/ne/web/sites/ne.se cc all'
+function dr() {
+    pushd /Users/andersjanmyr/External_Projects/ne/web/sites/ne.se 
+    drush $@
+    popd
+}
 alias ne='pushd /Users/andersjanmyr/External_Projects/ne/ne_se-profile/themes/ne_bs'
 
