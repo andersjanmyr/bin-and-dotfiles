@@ -2,6 +2,8 @@
 # misc
 NO_COLOR='\e[0m' #disable any colors
 # regular colors
+GRAY="\[\033[1;30m\]"
+LIGHT_GRAY="\[\033[0;37m\]"
 BLACK='\e[0;30m'
 RED='\e[0;31m'
 GREEN='\e[0;32m'
@@ -46,7 +48,8 @@ function prompt {
     local status=" \[${RED}\]$?\[${NO_COLOR}\] "
     local sign=$(echo -ne "\[${RED}\]\$\[${NO_COLOR}\]")
   fi
-  export PS1="[\!:\W$(__git_ps1 ' (%s)')$status]\n$sign "
+  local sha=$(git rev-parse --short HEAD 2>/dev/null)
+  export PS1="[\!:${LIGHT_GRAY}\W${NO_COLOR} $sha${GREEN}$(__git_ps1 '@%s')$status]\n$sign "
 }
 
 PROMPT_COMMAND='prompt'
