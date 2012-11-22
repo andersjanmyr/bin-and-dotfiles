@@ -49,7 +49,7 @@ function prompt {
     local sign=$(echo -ne "\[${RED}\]\$\[${NO_COLOR}\]")
   fi
   local sha=$(git rev-parse --short HEAD 2>/dev/null)
-  export PS1="[\!:${LIGHT_GRAY}\W${NO_COLOR} $sha${GREEN}$(__git_ps1 '@%s')$status]\n$sign "
+  export PS1="[\!:${LIGHT_GRAY}\W${NO_COLOR} $sha${GREEN}$(__git_ps1 '@%s')${NO_COLOR}$status]\n$sign "
 }
 
 PROMPT_COMMAND='prompt'
