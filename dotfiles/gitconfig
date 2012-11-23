@@ -11,14 +11,16 @@
     path = /Users/andersjanmyr/bin/dotfiles/git-secret.conf
 [alias]
   amend = commit --amend -C HEAD
+  amendc = commit --amend -c HEAD
   br = branch
   c = commit -v
   ca = commit -va
   co = checkout
-  conflicts = !git ls-files -u | cut -f 2 | sort -u  
+  conflicts = !git ls-files -u | cut -f 2 | sort -u
   dump = cat-file -p
   fd = rev-list -n 1 HEAD --
-  hist = log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar' --graph
+  pretty = log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar'
+  hist = !git pretty --graph
   ld = log --diff-filter=D --summary
   ls = ls-files
   m = merge --no-ff

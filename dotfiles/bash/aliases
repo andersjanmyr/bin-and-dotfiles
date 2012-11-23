@@ -89,6 +89,7 @@ alias gco='git checkout'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gl='git hist'
+alias gls='git hist --simplify-by-decoration'
 alias gmf='git merge --ff-only'
 alias gm='git merge --no-ff'
 alias gnp="git log origin/master..master"
@@ -96,6 +97,7 @@ alias gpf='git pull --ff-only'
 alias g='git status -sb'
 alias vg='v .git/config'
 alias gpnp='git pull --rebase && git push'
+alias grh='git reset --hard'
 
 
 
