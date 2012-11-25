@@ -29,7 +29,9 @@
   d = diff
   dl = diff HEAD^
   ds = diff --staged
+  du = diff origin/master..master
   dump = cat-file -p
+  f = ls-files
   fa = log --diff-filter=A --summary
   fd = log --diff-filter=D --summary
   ff = "!git ls-files | grep -i"
@@ -42,9 +44,9 @@
   log-pretty = log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar'
   log-stat = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --stat
   lp = log --patch
-  ls = ls-files
+  ls = !git log-stat
   lt = !git log-hist --simplify-by-decoration
-  lu = log origin/master..master
+  lu = !git log-hist origin/master..master
   m = merge --no-ff
   mf = merge --ff-only
   pf = pull --ff-only
