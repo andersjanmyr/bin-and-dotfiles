@@ -10,24 +10,60 @@
 [include]
     path = /Users/andersjanmyr/bin/dotfiles/git-secret.conf
 [alias]
+  a = add
+  aa = add --all
+  ai = add --interactive
+  alias = "!git config -l | grep alias | cut -c 7-"
   amend = commit --amend -C HEAD
   amendc = commit --amend -c HEAD
-  br = branch
-  c = commit -v
-  ca = commit -va
+  ap = add --patch
+  assume = update-index --assume-unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  au = add --update
+  b = branch
+  ci = commit -v
+  cia = commit -va
   co = checkout
   conflicts = !git ls-files -u | cut -f 2 | sort -u
+  cp = cherry-pick
+  d = diff
+  dl = diff HEAD^
+  ds = diff --staged
   dump = cat-file -p
-  fd = rev-list -n 1 HEAD --
-  pretty = log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar'
-  hist = !git pretty --graph
-  ld = log --diff-filter=D --summary
+  fa = log --diff-filter=A --summary
+  fd = log --diff-filter=D --summary
+  ff = "!git ls-files | grep -i"
+  fm = log --diff-filter=M --summary
+  gr = grep -Ii
+  grep = grep -Ii
+  l = !git log-hist
+  ll = !git log-stat
+  log-hist = !git log-pretty --graph
+  log-pretty = log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar'
+  log-stat = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --stat
+  lp = log --patch
   ls = ls-files
+  lt = !git log-hist --simplify-by-decoration
+  lu = log origin/master..master
   m = merge --no-ff
-  st = status
-  sta = stash
-  stat = status
+  mf = merge --ff-only
+  pf = pull --ff-only
+  pnp = !git pull --rebase && git push
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
+  s = status -sb
+  sa = stash apply
+  sha = rev-list -n 1 HEAD --
+  sl = stash list
+  sp = stash pop
+  ss = stash save
   type = cat-file -t
+  unassume = update-index --no-assume-unchanged
+  unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
   untracked = ls-files -o -X.gitignore --exclude=.*
 
 [core]
