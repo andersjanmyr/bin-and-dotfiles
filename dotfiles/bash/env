@@ -13,13 +13,13 @@ fi
 [[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    . /usr/local/etc/bash_completion.d/git-completion.bash
+    source /usr/local/etc/bash_completion.d/git-completion.bash
 elif [ -f /etc/bash_completion.d/git ]; then
-    . /etc/bash_completion.d/git
+    source /etc/bash_completion.d/git
 fi
 
 if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-    . /usr/local/etc/bash_completion.d/git-prompt.sh
+    source /usr/local/etc/bash_completion.d/git-prompt.sh
 fi
 
 # Don't use this version of rake-completion, too slow
