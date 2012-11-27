@@ -62,7 +62,7 @@
   sha = "rev-list -n 1 HEAD --"
   sl = "stash list"
   sp = "stash pop"
-  ss = "stash save"
+  ss = "stash save -u"
   type = "cat-file -t"
   unassume = "update-index --no-assume-unchanged"
   unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
