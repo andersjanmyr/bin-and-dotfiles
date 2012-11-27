@@ -65,6 +65,7 @@
   ss = "stash save -u"
   suba = "submodule add"
   subr = "!git-submodule-rm"
+  subs = "submodule sync"
   subu = "submodule foreach git pull origin master"
   type = "cat-file -t"
   unassume = "update-index --no-assume-unchanged"
