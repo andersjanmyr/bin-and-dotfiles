@@ -46,6 +46,7 @@ set undofile
 set shell=bash
 
 set ruler " Always show current positions along the bottom
+set shortmess=atI " Use short messages to prevent press enter...
 set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
 set showcmd " show the command being typed
 set showmatch " show matching brackets
@@ -56,8 +57,9 @@ set textwidth=79
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set wildmenu "Magic completion menu"
+set wildmenu=list:longest,full "Magic completion menu"
 set wrap
+set scrolloff=3 "Start scrolling when 3 lines from bottom.
 
 syntax on " syntax highlighting on
 
@@ -176,7 +178,8 @@ nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gg :Ggrep <C-R><C-W>
 
-
+nnoremap ' `
+nnoremap ` '
 
 
 " TComment Options
