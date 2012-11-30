@@ -57,7 +57,8 @@ set textwidth=79
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set wildmenu=list:longest,full "Magic completion menu"
+set wildmenu " Magic completion menu"
+set wildmode=list:longest,full "Magic completion menu"
 set wrap
 set scrolloff=3 "Start scrolling when 3 lines from bottom.
 
