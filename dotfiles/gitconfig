@@ -53,6 +53,7 @@
   m = "merge --no-ff"
   mf = "merge --ff-only"
   pf = "pull --ff-only"
+  pub = "!f() { git push -u ${1:-origin} `git symbolic-ref HEAD`; }; f"
   pnp = "!git pull --rebase && git push"
   r = "reset"
   r1 = "reset HEAD^"
