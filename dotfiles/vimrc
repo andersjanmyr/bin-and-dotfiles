@@ -31,6 +31,7 @@ set gdefault
 set grepprg=ack
 set hidden " you can change buffers without saving
 set hlsearch "Highlight search"
+set history=400 "Larger history
 set ignorecase " case insensitive by default
 set incsearch "incremental search
 set infercase " case inferred by default
@@ -128,6 +129,8 @@ cnoremap <C-L> <Right>
 cnoremap <C-H> <Left>
 cnoremap <C-B> <S-Left>
 cnoremap <C-W> <S-Right>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
 " Enable saving with :W too
 command! W :w
@@ -178,6 +181,7 @@ nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gg :Ggrep <C-R><C-W>
+nnoremap <leader>q :sp ~/Dropbox/Work/vim-quick.md<CR>
 
 nnoremap ' `
 nnoremap ` '
