@@ -39,8 +39,7 @@
   fd = "log --diff-filter=D --summary"
   ff = "!git ls-files | grep -i"
   fm = "log --diff-filter=M --summary"
-  gr = "grep -Ii"
-  grep = "grep -Ii"
+  gr = "grep -Ii --break --heading --line-number"
   l = "!git log-hist"
   ll = "!git log-stat"
   log-hist = "!git log-pretty --graph"
@@ -84,3 +83,6 @@
 	account = anders
 [push]
 	default = matching
+[grep]
+	extendRegexp = true
+	lineNumber = true
