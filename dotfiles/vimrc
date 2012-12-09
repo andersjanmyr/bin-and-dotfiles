@@ -19,6 +19,7 @@ set background=dark " we plan to use a light background
 set backspace=indent,eol,start " make backspace a more flexible
 set backup " make backup files
 set backupdir=~/.vim/backup " where to put backup files
+set cmdheight=2 " Make room for larger commands without Enter
 set clipboard+=unnamed " share windows clipboard
 set cursorline
 " set completeopt= " don't use a pop up menu for completions
@@ -183,9 +184,9 @@ nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gg :Ggrep <C-R><C-W>
 nnoremap <leader>q :sp ~/Dropbox/Work/vim-quick.md<CR>
 
-nnoremap ' `
-nnoremap ` '
-
+" Replace repeat last substitution to include flags
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
 
 " TComment Options
 map <Leader>c :TComment<CR>
@@ -262,7 +263,7 @@ endfunction
 " CtrlP Options
 let g:ctrlp_working_path_mode = 2
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gem.tags,*/.sass-cache/*
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|gem\.tags'
 let g:ctrlp_map = '<D-t>'
 let g:ctrlp_prompt_mappings = {
       \ 'ToggleRegex()':        ['<c-t>'],
@@ -287,7 +288,7 @@ au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLo
 Helptags
 
 set tags+=gems.tags
-
+set tags+=libs.tags
 
 " Disable SuperTab
 let g:SuperTabCrMapping = 0
