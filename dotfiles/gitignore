@@ -2,6 +2,8 @@
 .DS_Store
 *.swp
 tags
+gems.tags
+libs.tags
 *.gz
 *.ipr
 *.iml
