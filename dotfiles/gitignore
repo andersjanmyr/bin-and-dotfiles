@@ -9,4 +9,5 @@ libs.tags
 *.iml
 *.iws
 target
+.ctrlp
 

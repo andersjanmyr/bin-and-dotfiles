@@ -262,8 +262,8 @@ endfunction
 "CtrlP
 " CtrlP Options
 let g:ctrlp_working_path_mode = 2
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gem.tags,*/.sass-cache/*
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|gem\.tags'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,*/.sass-cache/*,*/target/*
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|gems\.tags|libs\.tags'
 let g:ctrlp_map = '<D-t>'
 let g:ctrlp_prompt_mappings = {
       \ 'ToggleRegex()':        ['<c-t>'],
@@ -272,7 +272,7 @@ let g:ctrlp_prompt_mappings = {
 let g:ctrlp_switch_buffer = 1
 nnoremap <silent> <Leader>t :CtrlP<cr>
 nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
-"let g:ctrlp_working_path_mode = 'c'
+let g:ctrlp_root_markers = ['.ctrlp']
 
 "Surround
 xmap s <Plug>VSurround
