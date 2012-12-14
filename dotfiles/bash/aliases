@@ -71,7 +71,7 @@ function killnamed () {
 function g() {
     local cmd=${1-s}
     shift
-    git $cmd $@
+    git $cmd "$@"
 }
 # Commit pending changes and quote all args as message
 function gg() {

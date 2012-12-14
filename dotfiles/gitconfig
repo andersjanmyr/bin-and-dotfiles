@@ -39,7 +39,7 @@
   fd = "log --diff-filter=D --summary"
   ff = "!git ls-files | grep -i"
   fm = "log --diff-filter=M --summary"
-  gr = "grep -Ii --break --heading --line-number"
+  gr = "grep -Ii --break --heading --line-number --color"
   l = "!git log-hist"
   ll = "!git log-stat"
   log-hist = "!git log-pretty --graph"
