@@ -61,4 +61,5 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto"
 # export GIT_PS1_SHOWSTASHSTATE=true
 
-
+# MAVEN
+export M2_HOME=`brew --prefix maven`/libexec
