@@ -3,8 +3,8 @@
 require "rubygems"
 require 'optparse'
 require 'ostruct'
-require 'redcloth'
 require 'redcarpet'
+require 'htmlentities'
 
 # This is the name of the script that is called
 PROGRAM_NAME = $0
@@ -98,17 +98,21 @@ end
 def convert_texts(all_texts)
   puts '<link href="md.css" rel="stylesheet" type="text/css">' if options.stylesheet
   all_texts.each do |pair|
-    if pair[0] == "textile"
-      rc = RedCloth.new(pair[1])
-      puts rc.to_html
-    elsif pair[0] == "markdown"
-      markdown =  Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-        :smart => true, :autolink => true, :tables => true) 
-      puts markdown.render(pair[1])
+    if pair[0] == "markdown"
+        render_markdown pair[1]
     else
       highlight(pair[0], pair[1])
     end
   end
+end
+
+$markdown =  Redcarpet::Markdown.new(
+    Redcarpet::Render::HTML, :smart => true, :autolink => true, :tables => true) 
+$html_entities = HTMLEntities.new
+
+def render_markdown text
+  html = $html_entities.encode(text, :named)
+  puts $markdown.render(html)
 end
 
 
