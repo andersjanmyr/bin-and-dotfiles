@@ -25,7 +25,7 @@ def program_options
   ['--google', '-g', "Format for Google blogger.",
    lambda { |value| options.google = true }
   ],
-  ['--stylesheet', '-s', "Format for Google blogger.",
+  ['--stylesheet', '-s', "Add a stylesheet, md.css",
    lambda { |value| options.stylesheet = true }
   ],
   ['--verbose', '-v', "Log to standard output.",
