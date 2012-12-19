@@ -18,6 +18,7 @@ alias mongostart='mongod run --config /usr/local/Cellar/mongodb/1.8.1-x86_64/mon
 # Utility
 alias reload='source ~/.bashrc'
 alias vb='v  ~/bin'
+alias vn='v  /usr/local/etc/nginx/sites-available'
 
 alias less='less -FRSX'
 alias h='history'
