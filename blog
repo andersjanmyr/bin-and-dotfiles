@@ -139,9 +139,11 @@ all_texts = []
 type = "markdown"
 str = ""
 file.each_line do |line|
-  if line =~ /(^src_code|^enscript)/
+  if line =~ /^```/
     all_texts << [type, str]
-    ignore, type, filename, snippet = line.split
+    line = line[3..-1]
+    type, filename, snippet = line.split
+    type = 'markdown' unless type
     if filename
       str = load_from_file(filename, snippet)
       all_texts << [type, str]
@@ -149,9 +151,6 @@ file.each_line do |line|
     end
     str = ""
   else
-    if line =~ /^[#;]/ and type == "markdown"
-      line = line[1..-1]
-    end
     str << line
   end
 end
