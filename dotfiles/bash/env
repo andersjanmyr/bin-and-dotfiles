@@ -63,3 +63,7 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 
 # MAVEN
 export M2_HOME=`brew --prefix maven`/libexec
+
+# Use clang for compilation, needed by RVM
+export CC=clang
+
