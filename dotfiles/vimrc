@@ -3,6 +3,7 @@ call pathogen#infect()
 syntax on
 filetype plugin indent on
 set t_Co=256
+let g:solarized_termcolors=256
 colorscheme solarized
 if has("mac")
   silent! set nomacatsui
