@@ -4,8 +4,7 @@ _pd() {
     local cur=${COMP_WORDS[COMP_CWORD]}
 
     project_dir=`ls -d ~/Projects/*/ | xargs -n1 basename`
-    external_dir=`ls -d ~/External_Projects/*/ | xargs -n1 basename`
-    words="$project_dir $external_dir"
+    words="$project_dir"
 
     COMPREPLY=($(compgen -W "$words" -- $cur))
     return 0

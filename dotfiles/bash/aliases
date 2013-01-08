@@ -1,6 +1,7 @@
 # Command Enhancements
 
 alias kindle='sendgmail -t anders.janmyr@kindle.com'
+alias kindlepad='sendgmail -t anders.janmyr.pad@kindle.com'
 alias kindlec='sendgmail -t anders.janmyr@kindle.com -s Convert'
 alias tree=redwood
 
@@ -13,7 +14,7 @@ alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/serv
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # MongoDB
-alias mongostart='mongod run --config /usr/local/Cellar/mongodb/1.8.1-x86_64/mongod.conf'
+alias mongostart='mongod run --config /usr/local/etc/mongod.conf'
 
 # Utility
 alias reload='source ~/.bashrc'
@@ -44,9 +45,6 @@ function mcd() {
 }
 function pd() {
   dir=`find ~/Projects -name "$1" -type d -maxdepth 1 | head -1`
-  if [ "$dir" == '' ]; then
-    dir=`find ~/External_Projects -name "$1" -type d -maxdepth 1 | head -1`
-  fi
   if [ "$dir" != '' ]; then
     pushd "$dir"
   else
