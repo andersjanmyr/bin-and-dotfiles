@@ -114,7 +114,7 @@ let NERDTreeIgnore=['\.rbc$', '\~$']
 map Y y$
 
 " Save with sudo
-cmap w!! %!sudo tee > /dev/null %<CR>
+cmap w!! %!sudo tee > /dev/null %
 
 
 
