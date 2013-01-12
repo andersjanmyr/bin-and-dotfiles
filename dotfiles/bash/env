@@ -1,6 +1,6 @@
 export JAVA_HOME=/Library/Java/Home
 
-export PATH=$HOME/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
 
 export EDITOR="/Users/andersjanmyr/bin/v -f"
 

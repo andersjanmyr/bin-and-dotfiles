@@ -10,11 +10,12 @@ alias mysqlstart='sudo mysql.server start'
 alias mysqlstop='sudo mysql.server stop'
 
 # Postgres
-alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/log/postgres.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # MongoDB
-alias mongostart='mongod start --config /usr/local/etc/mongod.conf'
+alias mongostart='mongod --fork --config /usr/local/etc/mongod.conf'
+alias mongostop='mongod --shutdown --config /usr/local/etc/mongod.conf'
 
 # Redis
 alias redisstart='redis-server /usr/local/etc/redis.conf'
