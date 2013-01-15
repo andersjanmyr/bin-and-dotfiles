@@ -1,4 +1,52 @@
-call pathogen#infect()
+set nocompatible               " be iMproved
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
+
+" Bundles
+Bundle 'tpope/vim-repeat.git'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'tpope/vim-ragtag'
+Bundle 'godlygeek/tabular'
+Bundle 'xonecas/github-vim-colorscheme'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'wavded/vim-stylus'
+Bundle 'andersjanmyr/vim-scratch'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rake'
+Bundle 'tpope/vim-haml'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'dsolstad/vim-wombat256i'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'taq/vim-rspec'
+Bundle 'matthias-guenther/hammer.vim'
+Bundle 'mattn/gist-vim'
+Bundle 'edsono/vim-matchit'
+Bundle 'kien/ctrlp.vim'
+Bundle 'jakar/vim-json'
+Bundle 'baeuml/summerfruit256.vim'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'Shougo/neocomplcache'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'groenewege/vim-less'
+Bundle 'Shougo/neosnippet'
+Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'evanmiller/nginx-vim-syntax'
 
 syntax on
 filetype plugin indent on
