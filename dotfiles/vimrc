@@ -41,12 +41,14 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'jakar/vim-json'
 Bundle 'baeuml/summerfruit256.vim'
 Bundle 'jnwhiteh/vim-golang'
-Bundle 'Shougo/neocomplcache'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'groenewege/vim-less'
-Bundle 'Shougo/neosnippet'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'evanmiller/nginx-vim-syntax'
+Bundle 'SirVer/ultisnips'
+Bundle 'git@github.com:andersjanmyr/ultisnip-snippets.git'
+Bundle 'tpope/vim-sensible'
+
 
 syntax on
 filetype plugin indent on
@@ -334,46 +336,13 @@ autocmd FileType sass setlocal ts=4 sts=4 sw=4 expandtab
 au FocusLost * :silent! wall                 " Save on FocusLost
 au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLost
 
-Helptags
-
 set tags+=gems.tags
 set tags+=libs.tags
 
-" Disable SuperTab
-let g:SuperTabCrMapping = 0
-"
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-" let g:neocomplcache_enable_smart_case = 1
-" " Use camel case completion.
-" let g:neocomplcache_enable_camel_case_completion = 1
-" " Use underbar completion.
-" let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-"inoremap <silent><CR>  <C-R>=neocomplcache#smart_close_popup()<CR><CR>
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-" <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ?
- \ "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-
-let g:neocomplcache_snippets_dir = "~/.vim/neocomplcache-snippets"
+set runtimepath+=~/.vim/bundle/ultisnip-snippets
+let g:UltiSnipsSnippetsDir = '~/.vim/bundle/ultisnip-snippets/UltiSnips'
+let g:UltiSnipsDontReverseSearchPath = '1'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
