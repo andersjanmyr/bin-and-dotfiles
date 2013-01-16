@@ -47,11 +47,9 @@ Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'evanmiller/nginx-vim-syntax'
 Bundle 'SirVer/ultisnips'
 Bundle 'git@github.com:andersjanmyr/ultisnip-snippets.git'
+Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-sensible'
 
-
-syntax on
-filetype plugin indent on
 set t_Co=256
 let g:solarized_termcolors=256
 colorscheme solarized
@@ -65,19 +63,14 @@ end
 let mapleader = ","
 nnoremap \ ,
 
-set autoindent "indent in a smart way"
 set background=dark " we plan to use a light background
-set backspace=indent,eol,start " make backspace a more flexible
 set backup " make backup files
 set backupdir=~/.vim/backup " where to put backup files
 set cmdheight=2 " Make room for larger commands without Enter
 set clipboard+=unnamed " share windows clipboard
 set cursorline
-" set completeopt= " don't use a pop up menu for completions
-set directory=~/.vim/tmp " directory to place swap files in
 set enc=utf-8
 set expandtab " no real tabs please!
-set fileformats=unix,dos,mac " support all three, in this order
 set formatoptions=qrn1
 set gdefault
 set grepprg=ack
@@ -85,12 +78,9 @@ set hidden " you can change buffers without saving
 set hlsearch "Highlight search"
 set history=400 "Larger history
 set ignorecase " case insensitive by default
-set incsearch "incremental search
-set infercase " case inferred by default
-set laststatus=2 " always show the status line
 set lbr
 set list
-set listchars=tab:▸\ ,eol:¬
+" set listchars=tab:▸\ ,eol:¬
 set nocompatible " explicitly get out of vi-compatible mode
 set noexrc " don't use local version of .(g)vimrc, .exrc
 set number " enable line numbers
@@ -98,24 +88,16 @@ set colorcolumn=85
 set undofile
 set shell=bash
 
-set ruler " Always show current positions along the bottom
 set shortmess=atI " Use short messages to prevent press enter...
-set shiftround " when at 3 spaces, and I hit > ... go to 4, not 5
-set showcmd " show the command being typed
-set showmatch " show matching brackets
-set smartcase " if there are caps, go case-sensitive
 set spell
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set textwidth=79
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set wildmenu " Magic completion menu"
 set wildmode=list:longest,full "Magic completion menu"
 set wrap
-set scrolloff=3 "Start scrolling when 3 lines from bottom.
 
-syntax on " syntax highlighting on
 
 " Autocommands
 augroup RUBY
@@ -160,13 +142,8 @@ let g:gist_open_browser_after_post = 1
 let NERDSpaceDelims = 1
 let NERDTreeIgnore=['\.rbc$', '\~$']
 
-" Make Y behave like D
-map Y y$
-
 " Save with sudo
 cmap w!! %!sudo tee > /dev/null %
-
-
 
 " Remappings
 " Visual tabbing should stay in visual
