@@ -12,15 +12,13 @@ if [[ -s ~/.rvm/scripts/rvm ]] ; then
 fi
 [[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    source /usr/local/etc/bash_completion.d/git-completion.bash
-elif [ -f /etc/bash_completion.d/git ]; then
-    source /etc/bash_completion.d/git
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
 fi
 
-if [ -f /usr/local/etc/bash_completion.d/git-prompt.sh ]; then
-    source /usr/local/etc/bash_completion.d/git-prompt.sh
-fi
 
 # Don't use this version of rake-completion, too slow
 # source /etc/bash_completion.d/rake-completion.sh
