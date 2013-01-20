@@ -86,3 +86,5 @@
 [grep]
 	extendRegexp = true
 	lineNumber = true
+[github]
+	user = andersjanmyr
