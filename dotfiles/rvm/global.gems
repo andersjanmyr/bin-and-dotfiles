@@ -1,0 +1,20 @@
+rubygems-bundler
+bundler
+rake
+rvm
+
+# sendgmail
+growl
+
+# tree
+redwood
+
+# blog
+redcarpet
+htmlentities
+
+# IRB
+irbtools
+
+# Sass
+sass
