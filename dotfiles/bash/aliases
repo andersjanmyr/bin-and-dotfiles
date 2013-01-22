@@ -6,8 +6,8 @@ alias kindlec='sendgmail -t anders.janmyr@kindle.com -s Convert'
 alias tree=redwood
 
 # MySql
-alias mysqlstart='sudo mysql.server start'
-alias mysqlstop='sudo mysql.server stop'
+alias mysqlstart='mysql.server start'
+alias mysqlstop='mysql.server stop'
 
 # Postgres
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/log/postgres.log start'
