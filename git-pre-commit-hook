@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+    against=HEAD
+else
+    # Initial commit: diff against an empty tree object
+    against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+fi
+
+# Add more forbidden words separated with bars
+forbidden_words='NO_COMMIT'
+if git diff --staged $against| egrep -i "${forbidden_words}"
+then
+    echo "Commits are not allowed with $forbidden_words"
+    exit 1
+fi
+
+# Check for whitespace errors, configured by core.whitespace
+exec git diff-index --check --cached $against --

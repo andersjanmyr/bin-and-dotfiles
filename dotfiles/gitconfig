@@ -77,6 +77,7 @@
   untracked = "ls-files -o -X.gitignore --exclude=.*"
 
 [core]
+  whitespace = space-before-tab,trailing-space
   excludesfile = /Users/andersjanmyr/.gitignore
   autocrlf = input
 [heroku]
