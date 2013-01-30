@@ -204,6 +204,8 @@ map <Leader>n :NERDTreeToggle<CR>
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+nnoremap <leader>p :bufdo set ei-=Syntax \| do Syntax \| hardcopy! >%:t.ps
+
 
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
@@ -288,6 +290,8 @@ function! SummarizeTabs()
     echohl None
   endtry
 endfunction
+
+
 
 "CtrlP
 " CtrlP Options
