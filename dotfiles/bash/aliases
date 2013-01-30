@@ -20,6 +20,10 @@ alias mongostop='mongod --shutdown --config /usr/local/etc/mongod.conf'
 # Redis
 alias redisstart='redis-server /usr/local/etc/redis.conf'
 
+# Nginx 
+alias nx='sudo nginx'
+alias nxr='sudo nginx -s reload'
+
 # Utility
 alias reload='source ~/.bashrc'
 alias vb='v  ~/bin'
