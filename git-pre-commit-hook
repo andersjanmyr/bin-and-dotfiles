@@ -9,7 +9,7 @@ else
 fi
 
 # Add more forbidden words separated with bars
-forbidden_words='NO_COMMIT'
+forbidden_words='NO_COMMIT|debugger'
 if git diff --staged $against| egrep -i "${forbidden_words}"
 then
     echo "Commits are not allowed with $forbidden_words"
