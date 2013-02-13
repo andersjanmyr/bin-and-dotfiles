@@ -28,7 +28,10 @@
         "Backbone",
         "define",
         "Typekit",
-        "google"
+        "google",
+        "angular", "inject", "Base64",
+        "sf"
+
     ],
 
 
