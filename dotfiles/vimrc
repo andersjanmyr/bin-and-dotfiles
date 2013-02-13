@@ -30,6 +30,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'matthias-guenther/hammer.vim'
 Bundle 'mattn/gist-vim'
 Bundle 'mattn/webapi-vim'
+Bundle 'mattn/zencoding-vim'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'nelstrom/vim-visual-star-search'
 Bundle 'pangloss/vim-javascript'
@@ -94,9 +95,9 @@ set shortmess=atI " Use short messages to prevent press enter...
 set spell
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set textwidth=79
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set wildmode=list:longest,full "Magic completion menu"
 set wrap
 
@@ -119,9 +120,6 @@ augroup MARKDOWN
   autocmd FileType markdown,man map <Leader>h1 :.g/.\+/copy. <Bar> s/./=/g <CR>
   autocmd FileType markdown,man map <Leader>h2 :.g/.\+/copy. <Bar> s/./-/g <CR>
 augroup END
-
-"autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
-autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
 
 " Jump to last position unless it is invalid or event handler
 autocmd BufReadPost *
@@ -297,7 +295,7 @@ endfunction
 " CtrlP Options
 let g:ctrlp_working_path_mode = 2
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,*/.sass-cache/*,*/target/*
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|gems\.tags|libs\.tags'
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$|gems\.tags\|libs\.tags\|node_modules'
 let g:ctrlp_map = '<D-t>'
 let g:ctrlp_prompt_mappings = {
       \ 'ToggleRegex()':        ['<c-t>'],
@@ -311,7 +309,10 @@ let g:ctrlp_root_markers = ['.ctrlp']
 "Surround
 xmap s <Plug>VSurround
 
-autocmd FileType sass setlocal ts=4 sts=4 sw=4 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType sass setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
+
 
 au FocusLost * :silent! wall                 " Save on FocusLost
 au FocusLost * call feedkeys("\<C-\>\<C-n>") " Return to normal mode on FocustLost
