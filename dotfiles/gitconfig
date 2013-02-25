@@ -7,6 +7,7 @@
   status = auto
   diff = auto
   branch = auto
+  interactive = auto
 [include]
     path = /Users/andersjanmyr/bin/dotfiles/git-secret.conf
 [alias]
@@ -83,7 +84,7 @@
 [heroku]
 	account = anders
 [push]
-	default = matching
+	default = tracking
 [grep]
 	extendRegexp = true
 	lineNumber = true
