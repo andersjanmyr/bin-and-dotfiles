@@ -114,7 +114,8 @@ function wav2mp3() {
 
 alias tweet='v ~/DropBox/work/tweet.txt'
 
-alias flushhosts='sudo dscacheutil -flushcache'
+alias cleardns='sudo killall -HUP mDNSResponder'
+alias clearcli='hash -r'
 
 # NE
 function dr() {
