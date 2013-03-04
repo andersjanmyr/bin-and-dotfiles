@@ -61,7 +61,8 @@ function mcd() {
 function pd() {
   dir=`find ~/Projects -name "$1" -type d -maxdepth 1 | head -1`
   if [ "$dir" != '' ]; then
-    pushd "$dir"
+    cd "$dir"
+    pushd .
   else
     echo "Cannot find project dir with name: $1"
   fi
