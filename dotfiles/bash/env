@@ -12,13 +12,9 @@ if [[ -s ~/.rvm/scripts/rvm ]] ; then
 fi
 [[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
 fi
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-. $(brew --prefix)/etc/bash_completion
-fi
-
 
 # Don't use this version of rake-completion, too slow
 # source /etc/bash_completion.d/rake-completion.sh
