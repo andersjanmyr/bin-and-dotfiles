@@ -6,12 +6,12 @@ Host dcmc
   HostName matrix-dcmc.dyndns.org
   User ubuntu
 
-Host bob
+Host bob.jayway.com
   Hostname 213.50.11.49
   User kperson
 
-Host kperson
-  Hostname 213.50.11.41
+Host kperson.jayway.com
+  Hostname 31.209.25.138
   User kperson
 
 # Host mini.jayway.com
