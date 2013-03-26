@@ -3,7 +3,9 @@ require 'irb/completion'
 require 'irb/ext/save-history'
 require 'pp'
 
-%w[map_by_method what_methods].each do |gem|
+ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
+
+%w(map_by_method what_methods irbtools interactive_editor).each do |gem|
   begin
     require gem
   rescue LoadError
@@ -11,7 +13,8 @@ require 'pp'
   end
 end
 
-IRB.conf[:SAVE_HISTORY] = 100
+IRB.conf[:EVAL_HISTORY] = 1000
+IRB.conf[:SAVE_HISTORY] = 1000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
 IRB.conf[:PROMPT_MODE]  = :SIMPLE
 IRB.conf[:AUTO_INDENT]=true
@@ -35,9 +38,6 @@ if defined? Bundler
   Gem::Specification.reset
   load 'rubygems/custom_require.rb'
 end
-
-require 'irbtools'
-require 'interactive_editor'
 
 # Just for Rails...
 load "#{ENV['HOME']}/bin/dotfiles/railsrc" if $0 == 'irb' && ENV['RAILS_ENV']
