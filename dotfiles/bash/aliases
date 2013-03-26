@@ -118,11 +118,8 @@ alias tweet='v ~/DropBox/work/tweet.txt'
 alias cleardns='sudo killall -HUP mDNSResponder'
 alias clearcli='hash -r'
 
-# NE
-function dr() {
-    pushd /Users/andersjanmyr/External_Projects/ne/web/sites/ne.se 
-    drush $@
-    popd
+# Search through bundles
+function bag() {
+  ag "$1" `bundle show --paths`
 }
-alias ne='pushd /Users/andersjanmyr/External_Projects/ne/ne_se-profile/themes/ne_bs'
 
