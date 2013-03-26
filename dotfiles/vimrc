@@ -100,6 +100,7 @@ set textwidth=79
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
+set visualbell
 set wildmode=list:longest,full "Magic completion menu"
 set wrap
 
