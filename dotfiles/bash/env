@@ -62,3 +62,6 @@ export M2_HOME=`brew --prefix maven`/libexec
 export HISTFILESIZE=
 export HISTSIZE=
 export PAGER=less
+
+PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
+
