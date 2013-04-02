@@ -53,7 +53,10 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wavded/vim-stylus'
-Bundle 'xonecas/github-vim-colorscheme'
+Bundle 'endel/vim-github-colorscheme'
+Bundle 'StanAngeloff/php.vim'
+Bundle 'joonty/vim-phpqa'
+Bundle 'joonty/vim-phpunitqf'
 
 set t_Co=256
 let g:solarized_termcolors=256
