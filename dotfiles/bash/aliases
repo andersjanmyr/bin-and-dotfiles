@@ -20,9 +20,12 @@ alias mongostop='mongod --shutdown --config /usr/local/etc/mongod.conf'
 # Redis
 alias redisstart='redis-server /usr/local/etc/redis.conf'
 
-# Nginx 
+# Nginx
 alias nx='sudo nginx'
 alias nxr='sudo nginx -s reload'
+
+# Apache
+alias aps='sudo apachectl restart'
 
 # Chrome
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
