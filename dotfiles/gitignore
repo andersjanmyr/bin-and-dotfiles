@@ -10,4 +10,6 @@ libs.tags
 *.iws
 target
 .ctrlp
+php.tags
+
 
