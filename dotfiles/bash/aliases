@@ -129,3 +129,5 @@ function bag() {
 # Studenlitteratur hoem
 #
 alias sl='cd ~/WebbMapp/CAT-GUI'
+alias al='tail -f /var/www/studentlitteratur.se/logs/access.log'
+alias el='tail -f /var/www/studentlitteratur.se/logs/error.log'
