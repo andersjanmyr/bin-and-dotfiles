@@ -126,3 +126,6 @@ function bag() {
   ag "$1" `bundle show --paths`
 }
 
+# Studenlitteratur hoem
+#
+alias sl='cd ~/WebbMapp/CAT-GUI'
