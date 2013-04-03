@@ -123,4 +123,11 @@ Host lexicon-jenkins
   User ubuntu
   IdentityFile ~/.ssh/anders-ec2.pem
 
+Host sunfire
+User anders
+IdentityFile ~/.ssh/id_rsa.moonlight
+
+Host moonlight
+User ansers
+IdentityFile ~/.ssh/id_rsa.moonlight
 
