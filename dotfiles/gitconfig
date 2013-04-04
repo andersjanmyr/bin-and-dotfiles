@@ -79,7 +79,7 @@
 
 [core]
   whitespace = space-before-tab,blank-at-eol
-  excludesfile = /Users/andersjanmyr/.gitignore
+  excludesfile = ~/.gitignore
   autocrlf = input
 [heroku]
 	account = anders
