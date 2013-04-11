@@ -3,8 +3,14 @@
 require "rubygems"
 require 'optparse'
 require 'ostruct'
-require 'redcarpet'
-require 'htmlentities'
+
+%w(redcarpet htmlentities).each do |lib|
+  begin
+    require lib
+  rescue Exception => err
+    puts "Missing gem #{lib}, install with `gem install #{lib}"
+  end
+end
 
 # This is the name of the script that is called
 PROGRAM_NAME = $0
@@ -107,7 +113,7 @@ def convert_texts(all_texts)
 end
 
 $markdown =  Redcarpet::Markdown.new(
-    Redcarpet::Render::HTML, :smart => true, :autolink => true, :tables => true) 
+    Redcarpet::Render::HTML, :smart => true, :autolink => true, :tables => true)
 $html_entities = HTMLEntities.new
 
 def render_markdown text
