@@ -126,8 +126,10 @@ function bag() {
   ag "$1" `bundle show --paths`
 }
 
-# Studenlitteratur hoem
-#
+# Xcode
+alias iphone='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app'
+
+# Studenlitteratur
 alias sl='cd ~/WebbMapp/CAT-GUI'
 alias al='tail -f /var/www/studentlitteratur.se/logs/access.log'
 alias el='tail -f /var/www/studentlitteratur.se/logs/error.log'
