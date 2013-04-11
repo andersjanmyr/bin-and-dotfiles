@@ -55,7 +55,6 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'wavded/vim-stylus'
 Bundle 'endel/vim-github-colorscheme'
 Bundle 'StanAngeloff/php.vim'
-Bundle 'joonty/vim-phpqa'
 Bundle 'joonty/vim-phpunitqf'
 
 set t_Co=256
