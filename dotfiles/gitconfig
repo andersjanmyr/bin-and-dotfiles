@@ -92,3 +92,5 @@
 	lineNumber = true
 [github]
 	user = andersjanmyr
+[diff]
+	algorithm = patience
