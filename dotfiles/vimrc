@@ -217,7 +217,7 @@ nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gg :Ggrep <C-R><C-W>
-nnoremap <leader>q :sp ~/Dropbox/Work/vim-quick.md<CR>
+nnoremap <leader>q :sp ~/bin/dotfiles/vim/vim-quick.md<CR>
 
 " Replace repeat last substitution to include flags
 nnoremap & :&&<CR>
