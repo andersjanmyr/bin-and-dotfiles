@@ -83,8 +83,8 @@
     // Complexity
     "maxparams"     : 4,      // Don't allow too many params.
     "maxdepth"      : 2,      // Don't allow too deep nesting.
-    "maxstatements" : 5,      // Don't allow large methods.
-    "maxcomplexity" : 3       // Don't allow complexity.
+    "maxstatements" : 10,     // Don't allow large methods.
+    "maxcomplexity" : 6       // Don't allow complexity.
 
 }
 
