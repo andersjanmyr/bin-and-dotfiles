@@ -313,6 +313,7 @@ let g:ctrlp_prompt_mappings = {
       \ 'PrtClearCache()':      ['<c-r>'],
       \ }
 let g:ctrlp_switch_buffer = 1
+nnoremap <c-p> :CtrlPMixed<cr>
 nnoremap <silent> <Leader>b :CtrlPMixed<cr>
 let g:ctrlp_root_markers = ['.ctrlp']
 
