@@ -94,7 +94,8 @@ set number " enable line numbers
 set colorcolumn=85
 set undofile
 set shell=bash
-
+set splitbelow
+set splitright
 set shortmess=atI " Use short messages to prevent press enter...
 set smartcase " Smart searching for capitalized words
 set spell
@@ -312,8 +313,7 @@ let g:ctrlp_prompt_mappings = {
       \ 'PrtClearCache()':      ['<c-r>'],
       \ }
 let g:ctrlp_switch_buffer = 1
-nnoremap <silent> <Leader>t :CtrlP<cr>
-nnoremap <silent> <Leader>b :CtrlPBuffer<cr>
+nnoremap <silent> <Leader>b :CtrlPMixed<cr>
 let g:ctrlp_root_markers = ['.ctrlp']
 
 "Surround
