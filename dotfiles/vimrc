@@ -199,6 +199,9 @@ nnoremap <leader>h :Hammer<CR>
 nnoremap <leader>v V`]
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 map <Leader>n :NERDTreeToggle<CR>
+map <Leader>nf :NERDTreeFind<CR>
+map <Leader>nF :NERDTreeFocus<CR>
+
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
