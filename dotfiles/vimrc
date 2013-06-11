@@ -299,7 +299,7 @@ endfunction
 let g:ctrlp_working_path_mode = 2
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,php.tags*/.sass-cache/*,*/target/*
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|gems|drupal|build|resources|drupal.org)$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|gems|static)$',
   \ 'file': '\v\.(tags|so)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -316,9 +316,11 @@ let g:ctrlp_root_markers = ['.ctrlp']
 "Surround
 xmap s <Plug>VSurround
 
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType sass setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType php setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType coffee setlocal ts=4 sts=4 sw=4 expandtab
+autocmd FileType less setlocal ts=4 sts=4 sw=4 expandtab
 
 
 au FocusLost * :silent! wall                 " Save on FocusLost
