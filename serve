@@ -9,9 +9,9 @@ var dir = process.env.PWD;
 var port = 4000;
 
 var argv = process.argv;
-if (argv[2])
+if (argv[2] && argv[2] !== '.')
     dir = argv[2];
-if (process.argv[3])
+if (argv[3])
     port = argv[3];
 
 
