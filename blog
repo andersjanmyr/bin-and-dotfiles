@@ -31,6 +31,9 @@ def program_options
   ['--google', '-g', "Format for Google blogger.",
    lambda { |value| options.google = true }
   ],
+  ['--jayway', '-j', "Format for Jayway blog.",
+   lambda { |value| options.jayway = true }
+  ],
   ['--stylesheet', '-s', "Add a stylesheet, md.css",
    lambda { |value| options.stylesheet = true }
   ],
@@ -88,15 +91,23 @@ class Array
 end
 
 def highlight(lang, source)
-  tempfile = 'tempfile.txt'
-  f = File.open(tempfile, "w") do |f|
-    f.puts "#{source}"
+  if options.jayway
+    text = "<pre>\n#{source}\n</pre>\n"
+  else
+    text = highlight_code(lang, source)
   end
-  text = %x{source-highlight --src-lang #{lang} < #{tempfile}}
   if options.google
     text = text.sub(/(.*)(<pre>.*<\/pre>)(.*)/mi, '<blockquote>\2</blockquote>')
   end
   puts text
+end
+
+def highlight_code(lang, source)
+  tempfile = 'tempfile.txt'
+  f = File.open(tempfile, "w") do |f|
+    f.puts "#{source}"
+  end
+  %x{source-highlight --src-lang #{lang} < #{tempfile}}
 ensure
   File.delete(tempfile) if File.exist?(tempfile)
 end
