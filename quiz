@@ -1,0 +1,106 @@
+#!/usr/bin/env ruby
+# Author: Anders Janmyr
+require 'rubygems'
+require 'optparse'
+require 'ostruct'
+
+%w(redcarpet htmlentities).each do |lib|
+  begin
+    require lib
+  rescue Exception
+    puts "Missing gem #{lib}, install with `gem install #{lib}"
+  end
+end
+
+# This is the name of the script that is called
+PROGRAM_NAME = $0
+PROGRAM_VERSION = 1.0
+
+# Create an OpenStruct to save the options.
+def options
+  @options ||= OpenStruct.new
+end
+
+
+def default_options
+  [
+          # The values of the array are,
+  # [long_option, short_option and parameter, description, code to execute]
+  ['--verbose', '-v', "Log to standard output.",
+   lambda { |value| options.verbose = true }
+  ],
+  ['--version', '-V', "Display the program version.",
+   lambda { |value|
+     puts "#{PROGRAM_NAME}, version #{PROGRAM_VERSION}"
+     exit
+   }
+  ]
+  ]
+end
+
+# This is the options of the program, see OptionParser
+# http://ruby-doc.org/stdlib/libdoc/optparse/rdoc/classes/OptionParser.html
+def program_options
+  [
+    ]
+end
+
+
+option_parser = OptionParser.new do |opts|
+  opts.banner = "#{PROGRAM_NAME} [options] file..."
+  opts.separator ""
+  opts.separator "Options are ..."
+
+  # Add the command on_tail, to make it appear as the last option in the list.
+  opts.on_tail("-h", "--help", "-H", "Display this help message.") do
+    puts opts
+    exit
+  end
+
+  default_options.each { |args| opts.on(*args) }
+  program_options.each { |args| opts.on(*args) }
+end
+
+begin
+  # Parse the options and remove them from the ARGV array
+  option_parser.parse!
+rescue OptionParser::ParseError => error
+  puts error.message
+  puts option_parser
+  exit
+end
+
+$markdown =  Redcarpet::Markdown.new( Redcarpet::Render::HTML, :smart => true)
+
+def generate_html filename
+  path = File.expand_path(filename)
+  text = IO.read(path)
+  puts $markdown.render(text)
+end
+
+def print_header
+  header = <<-EOT
+  <html>
+  <head>
+  <link href="quiz.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+EOT
+  puts header
+end
+
+def print_footer
+  footer = <<-EOT
+  </body>
+  </html>
+EOT
+  puts footer
+end
+
+# Only the non options (the filenames) are left in ARGV
+ARGV.each do|f|
+  $stderr.puts "Parsing file #{f}..." if options.verbose
+  print_header
+  generate_html f
+  print_footer
+end
