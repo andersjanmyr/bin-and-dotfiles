@@ -90,11 +90,13 @@ class Array
   end
 end
 
-def highlight(lang, source)
+Chunk = Struct.new(:lang, :source, :options)
+
+def highlight(chunk)
   if options.jayway
-    text = "<pre>\n#{source}\n</pre>\n"
+    text = "<pre>\n#{chunk.source}\n</pre>\n"
   else
-    text = highlight_code(lang, source)
+    text = highlight_code(chunk)
   end
   if options.google
     text = text.sub(/(.*)(<pre>.*<\/pre>)(.*)/mi, '<blockquote>\2</blockquote>')
@@ -102,23 +104,23 @@ def highlight(lang, source)
   puts text
 end
 
-def highlight_code(lang, source)
+def highlight_code(chunk)
   tempfile = 'tempfile.txt'
   f = File.open(tempfile, "w") do |f|
-    f.puts "#{source}"
+    f.puts "#{chunk.source}"
   end
-  %x{source-highlight --src-lang #{lang} < #{tempfile}}
+  %x{source-highlight --src-lang #{chunk.lang} < #{tempfile}}
 ensure
   File.delete(tempfile) if File.exist?(tempfile)
 end
 
-def convert_texts(all_texts)
+def convert_texts(chunks)
   puts '<link href="md.css" rel="stylesheet" type="text/css">' if options.stylesheet
-  all_texts.each do |pair|
-    if pair[0] == "markdown"
-        render_markdown pair[1]
+  chunks.each do |chunk|
+    if chunk.lang == "markdown"
+        render_markdown chunk
     else
-      highlight(pair[0], pair[1])
+      highlight(chunk)
     end
   end
 end
@@ -127,9 +129,13 @@ $markdown =  Redcarpet::Markdown.new(
     Redcarpet::Render::HTML, :smart => true, :autolink => true, :tables => true)
 $html_entities = HTMLEntities.new
 
-def render_markdown text
-  html = $html_entities.encode(text, :named)
-  puts $markdown.render(html)
+def render_markdown chunk
+  if chunk.options && chunk.options[:html]
+    text = chunk.source
+  else
+    text = $html_entities.encode(chunk.source, :basic)
+  end
+  puts $markdown.render(text)
 end
 
 
@@ -152,25 +158,29 @@ else
   file = File.open(ARGV[0])
 end
 
-all_texts = []
-type = "markdown"
+chunks = []
+lang = "markdown"
 str = ""
+options = {}
 file.each_line do |line|
   if line =~ /^```/
-    all_texts << [type, str]
+    chunks << Chunk.new(lang, str, options)
+    options = {}
     line = line[3..-1]
-    type, filename, snippet = line.split
-    type = 'markdown' unless type
-    if filename
+    lang, filename, snippet = line.split
+    lang = 'markdown' unless lang
+    if filename && filename != ':html'
       str = load_from_file(filename, snippet)
-      all_texts << [type, str]
-      type = "markdown" # reset the type
+      chunks << Chunk.new(lang, str, options)
+      options = {}
+      lang = "markdown" # reset the lang
     end
+    options[:html] = true if filename == ':html'
     str = ""
   else
     str << line
   end
 end
-all_texts << [type, str]
-convert_texts(all_texts)
+chunks << Chunk.new(lang, str, options)
+convert_texts(chunks)
 
