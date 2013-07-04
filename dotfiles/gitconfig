@@ -12,7 +12,7 @@
     path = /Users/andersjanmyr/bin/dotfiles/git-secret.conf
 [alias]
   a = "add"
-  aa = "add --all"
+  aa = "add --all :/"
   ai = "add --interactive"
   alias = "!git config -l | grep alias | cut -c 7-"
   amend = "commit --amend"
