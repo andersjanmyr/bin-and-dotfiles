@@ -6,4 +6,12 @@
 \set PROMPT2 ''
 \encoding unicode
 \x auto
-
+\echo 'Common commands:'
+\echo '\\?\t\t- Help'
+\echo '\\h [name]\t- Help SQL Syntax'
+\echo '\\l\t\t- List databases'
+\echo '\\d [name]\t- List tables, views, and sequences'
+\echo '\\c [dbname]\t- Connect to database'
+\echo '\\conninfo\t- Connect information'
+\echo '\\q\t\t- Quit'
+\echo ''
