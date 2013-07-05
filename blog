@@ -110,7 +110,7 @@ end
 
 def highlight_code(chunk)
   tempfile = 'tempfile.txt'
-  f = File.open(tempfile, "w") do |f|
+  f = file.open(tempfile, "w") do |f|
     f.puts "#{chunk.source}"
   end
   %x{source-highlight --src-lang #{chunk.lang} < #{tempfile}}
@@ -119,7 +119,6 @@ ensure
 end
 
 def convert_texts(chunks)
-  puts '<link href="md.css" rel="stylesheet" type="text/css">' if options.stylesheet
   chunks.each do |chunk|
     if chunk.lang == "markdown"
         render_markdown chunk
@@ -156,36 +155,44 @@ def load_from_file(filename, snippet)
 end
 
 
-if ARGV.empty?
-  file = STDIN
-else
-  file = File.open(ARGV[0])
-end
-
-chunks = []
-lang = "markdown"
-str = ""
-chunk_options = {}
-puts '<meta charset="utf-8">' if options.utf
-file.each_line do |line|
-  if line =~ /^```/
-    chunks << Chunk.new(lang, str, chunk_options)
-    chunk_options = {}
-    line = line[3..-1]
-    lang, filename, snippet = line.split
-    lang = 'markdown' unless lang
-    if filename && filename != 'html'
-      str = load_from_file(filename, snippet)
+def handle_file file
+  chunks = []
+  lang = "markdown"
+  str = ""
+  chunk_options = {}
+  file.each_line do |line|
+    if line =~ /^```/
       chunks << Chunk.new(lang, str, chunk_options)
       chunk_options = {}
-      lang = "markdown" # reset the lang
+      line = line[3..-1]
+      lang, filename, snippet = line.split
+      lang = 'markdown' unless lang
+      if filename && filename != 'html'
+        str = load_from_file(filename, snippet)
+        chunks << Chunk.new(lang, str, chunk_options)
+        chunk_options = {}
+        lang = "markdown" # reset the lang
+      end
+      chunk_options[:html] = true if filename == 'html'
+      str = ""
+    else
+      str << line
     end
-    chunk_options[:html] = true if filename == 'html'
-    str = ""
-  else
-    str << line
+  end
+  chunks << Chunk.new(lang, str, chunk_options)
+  convert_texts(chunks)
+end
+
+puts '<meta charset="utf-8">' if options.utf
+puts '<link href="md.css" rel="stylesheet" type="text/css">' if options.stylesheet
+
+if ARGV.empty?
+  handle_file STDIN
+else
+  ARGV.each do |arg|
+    file = File.open(arg)
+    handle_file file
+    file.close
   end
 end
-chunks << Chunk.new(lang, str, chunk_options)
-convert_texts(chunks)
 
