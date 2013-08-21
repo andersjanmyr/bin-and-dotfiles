@@ -297,7 +297,7 @@ endfunction
 "CtrlP
 " CtrlP Options
 let g:ctrlp_working_path_mode = 2
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,php.tags*/.sass-cache/*,*/target/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,php.tags*/.sass-cache/*,*/target/*,*.js,*.map
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|gems|static)$',
   \ 'file': '\v\.(tags|so)$',
