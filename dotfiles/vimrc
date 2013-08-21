@@ -19,7 +19,6 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'dsolstad/vim-wombat256i'
 Bundle 'malclocke/vim-buster'
 Bundle 'edsono/vim-matchit'
-Bundle 'ervandew/supertab'
 Bundle 'evanmiller/nginx-vim-syntax'
 Bundle 'git@github.com:andersjanmyr/ultisnip-snippets.git'
 Bundle 'godlygeek/tabular'
@@ -56,6 +55,7 @@ Bundle 'wavded/vim-stylus'
 Bundle 'endel/vim-github-colorscheme'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'joonty/vim-phpunitqf'
+Bundle 'Valloric/YouCompleteMe'
 
 set t_Co=256
 let g:solarized_termcolors=256
@@ -136,8 +136,8 @@ autocmd BufReadPost *
   \ endif
 
 " Plugins
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 inoremap <M-o>       <Esc>o
 inoremap <C-j>       <Down>
