@@ -10,6 +10,15 @@
 # Output: Replace Selected Text
 # Scope Selector: source.ruby
 
+puts ARGV
+if ARGV[0] == '-h'
+  puts <<-EOT
+  Beautifies Ruby
+
+    beautify < input > output
+  EOT
+  exit
+end
 $tabSize = 2
 $tabStr = " "
 
