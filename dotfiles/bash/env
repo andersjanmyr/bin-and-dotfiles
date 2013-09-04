@@ -65,3 +65,15 @@ export PAGER=less
 
 PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
 
+# Locale settings for aws command
+# http://docs.aws.amazon.com/cli/latest/tutorial/getting_started.html
+export LANG="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL=
+
+
