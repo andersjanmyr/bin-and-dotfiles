@@ -5,6 +5,40 @@ set -o nounset
 
 program=`basename $0`
 
+function main() {
+  parse_options
+  index_files
+}
+
+# Sets variables full and dir
+function parse_options() {
+  full=false
+  while getopts "hf" opt; do
+      case "${opt}" in
+          h)
+              usage
+              exit 0
+              ;;
+          f)
+              full=true
+              ;;
+          *)
+              usage
+              exit 1;
+              ;;
+      esac
+  done
+  shift $((OPTIND-1))
+
+  # Only one argument is allowed
+  if [[ $# -gt 1 ]]; then
+    usage
+    exit 1
+  fi
+
+  dir=${1:-.}
+}
+
 function usage() {
 cat <<EOT
 "$program" prints a list of commands in the given directory. It prints the header of
@@ -17,40 +51,18 @@ Usage: $program [-h] [-f] [dir]
 EOT
 }
 
-full=false
-while getopts "hf" opt; do
-    case "${opt}" in
-        h)
-            usage
-            exit 0
-            ;;
-        f)
-            full=true
-            ;;
-        *)
-            usage
-            exit 1;
-            ;;
-    esac
-done
-shift $((OPTIND-1))
-
-# Only one argument is allowed
-if [[ $# -gt 1 ]]; then
-  usage
-  exit 1
-fi
-
-dir=${1:-.}
-
-for file in $dir/*; do
-  name=`basename $file`
-  if [ -x "$name" ]; then
-    usage=`$name -h`
-    if [ $full ]; then
-      echo $usage
-    else
-      echo $usage | sed -e '/^$/,$d'
+function index_files() {
+  for file in $dir/*; do
+    name=`basename $file`
+    if [ -x "$name" ]; then
+      usage=`$name -h`
+      if [ $full ]; then
+        echo $usage
+      else
+        echo $usage | sed -e '/^$/,$d'
+      fi
     fi
-  fi
-done
+  done
+}
+
+main
