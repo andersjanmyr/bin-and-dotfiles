@@ -35,7 +35,7 @@ export SHOWOFF_EVAL_RUBY=1
 # Rubinius
 export RBXOPT='-X19'
 
-export AWS_CREDENTIAL_FILE=/Users/andersjanmyr/.aws-credentials
+export AWS_CONFIG_FILE=/Users/andersjanmyr/.aws/config
 
 [[ -s `rvm gemdir`/bin/tmuxinator_completion ]] && source `rvm gemdir`/bin/tmuxinator_completion
 
