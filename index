@@ -1,10 +1,13 @@
 #!/bin/bash
 
-set -o errexit
-set -o nounset
+# Set up same defaults
+set -o errexit # Exit on error
+set -o nounset # It is an error to use an unset variable
 
+# Store program name in program var
 program=`basename $0`
 
+# Main is called from the end of the script
 function main() {
   parse_options
   index_files
@@ -39,6 +42,12 @@ function parse_options() {
   dir=${1:-.}
 }
 
+# Usage text
+# A description of the program, followed by an empty line
+#
+# Usage text
+# options described
+#
 function usage() {
 cat <<EOT
 "$program" prints a list of commands in the given directory. It prints the header of
@@ -51,6 +60,7 @@ Usage: $program [-h] [-f] [dir]
 EOT
 }
 
+# The script specific code is called from main
 function index_files() {
   for file in $dir/*; do
     name=`basename $file`
