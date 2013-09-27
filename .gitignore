@@ -2,8 +2,8 @@ dotfiles/bash/secret
 ascii
 heroku_s3_setup
 nocrap-env
-git-secret.conf
 node_modules/
 kindlegen
 FlashGordon3/
+dotfiles/gitconfig_secret
 

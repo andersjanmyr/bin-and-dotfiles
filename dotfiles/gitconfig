@@ -97,3 +97,5 @@
 	algorithm = patience
 [help]
 	autocorrect = 5
+[include]
+    path = ./gitconfig_secret
