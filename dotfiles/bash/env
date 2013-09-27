@@ -6,6 +6,12 @@ export EDITOR="$HOME/bin/v -f"
 
 export CLICOLOR=1
 
+# RVM
+if [[ -s ~/.rvm/scripts/rvm ]] ; then
+        source ~/.rvm/scripts/rvm ;
+fi
+[[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
+
 # Don't use this version of rake-completion, too slow
 # source /etc/bash_completion.d/rake-completion.sh
 
@@ -28,7 +34,6 @@ export RBXOPT='-X19'
 export AWS_CONFIG_FILE=/Users/andersjanmyr/.aws/config-jayway
 
 
-export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
 
 
 # Ruby performance patches
@@ -44,15 +49,22 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 export GIT_PS1_SHOWUPSTREAM="auto"
 # export GIT_PS1_SHOWSTASHSTATE=true
 
-# MAVEN
-export M2_HOME=`brew --prefix maven`/libexec
 
 # Postgres psql
 export HISTFILESIZE=
 export HISTSIZE=
 export PAGER=less
 
-PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
+if `type brew > /dev/null`; then
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+  fi
+  export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
+  PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
+  # MAVEN
+  export M2_HOME=`brew --prefix maven`/libexec
+fi
+
 
 # Locale settings for aws command
 # http://docs.aws.amazon.com/cli/latest/tutorial/getting_started.html
