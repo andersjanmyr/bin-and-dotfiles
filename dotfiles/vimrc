@@ -342,9 +342,9 @@ set tags+=php.tags
 set runtimepath+=~/.vim/bundle/ultisnip-snippets
 let g:UltiSnipsSnippetsDir = '~/.vim/bundle/ultisnip-snippets/UltiSnips'
 let g:UltiSnipsDontReverseSearchPath = '1'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 "Clojure
 cnoremap nr Connect nrepl://localhost:
