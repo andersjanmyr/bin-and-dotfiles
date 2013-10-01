@@ -6,12 +6,6 @@ export EDITOR="$HOME/bin/v -f"
 
 export CLICOLOR=1
 
-# RVM
-if [[ -s ~/.rvm/scripts/rvm ]] ; then
-        source ~/.rvm/scripts/rvm ;
-fi
-[[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
-
 # Don't use this version of rake-completion, too slow
 # source /etc/bash_completion.d/rake-completion.sh
 
@@ -33,7 +27,10 @@ export RBXOPT='-X19'
 
 export AWS_CONFIG_FILE=/Users/andersjanmyr/.aws/config-jayway
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> Changed rvm ordring to remove warnings on ubuntu
 
 
 # Ruby performance patches
@@ -55,7 +52,11 @@ export HISTFILESIZE=
 export HISTSIZE=
 export PAGER=less
 
-if `type brew > /dev/null`; then
+if [ -f /etc/bash_completion ]; then
+. /etc/bash_completion
+fi
+
+if `type brew 2> /dev/null`; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
   fi
