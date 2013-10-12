@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -o errexit
+
+lines=`sudo lsof -nPi | grep LIST | awk ' {printf "%s\t%s\t%s\n",$1,$2,$9} '`
+
+IFS=$'\n'
+
+printf "%-20s%8s%10s  %s\n" 'NAME' 'PORT' 'PID' 'COMMAND'
+for line in $lines; do
+  name=`echo $line | cut -f 1`
+  pid=`echo $line | cut -f 2`
+  port_line=`echo $line | cut -f 3`
+  port=${port_line##*:}
+  cmd=`ps -p $pid -o command | tail -1`
+  printf "%-20s%8s%10s  %s\n" $name ${port} $pid $cmd
+done | sort -u -k2 -n
