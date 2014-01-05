@@ -106,6 +106,9 @@ alias rdbm="bundle exec rake db:migrate"
 alias rdbr="bundle exec rake db:reset"
 alias be="bundle exec"
 
+# Todo
+alias t="todo.sh"
+alias vt="v ~/Dropbox/Todo/todo.txt"
 
 
 function aiff2mp3() {
