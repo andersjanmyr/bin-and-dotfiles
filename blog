@@ -110,7 +110,7 @@ end
 
 def highlight_code(chunk)
   tempfile = 'tempfile.txt'
-  f = file.open(tempfile, "w") do |f|
+  f = File.open(tempfile, "w") do |f|
     f.puts "#{chunk.source}"
   end
   %x{source-highlight --src-lang #{chunk.lang} < #{tempfile}}
