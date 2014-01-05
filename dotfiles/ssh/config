@@ -1,7 +1,7 @@
 # http://interrobeng.com/2013/08/25/speed-up-git-5x-to-50x/
-ControlMaster auto
-ControlPath /tmp/%r@%h:%p
-ControlPersist yes
+# ControlMaster auto
+# ControlPath /tmp/%r@%h:%p
+# ControlPersist yes
 
 Host *
   ServerAliveInterval 60
@@ -128,11 +128,9 @@ Host lexicon-jenkins
   User ubuntu
   IdentityFile ~/.ssh/anders-ec2.pem
 
-Host sunfire
-User anders
-IdentityFile ~/.ssh/id_rsa.moonlight
+Host tunnel
+  Hostname ec2-54-229-229-70.eu-west-1.compute.amazonaws.com
+  User ec2-user
+  IdentityFile ~/.ssh/anders-aws-jayway.pem
 
-Host moonlight
-User anders
-IdentityFile ~/.ssh/id_rsa.moonlight
 
