@@ -79,7 +79,8 @@ set timeoutlen=300 " the delay before the leader kicks in.
 
 set background=dark " we plan to use a light background
 set backup " make backup files
-set backupdir=~/.vim/backup " where to put backup files
+set backupdir=$HOME/.vim/backup " where to put backup files
+set directory=$HOME/.vim/backup " where to put backup files
 set cmdheight=2 " Make room for larger commands without Enter
 set clipboard+=unnamed " share windows clipboard
 set cursorline
@@ -100,6 +101,7 @@ set noexrc " don't use local version of .(g)vimrc, .exrc
 set number " enable line numbers
 set colorcolumn=85
 set undofile
+set undodir=$HOME/.vim/undo " where to put backup files
 set shell=bash
 set splitbelow
 set splitright
@@ -303,7 +305,7 @@ endfunction
 "CtrlP
 " CtrlP Options
 let g:ctrlp_working_path_mode = 'r'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,php.tags*/.sass-cache/*,*/target/*,*.js,*.map
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,php.tags*/.sass-cache/*,*/target/*
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|gems|static)$',
   \ 'file': '\v\.(tags|so)$',
@@ -342,4 +344,5 @@ let g:UltiSnipsDontReverseSearchPath = '1'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 
