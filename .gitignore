@@ -1,7 +1,6 @@
 dotfiles/bash/secret
 ascii
 heroku_s3_setup
-lein
 nocrap-env
 git-secret.conf
 node_modules/

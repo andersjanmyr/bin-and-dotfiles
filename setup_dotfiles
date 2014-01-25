@@ -31,6 +31,10 @@ replace_file /usr/local/etc/nginx/sites-available ~/bin/dotfiles/nginx/sites-ava
 replace_file ~/.rvm/gemsets/global.gems ~/bin/dotfiles/rvm/global.gems
 
 replace_file ~/.psqlrc ~/bin/dotfiles/psqlrc
+
+mkdir -p ~/.lein
+replace_file ~/.lein/profiles.clj ~/bin/dotfiles/lein/profiles.clj
+
 echo "source ~/.bashrc # to reload environment"
 
 
