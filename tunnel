@@ -1,0 +1,11 @@
+#!/bin/bash
+## Script tunnel
+
+set -o errexit
+
+# default to port 3000
+port=${1:-3000}
+host=${2:-tunnel} # tunnel comes from .ssh/config, include user and identity
+
+echo "Opened tunnel on port: $port"
+ssh -N -R :0:localhost:$port host
