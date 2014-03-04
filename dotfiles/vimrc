@@ -76,7 +76,7 @@ end
 " , is a more accessible leader
 let mapleader = ","
 nnoremap \ ,
-set timeoutlen=300 " the delay before the leader kicks in.
+set timeoutlen=500 " the delay before the leader kicks in.
 
 set background=dark " we plan to use a light background
 set backup " make backup files
