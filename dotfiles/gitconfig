@@ -94,3 +94,5 @@
 	user = andersjanmyr
 [diff]
 	algorithm = patience
+[help]
+	autocorrect = 5
