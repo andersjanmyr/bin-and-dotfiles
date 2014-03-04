@@ -80,7 +80,7 @@ end
 options.subject = 'No subject' unless options.subject
 options.message = 'No message' unless options.message
 
-command = "sendemail -o tls=yes -s smtp.gmail.com:587 -f #{GMAIL_USER} -xu #{GMAIL_USER} -xp #{GMAIL_PASSWORD}"
+command = "sendemail -o tls=no -s smtp.gmail.com:587 -f #{GMAIL_USER} -xu #{GMAIL_USER} -xp #{GMAIL_PASSWORD}"
 command += " -t '#{options.to}' -u '#{options.subject}' -m '#{options.message}' "
 
 # Only the non options (the filenames) are left in ARGV
