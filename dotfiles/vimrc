@@ -346,4 +346,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
-
+"Clojure
+cnoremap nr Connect nrepl://localhost:
+nnoremap <C-e> :Eval<CR>
+nnoremap E :%Eval<CR>
