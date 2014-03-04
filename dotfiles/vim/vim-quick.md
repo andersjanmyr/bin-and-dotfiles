@@ -9,6 +9,7 @@ qA                  Append to macro a
 
 ciw Ctrl-R 0        Replace word with yank register
 daw                 Delete word
+:t                  Copy a line
 
 &                   Repeat last substitution.
 g&                  Repeat substitution across all lines
