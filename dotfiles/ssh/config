@@ -5,7 +5,7 @@
 
 Host *
   ServerAliveInterval 60
-
+  StrictHostKeyChecking no
 
 Host dcmc
   HostName matrix-dcmc.dyndns.org
@@ -133,4 +133,6 @@ Host tunnel
   User ec2-user
   IdentityFile ~/.ssh/anders-aws-jayway.pem
 
+Host blog.jayway.com
+  User ubuntu
 
