@@ -7,5 +7,23 @@ set -o errexit
 port=${1:-3000}
 host=${2:-tunnel} # tunnel comes from .ssh/config, include user and identity
 
-echo "Opened tunnel on port: $port"
-ssh -N -R :0:localhost:$port host
+ssh_output=$(mktemp -t sshout)
+ssh -N -R :0:localhost:$port $host 2> "$ssh_output" &
+pid=$!
+
+# Sleep until we have a port
+while [ -z "$incoming_port" ]; do
+  sleep 1
+  incoming_port=$(awk '{ print $3 }'  $ssh_output)
+done
+
+echo "Access local port $port, on URL: https://$host:$incoming_port"
+
+function on_exit {
+  kill $pid
+  rm -f $ssh_output
+  echo 'exit'
+}
+trap on_exit EXIT
+
+wait $PID
