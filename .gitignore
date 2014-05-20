@@ -4,4 +4,5 @@ heroku_s3_setup
 nocrap-env
 git-secret.conf
 node_modules/
+kindlegen
 
