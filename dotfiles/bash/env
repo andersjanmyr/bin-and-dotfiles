@@ -6,16 +6,6 @@ export EDITOR="$HOME/bin/v -f"
 
 export CLICOLOR=1
 
-# RVM
-if [[ -s ~/.rvm/scripts/rvm ]] ; then
-        source ~/.rvm/scripts/rvm ;
-fi
-[[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
-
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
-
 # Don't use this version of rake-completion, too slow
 # source /etc/bash_completion.d/rake-completion.sh
 
@@ -37,7 +27,6 @@ export RBXOPT='-X19'
 
 export AWS_CONFIG_FILE=/Users/andersjanmyr/.aws/config-jayway
 
-[[ -s `rvm gemdir`/bin/tmuxinator_completion ]] && source `rvm gemdir`/bin/tmuxinator_completion
 
 export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
 
@@ -77,3 +66,16 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL=
 
 export DOCKER_HOST=tcp://127.0.0.1:4243
+
+# RVM
+if [[ -s ~/.rvm/scripts/rvm ]] ; then
+        source ~/.rvm/scripts/rvm ;
+fi
+[[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
+
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
+[[ -s `rvm gemdir`/bin/tmuxinator_completion ]] && source `rvm gemdir`/bin/tmuxinator_completion
+
