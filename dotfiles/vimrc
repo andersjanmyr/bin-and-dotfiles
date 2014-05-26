@@ -146,7 +146,7 @@ autocmd BufReadPost *
 
 " Plugins
 " let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
 
 inoremap <M-o>       <Esc>o
 inoremap <C-j>       <Down>
@@ -314,11 +314,11 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_map = '<D-t>'
 let g:ctrlp_prompt_mappings = {
-      \ 'ToggleRegex()':        ['<c-t>'],
-      \ 'PrtClearCache()':      ['<c-r>'],
+      \ 'ToggleRegex()':        ['<C-t>'],
+      \ 'PrtClearCache()':      ['<C-r>'],
       \ }
 let g:ctrlp_switch_buffer = 1
-nnoremap <c-p> :CtrlP<cr>
+nnoremap <C-p> :CtrlP<cr>
 nnoremap <silent> <Leader>b :CtrlP<cr>
 let g:ctrlp_root_markers = ['.ctrlp']
 
