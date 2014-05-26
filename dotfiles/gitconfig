@@ -1,6 +1,6 @@
 [user]
 	name = Anders Janmyr
-  email = anders@janmyr.com
+  email = anders.janmyr@sonymobile.com
 [apply]
   whitespace = nowarn
 [color]
@@ -87,7 +87,7 @@
 [heroku]
 	account = anders
 [push]
-	default = tracking
+	default = simple
 [grep]
 	extendRegexp = true
 	lineNumber = true
@@ -98,4 +98,18 @@
 [help]
 	autocorrect = 5
 [include]
-    path = ./gitconfig_secret
+  path = ./gitconfig_secret
+
+[url "ssh://review/"]
+  pushInsteadOf = ssh://android-seld/
+
+[url "ssh://anders.janmyr@android-seld.sonyericsson.net:29418/"]
+  insteadOf = git://review.sonyericsson.net/
+  insteadOf = git://android.git.kernel.org/
+  insteadOf = https://android.googlesource.com/
+
+[url "ssh://anders.janmyr@android-seld.sonyericsson.net:29418/tools/repo"]
+  insteadOf = https://code.google.com/p/git-repo/
+
+[help]
+	autocorrect = 1

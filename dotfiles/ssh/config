@@ -7,6 +7,9 @@ Host *
   ServerAliveInterval 60
   StrictHostKeyChecking no
 
+Host github.com
+  ProxyCommand corkscrew localhost 3128 %h %p
+
 Host dcmc
   HostName matrix-dcmc.dyndns.org
   User ubuntu
@@ -123,16 +126,52 @@ host hudson
   user administrator
   hostname hudson.waygroup.se
 
-Host lexicon-jenkins
-  HostName ec2-46-51-167-84.eu-west-1.compute.amazonaws.com
-  User ubuntu
-  IdentityFile ~/.ssh/anders-ec2.pem
+
+Host review
+HostName review
+HostName review.sonyericsson.net
+Port 29418
+User anders.janmyr
+StrictHostKeyChecking no
+
+Host android-seld android-seld.sonyericsson.net
+HostName android-seld
+HostName android-seld.sonyericsson.net
+Port 29418
+User anders.janmyr
+
+Host *.compute.amazonaws.com
+User ec2-user
+ProxyCommand corkscrew localhost 3128 %h %p
+IdentityFile ~/.ssh/firefox1.pem
+StrictHostKeyChecking no
+
+Host *.fx-webapps.com
+User ec2-user
+ProxyCommand corkscrew localhost 3128 %h %p
+IdentityFile ~/.ssh/firefox1.pem
+StrictHostKeyChecking no
+
+Host *.lifelog-dev.sonymobile.com
+User ec2-user
+ProxyCommand corkscrew localhost 3128 %h %p
+IdentityFile ~/.ssh/lifelog-dev.pem
+StrictHostKeyChecking no
 
 Host tunnel
-  Hostname ec2-54-229-229-70.eu-west-1.compute.amazonaws.com
-  User ec2-user
-  IdentityFile ~/.ssh/anders-aws-jayway.pem
+Hostname ec2-54-229-231-146.eu-west-1.compute.amazonaws.com
+User ec2-user
+ProxyCommand corkscrew localhost 3128 %h %p
+IdentityFile ~/.ssh/janmyr.pem
 
-Host blog.jayway.com
-  User ubuntu
+Host jenkins
+Hostname seldlx9905
+User demomonitor
+IdentityFile ~/.ssh/id_rsa
+
+Host 54.72.248.221
+User ec2-user
+ProxyCommand corkscrew localhost 3128 %h %p
+IdentityFile ~/.ssh/firefox1.pem
+StrictHostKeyChecking no
 

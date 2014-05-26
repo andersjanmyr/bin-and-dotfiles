@@ -15,8 +15,6 @@ export PGDATA=/usr/local/var/postgres
 
 export NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules:/usr/local/lib/jsctags
 export NODE_ENV=development
-export PATH=/usr/local/share/npm/bin:$PATH
-
 
 export HISTIGNORE="&:[a-z]:[a-z][a-z]:[a-z][a-z][a-z]"
 
@@ -25,20 +23,15 @@ export SHOWOFF_EVAL_RUBY=1
 # Rubinius
 export RBXOPT='-X19'
 
-export AWS_CONFIG_FILE=/Users/andersjanmyr/.aws/config-jayway
-
-<<<<<<< HEAD
-
-=======
->>>>>>> Changed rvm ordring to remove warnings on ubuntu
+export AWS_CONFIG_FILE=/home/CORPUSERS/23053085/.aws/janmyr.config
 
 
 # Ruby performance patches
 export RUBY_GC_HEAP_INIT_SLOTS=1000000
-export RUBY_HEAP_SLOTS_INCREMENT=1000000
-export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_HEAP_SLOTS_INCREMENT=1000000
+export RUBY_GC_HEAP_SLOTS_GROWTH_FACTOR=1
 export RUBY_GC_MALLOC_LIMIT=1000000000
-export RUBY_HEAP_FREE_MIN=500000
+export RUBY_GC_HEAP_FREE_MIN=500000
 
 # Git prompt config
 export GIT_PS1_SHOWDIRTYSTATE=true
@@ -78,7 +71,7 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL=
 
-export DOCKER_HOST=tcp://127.0.0.1:4243
+[ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
 
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then
