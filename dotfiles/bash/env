@@ -79,9 +79,4 @@ if [[ -s ~/.rvm/scripts/rvm ]] ; then
 fi
 [[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
 
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
-
-[[ -s `rvm gemdir`/bin/tmuxinator_completion ]] && source `rvm gemdir`/bin/tmuxinator_completion
 
