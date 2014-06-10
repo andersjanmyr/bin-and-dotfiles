@@ -33,4 +33,6 @@ tunnel.sh
 update-devenv.sh
 update-proxy-password.sh
 webapps-env
+npm-rm-dev-deps.js
+
 
