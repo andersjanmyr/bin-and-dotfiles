@@ -71,17 +71,20 @@ rescue OptionParser::ParseError => error
 end
 
 $markdown =  Redcarpet::Markdown.new( Redcarpet::Render::HTML, :smart => true)
+$html_entities = HTMLEntities.new
 
 def generate_html filename
   path = File.expand_path(filename)
   text = IO.read(path)
-  puts $markdown.render(text)
+  escaped = $html_entities.encode(text, :basic)
+  puts $markdown.render(escaped)
 end
 
 def print_header
   header = <<-EOT
   <html>
   <head>
+  <meta charset="utf-8">
   <link href="quiz.css" rel="stylesheet" type="text/css">
   </head>
   <body>
