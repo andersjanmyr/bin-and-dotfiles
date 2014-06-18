@@ -65,7 +65,8 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL=
 
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+export DOCKER_HOSTNAME=$(boot2docker ip 2>/dev/null)
+export DOCKER_HOST=tcp://${DOCKER_HOSTNAME}:2375
 
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then
