@@ -44,6 +44,9 @@ Bundle 'scrooloose/syntastic'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-leiningen'
+Bundle 'tpope/vim-projectionist'
+Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-classpath'
 Bundle 'tpope/vim-git'
@@ -57,9 +60,12 @@ Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
+Bundle 'guns/vim-sexp'
+Bundle 'tpope/vim-sexp-mappings-for-regular-people'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'wavded/vim-stylus'
 Bundle 'endel/vim-github-colorscheme'
+Bundle 'gregspurrier/vim-midje'
 Bundle 'StanAngeloff/php.vim'
 Bundle 'joonty/vim-phpunitqf'
 Bundle 'Valloric/YouCompleteMe'
@@ -345,8 +351,31 @@ let g:UltiSnipsDontReverseSearchPath = '1'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+
+function! g:UltiSnips_Complete()
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips#JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+" this mapping Enter key to <C-y> to chose the current highlight item 
+" and close the selection list, same as other IDEs.
+" CONFLICT with some plugins like tpope/Endwise
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "Clojure
 cnoremap nr Connect nrepl://localhost:
 nnoremap <C-e> :Eval<CR>
-nnoremap E :%Eval<CR>
+
+let g:sexp_enable_insert_mode_mappings = 0
