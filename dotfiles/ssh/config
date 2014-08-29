@@ -159,7 +159,7 @@ IdentityFile ~/.ssh/lifelog-dev.pem
 StrictHostKeyChecking no
 
 Host tunnel
-Hostname ec2-54-229-231-146.eu-west-1.compute.amazonaws.com
+Hostname tunnel.fx-webapps.com
 User ec2-user
 ProxyCommand corkscrew localhost 3128 %h %p
 IdentityFile ~/.ssh/janmyr.pem
