@@ -1,5 +1,6 @@
-export JAVA_HOME="`/usr/libexec/java_home -v '1.8*'`"
+# export JAVA_HOME="`/usr/libexec/java_home -v '2.8*'`"
 #export JAVA_HOME=/Library/Java/Home # System Java
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
 
