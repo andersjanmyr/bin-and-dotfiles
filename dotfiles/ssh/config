@@ -10,6 +10,9 @@ Host *
 Host github.com
   ProxyCommand corkscrew localhost 3128 %h %p
 
+Host *.*.*.*
+  ProxyCommand corkscrew localhost 3128 %h %p
+
 Host dcmc
   HostName matrix-dcmc.dyndns.org
   User ubuntu
