@@ -136,3 +136,10 @@ alias iphone='open /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSi
 alias sl='cd ~/WebbMapp/CAT-GUI'
 alias al='tail -f /var/www/studentlitteratur.se/logs/access.log'
 alias el='tail -f /var/www/studentlitteratur.se/logs/error.log'
+
+# Docker
+function d() {
+    local cmd=${1-ps}
+    shift
+    docker $cmd "$@"
+}
