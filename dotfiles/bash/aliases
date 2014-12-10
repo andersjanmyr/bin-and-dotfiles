@@ -141,3 +141,11 @@ alias pbpaste='xsel --clipboard --output'
 
 alias hp='http_proxy=http://localhost:3128'
 alias curl='hp curl'
+
+# Docker
+function d() {
+    local cmd=${1-ps}
+    shift
+    docker $cmd "$@"
+}
+
