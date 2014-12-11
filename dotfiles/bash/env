@@ -2,7 +2,7 @@
 #export JAVA_HOME=/Library/Java/Home # System Java
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin:$HOME/Projects/docker-utils
 
 export EDITOR="$HOME/bin/v -f"
 
