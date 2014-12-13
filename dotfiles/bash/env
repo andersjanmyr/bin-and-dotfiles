@@ -1,7 +1,7 @@
 export JAVA_HOME="`/usr/libexec/java_home -v '1.8*'`"
 #export JAVA_HOME=/Library/Java/Home # System Java
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
+export PATH=$HOME/bin:$HOME/Projects/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
 
 export EDITOR="$HOME/bin/v -f"
 
