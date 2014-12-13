@@ -10,7 +10,10 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugins
 
+Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
+Plugin 'git@github.com:andersjanmyr/ultisnip-snippets.git'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'andersjanmyr/vim-scratch'
@@ -21,7 +24,6 @@ Plugin 'malclocke/vim-buster'
 Plugin 'edsono/vim-matchit'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'freitass/todo.txt-vim.git'
-Plugin 'git@github.com:andersjanmyr/ultisnip-snippets.git'
 Plugin 'godlygeek/tabular'
 Plugin 'groenewege/vim-less'
 Plugin 'guns/vim-clojure-static'
@@ -67,8 +69,6 @@ Plugin 'wavded/vim-stylus'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'gregspurrier/vim-midje'
 Plugin 'StanAngeloff/php.vim'
-Plugin 'joonty/vim-phpunitqf'
-Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on
@@ -152,10 +152,6 @@ autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
-
-" Plugins
-" let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
 
 inoremap <M-o>       <Esc>o
 inoremap <C-j>       <Down>
@@ -356,26 +352,13 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsListSnippets="<c-e>"
 
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+" let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabContextDefaultCompletionType = "<C-x><C-o>"
 
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-" this mapping Enter key to <C-y> to chose the current highlight item 
-" and close the selection list, same as other IDEs.
-" CONFLICT with some plugins like tpope/Endwise
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 "Clojure
 cnoremap nr Connect nrepl://localhost:
