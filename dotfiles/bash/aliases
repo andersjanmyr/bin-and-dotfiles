@@ -64,6 +64,9 @@ function mcd() {
 function pd() {
   dir=`find ~/Projects -maxdepth 1 -type d -name "$1" | head -1`
   if [ "$dir" != '' ]; then
+    name=$(basename $dir)
+    name="$(tr '[:lower:]' '[:upper:]' <<< ${name:0:1})${name:1}"
+    tmux rename-window "$name"
     pushd "$dir"
   else
     echo "Cannot find project dir with name: $1"
@@ -138,7 +141,7 @@ alias el='tail -f /var/www/studentlitteratur.se/logs/error.log'
 
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
-
+alias i="ifconfig | grep -C1 '^eth0' |tail -1 |cut -d: -f 2 | cut -d' ' -f 1 | tee /dev/fd/2 | xargs echo -n |pbcopy"
 alias hp='http_proxy=http://localhost:3128'
 alias curl='hp curl'
 

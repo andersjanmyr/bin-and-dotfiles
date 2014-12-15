@@ -158,7 +158,13 @@ StrictHostKeyChecking no
 Host *.lifelog-dev.sonymobile.com
 User ec2-user
 ProxyCommand corkscrew localhost 3128 %h %p
-IdentityFile ~/.ssh/lifelog-dev.pem
+IdentityFile ~/.ssh/lifelog-web-dev.pem
+StrictHostKeyChecking no
+
+Host *.lifelog.sonymobile.com
+User ec2-user
+ProxyCommand corkscrew localhost 3128 %h %p
+IdentityFile ~/.ssh/lifelog-web-prod.pem
 StrictHostKeyChecking no
 
 Host tunnel
