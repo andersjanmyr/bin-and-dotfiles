@@ -109,8 +109,15 @@ statis
 datoms
 stylesheet
 middleware
+<<<<<<< HEAD
 falsy
 inlines
 inlined
 Workflow
 Firefox
+=======
+tarball
+S3
+AWS
+npm
+>>>>>>> master
