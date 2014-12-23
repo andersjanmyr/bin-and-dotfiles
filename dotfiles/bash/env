@@ -55,6 +55,8 @@ export PAGER=less
 
 PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
 
+
+
 # Locale settings for aws command
 # http://docs.aws.amazon.com/cli/latest/tutorial/getting_started.html
 export LANG="en_US.UTF-8"
@@ -70,6 +72,9 @@ export DOCKER_CERT_PATH=/Users/andersjanmyr/.boot2docker/certs/boot2docker-vm
 export DOCKER_HOSTNAME=$(boot2docker ip 2>/dev/null)
 export DOCKER_HOST=tcp://${DOCKER_HOSTNAME}:2376
 export DOCKER_TLS_VERIFY=1
+
+export GOPATH=$HOME/gocode
+export PATH=$PATH:$GOPATH/bin
 
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then
