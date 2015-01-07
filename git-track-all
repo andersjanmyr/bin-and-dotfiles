@@ -1,5 +1,6 @@
 #!/bin/bash
 git branch -r | grep -v \> | while read branch; do
-  echo ${branch##*/} $branch
-  # git branch --track ${branch##*/} $branch
+  echo Setup ${branch##*/} to track $branch
+  git branch --track ${branch##*/} $branch
 done
+git pull --all
