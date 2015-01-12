@@ -2,7 +2,7 @@
 #export JAVA_HOME=/Library/Java/Home # System Java
 export JAVA_HOME=/usr/lib/jvm/java-6-sun
 
-export PATH=$HOME/bin:$HOME/Projects/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
+export PATH=$HOME/bin:$HOME/Projects/lms-env/bin:$HOME/Projects/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
 
 export EDITOR="$HOME/bin/v -f"
 
@@ -72,6 +72,9 @@ export LC_MONETARY="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL=
+
+export GOPATH=$HOME/gocode
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 [ -s $HOME/.nvm/nvm.sh ] && . $HOME/.nvm/nvm.sh # This loads NVM
 
