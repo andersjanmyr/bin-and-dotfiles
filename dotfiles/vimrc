@@ -29,7 +29,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'groenewege/vim-less'
 Plugin 'guns/vim-clojure-static'
 Plugin 'jakar/vim-json'
-Plugin 'jnwhiteh/vim-golang'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
@@ -366,3 +365,21 @@ cnoremap nr Connect nrepl://localhost:
 nnoremap <C-e> :Eval<CR>
 
 let g:sexp_enable_insert_mode_mappings = 0
+
+"Golang
+autocmd FileType go setlocal nolist ts=4 sts=4 sw=4 noexpandtab
+au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-info)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
