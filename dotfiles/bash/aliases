@@ -63,7 +63,7 @@ function mcd() {
     cd "$1"
 }
 function pd() {
-  dir=`find ~/Projects -name "$1" -type d -maxdepth 1 | head -1`
+  dir=`find ~/Projects ~/External -name "$1" -type d -maxdepth 1 | head -1`
   if [ "$dir" != '' ]; then
     pushd "$dir"
   else
