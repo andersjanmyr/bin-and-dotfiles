@@ -137,3 +137,11 @@ Host tunnel
 Host blog.jayway.com
   User ubuntu
 
+Host dokku.me
+    Port 2222
+
+Host bitbucket.com
+  User git
+  IdentityFile ~/.ssh/id_rsa
+
+
