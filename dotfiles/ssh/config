@@ -6,6 +6,7 @@
 Host *
   ServerAliveInterval 60
   StrictHostKeyChecking no
+  IdentitiesOnly yes
 
 Host dcmc
   HostName matrix-dcmc.dyndns.org
