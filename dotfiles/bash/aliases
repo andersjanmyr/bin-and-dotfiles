@@ -143,3 +143,19 @@ function d() {
     shift
     docker $cmd "$@"
 }
+
+# AWS
+alias awsconf='source ~/bin/awsconf.sh'
+awsconf andersjanmyr
+
+
+function gd() {
+  dir=`find ~/gocode/src/github.com/andersjanmyr -name "$1" -type d -maxdepth 1 | head -1`
+  if [ "$dir" != '' ]; then
+    pushd "$dir"
+  else
+    echo "Cannot find project dir with name: $1"
+  fi
+}
+
+
