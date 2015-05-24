@@ -8,12 +8,5 @@ if [ -n "$conf_name" ]; then
       export AWS_PROFILE=$profile
     fi;
   done;
-  awsdeploy_conf=$(eval "echo $(aws configure get nodeconf)")
-  if [ -f "$awsdeploy_conf" ]; then
-    export AWSDEPLOY_CONFIG=$awsdeploy_conf
-  else
-    unset AWSDEPLOY_CONFIG
-  fi
 fi
 echo "AWS Profile: $AWS_DEFAULT_PROFILE"
-echo "AWS Config: ${AWSDEPLOY_CONFIG/$HOME/~}"

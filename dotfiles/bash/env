@@ -26,8 +26,6 @@ export SHOWOFF_EVAL_RUBY=1
 # Rubinius
 export RBXOPT='-X19'
 
-export AWS_CONFIG_FILE=/Users/andersjanmyr/.aws/config-jayway
-
 
 export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
 
@@ -56,7 +54,6 @@ export PAGER=less
 PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
 
 
-
 # Locale settings for aws command
 # http://docs.aws.amazon.com/cli/latest/tutorial/getting_started.html
 export LANG="en_US.UTF-8"
@@ -76,6 +73,9 @@ export DOCKER_TLS_VERIFY=1
 export GOPATH=$HOME/gocode
 export PATH=$PATH:$GOPATH/bin
 
+export PATH=$PATH:$HOME/Projects/aws-utils
+export PATH=$PATH:$HOME/Projects/docker.janmyr.com
+
 # RVM
 if [[ -s ~/.rvm/scripts/rvm ]] ; then
         source ~/.rvm/scripts/rvm ;
@@ -87,4 +87,8 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
 fi
 
 [[ -s `rvm gemdir`/bin/tmuxinator_completion ]] && source `rvm gemdir`/bin/tmuxinator_completion
+
+# Google cloud
+source /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+source /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 

@@ -314,7 +314,7 @@ endfunction
 let g:ctrlp_working_path_mode = 'r'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,php.tags*/.sass-cache/*,*/target/*
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|gems|static)$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|gems)$',
   \ 'file': '\v\.(tags|so)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
