@@ -29,7 +29,7 @@ Plugin 'freitass/todo.txt-vim.git'
 Plugin 'godlygeek/tabular'
 Plugin 'groenewege/vim-less'
 Plugin 'guns/vim-clojure-static'
-Plugin 'jakar/vim-json'
+Plugin 'elzr/vim-json'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
@@ -384,3 +384,4 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
+let g:vim_json_syntax_conceal = 0
