@@ -79,7 +79,7 @@ Host sds-ec2
 
 Host *.compute.amazonaws.com
   User ec2-user
-  IdentityFile ~/.ssh/anders-andersjanmyr.pem
+  IdentityFile ~/.ssh/docker-key.pem
 
 
 Host heroku.sds
@@ -129,10 +129,10 @@ host hudson
   user administrator
   hostname hudson.waygroup.se
 
-Host lexicon-jenkins
-  HostName ec2-46-51-167-84.eu-west-1.compute.amazonaws.com
-  User ubuntu
-  IdentityFile ~/.ssh/anders-ec2.pem
+Host jenkins.lifelog-dev.sonymobile.com
+  HostName ec2-54-194-178-174.eu-west-1.compute.amazonaws.com
+  User ec2-user
+  IdentityFile ~/.ssh/ll-integrator-dev.pem
 
 Host tunnel
   Hostname ec2-54-229-229-70.eu-west-1.compute.amazonaws.com
