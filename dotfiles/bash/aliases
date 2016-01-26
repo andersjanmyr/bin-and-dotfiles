@@ -157,5 +157,5 @@ function gd() {
     echo "Cannot find project dir with name: $1"
   fi
 }
-
+alias whatismyip='curl http://whatismyip.akamai.com'
 
