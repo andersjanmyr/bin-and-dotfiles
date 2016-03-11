@@ -153,4 +153,8 @@ Host docker.janmyr.com
   User ec2-user
   IdentityFile ~/.ssh/anders-andersjanmyr.pem
 
+Host chi.gleerupsportal.se
+  Host 52.50.105.231
+  User ec2-user
+  IdentityFile ~/.ssh/jumpbox.cer
 
