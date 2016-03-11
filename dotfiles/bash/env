@@ -16,7 +16,7 @@ export PGDATA=/usr/local/var/postgres
 
 export NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules:/usr/local/lib/jsctags
 export NODE_ENV=development
-export PATH=/usr/local/share/npm/bin:$PATH
+export PATH=./node_modules/.bin:/usr/local/share/npm/bin:$PATH
 
 
 export HISTIGNORE="&:[a-z]:[a-z][a-z]:[a-z][a-z][a-z]"
