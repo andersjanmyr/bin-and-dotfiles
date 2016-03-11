@@ -31,14 +31,6 @@ def local_methods(obj = self)
   (obj.methods - obj.class.superclass.instance_methods).sort
 end
 
-if defined? Bundler
-  Gem.post_reset_hook.reject! do |hook|
-    hook.source_location.first =~ %r{/bundler} 
-  end
-  Gem::Specification.reset
-  load 'rubygems/custom_require.rb'
-end
-
 # Just for Rails...
 load "#{ENV['HOME']}/bin/dotfiles/railsrc" if $0 == 'irb' && ENV['RAILS_ENV']
 
