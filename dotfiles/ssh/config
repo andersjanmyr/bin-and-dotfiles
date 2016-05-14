@@ -87,38 +87,6 @@ Host heroku.sds
   IdentityFile  ~/.ssh/sds-webbutveckling
   IdentitiesOnly yes
 
-Host node
-  HostName andersjanmyr.no.de
-  User node
-  IdentityFile ~/.ssh/anders.identity
-  IdentitiesOnly yes
-
-
-##### SEMC
-
-Host buildbox
-  HostName semcbnw.dev.buildbox
-  User ubuntu
-  IdentityFile ~/.ssh/anders.identity
-  IdentitiesOnly yes
-
-Host demo
-  HostName semcbnw.demo.backend
-  User ubuntu
-  IdentityFile ~/.ssh/anders.identity
-  IdentitiesOnly yes
-
-Host prod
-  HostName semcbnw.prod.backend
-  User ubuntu
-  IdentityFile ~/.ssh/anders.identity
-  IdentitiesOnly yes
-
-Host sdev
-  HostName www-dev.sonymobile.com
-  User ubuntu
-  IdentityFile ~/.ssh/anders.identity
-  IdentitiesOnly yes
 
 Host minecraft
   HostName ec2-54-217-59-171.eu-west-1.compute.amazonaws.com
@@ -128,16 +96,6 @@ Host minecraft
 host hudson
   user administrator
   hostname hudson.waygroup.se
-
-Host jenkins.lifelog-dev.sonymobile.com
-  HostName ec2-54-194-178-174.eu-west-1.compute.amazonaws.com
-  User ec2-user
-  IdentityFile ~/.ssh/ll-integrator-dev.pem
-
-Host tunnel
-  Hostname ec2-54-229-229-70.eu-west-1.compute.amazonaws.com
-  User ec2-user
-  IdentityFile ~/.ssh/anders-aws-jayway.pem
 
 Host blog.jayway.com
   User ubuntu
@@ -154,7 +112,11 @@ Host docker.janmyr.com
   IdentityFile ~/.ssh/anders-andersjanmyr.pem
 
 Host chi.gleerupsportal.se
-  Host 52.50.105.231
+  Hostname ec2-52-51-8-66.eu-west-1.compute.amazonaws.com
+  User ec2-user
+  IdentityFile ~/.ssh/jumpbox.cer
+
+Host buildbox.gleerupsportal.se
   User ec2-user
   IdentityFile ~/.ssh/jumpbox.cer
 
