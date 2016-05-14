@@ -18,7 +18,9 @@ Plugin 'andersjanmyr/vim-scratch'
 Plugin 'baeuml/summerfruit256.vim'
 Plugin 'cespare/vim-toml'
 Plugin 'dsolstad/vim-wombat256i'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'edsono/vim-matchit'
+Plugin 'elmcast/elm-vim'
 Plugin 'elzr/vim-json'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'ervandew/supertab'
@@ -35,7 +37,6 @@ Plugin 'kana/vim-textobj-user'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'malclocke/vim-buster'
 Plugin 'matthias-guenther/hammer.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/gist-vim'
@@ -47,6 +48,7 @@ Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'ternjs/tern_for_vim'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-abolish'
@@ -387,3 +389,8 @@ let g:vim_json_syntax_conceal = 0
 
 "Vim airline enable buffer tabline
 let g:airline#extensions#tabline#enabled = 1
+
+
+let g:syntastic_javascript_checkers = ['eslint']
+
+let g:elm_format_autosave = 1
