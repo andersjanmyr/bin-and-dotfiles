@@ -1,0 +1,23 @@
+{
+  "name": "bin",
+  "version": "1.0.0",
+  "description": "Support for node CLI tools",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andersjanmyr/bin-and-dotfiles.git"
+  },
+  "author": "Anders Janmyr <anders@janmyr.com> (http://anders.janmyr.com/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andersjanmyr/bin-and-dotfiles/issues"
+  },
+  "homepage": "https://github.com/andersjanmyr/bin-and-dotfiles#readme"
+}
