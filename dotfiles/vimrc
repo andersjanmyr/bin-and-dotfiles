@@ -389,7 +389,18 @@ let g:vim_json_syntax_conceal = 0
 "Vim airline enable buffer tabline
 let g:airline#extensions#tabline#enabled = 1
 
+"0 if you want to enable it later via :RainbowToggle
+let g:rainbow_active = 1 
 
 let g:syntastic_javascript_checkers = ['eslint']
 
+"Elm stuff
 let g:elm_format_autosave = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+
+let g:elm_syntastic_show_warnings = 1
+
+let g:ycm_semantic_triggers = {
+     \ 'elm' : ['.'],
+     \}
