@@ -144,7 +144,6 @@ augroup END
 
 augroup MARKDOWN
   autocmd!
-  autocmd FileType markdown,man map <Leader>p :w<CR>:!markdown < % > %.html && open %.html<CR><CR>
   autocmd FileType markdown,man map <Leader>h1 :.g/.\+/copy. <Bar> s/./=/g <CR>
   autocmd FileType markdown,man map <Leader>h2 :.g/.\+/copy. <Bar> s/./-/g <CR>
 augroup END
