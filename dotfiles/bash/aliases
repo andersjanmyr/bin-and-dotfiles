@@ -159,5 +159,5 @@ function gd() {
 }
 alias whatismyip='curl http://whatismyip.akamai.com'
 
-audio-dl='youtube-dl --extract-audio --audio-format mp3'
+alias audio-dl='youtube-dl --extract-audio --audio-format mp3'
 
