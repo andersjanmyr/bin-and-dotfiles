@@ -51,8 +51,6 @@ export HISTFILESIZE=
 export HISTSIZE=
 export PAGER=less
 
-PATH="$(brew --prefix josegonzalez/php/php54)/bin:$PATH"
-PATH=$PATH:~/awsome/bin/
 
 
 # Locale settings for aws command
