@@ -72,7 +72,7 @@
   suba = "submodule add"
   subr = "!git-submodule-rm"
   subs = "submodule sync"
-  subu = "submodule update"
+  subu = "submodule update --recursive --init"
   subp = "submodule foreach git pull origin master"
   type = "cat-file -t"
   theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
