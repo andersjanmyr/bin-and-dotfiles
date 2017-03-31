@@ -23,6 +23,7 @@
   au = "add --update :/"
   b = "branch"
   br = "branch"
+  brd = "!git remote prune origin; git branch --merged | egrep -v '(^\\*|master)' | xargs git branch -d"
   bis = "bisect start"
   bir = "bisect run"
   churn = "!git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g"
