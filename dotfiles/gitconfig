@@ -88,7 +88,8 @@
 [heroku]
 	account = anders
 [push]
-	default = tracking
+  default = tracking
+  followTags = true
 [grep]
 	extendRegexp = true
 	lineNumber = true
@@ -98,3 +99,6 @@
 	algorithm = patience
 [help]
 	autocorrect = 5
+[status]
+  showUntrackedFiles = all
+
