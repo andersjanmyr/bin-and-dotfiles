@@ -312,7 +312,7 @@ endfunction
 let g:ctrlp_working_path_mode = 'r'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,php.tags*/.sass-cache/*,*/target/*
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|gems)$',
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|gems|vendor)$',
   \ 'file': '\v\.(tags|so)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -362,21 +362,31 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 nnoremap <leader>u :GundoToggle<CR>
 
 "Golang
+set autowrite
+
 autocmd FileType go setlocal nolist ts=4 sts=4 sw=4 noexpandtab
+au FileType go nmap <Leader>gb <Plug>(go-build)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>i <Plug>(go-info)
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>gb <Plug>(go-doc-browser)
+au FileType go nmap <Leader>gD <Plug>(go-doc-browser)
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>a :GoAlternate<CR>
+au FileType go nmap <Leader>gc :GoCoverageToggle<CR>
+
 let g:go_fmt_command = "goimports"
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
+
+let g:go_metalinter_autosave = 1
 
 let g:vim_json_syntax_conceal = 0
 
@@ -384,17 +394,7 @@ let g:vim_json_syntax_conceal = 0
 let g:airline#extensions#tabline#enabled = 1
 
 "0 if you want to enable it later via :RainbowToggle
-let g:rainbow_active = 1 
+let g:rainbow_active = 1
 
 let g:syntastic_javascript_checkers = ['eslint']
 
-"Elm stuff
-let g:elm_format_autosave = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-
-let g:elm_syntastic_show_warnings = 1
-
-let g:ycm_semantic_triggers = {
-     \ 'elm' : ['.'],
-     \}
