@@ -3,7 +3,6 @@
 --context=1
 --follow
 --group
---all
 --ignore-dir=log
 --ignore-dir=tmp
 --ignore-dir=vendor
