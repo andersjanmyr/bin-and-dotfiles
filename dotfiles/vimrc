@@ -2,6 +2,7 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=/usr/local/opt/fzf
 call vundle#begin()
 
 " let Vundle manage Vundle
@@ -17,21 +18,21 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'andersjanmyr/vim-scratch'
 Plugin 'baeuml/summerfruit256.vim'
 Plugin 'cespare/vim-toml'
+Plugin 'chr4/nginx.vim'
 Plugin 'dsolstad/vim-wombat256i'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'elzr/vim-json'
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'ervandew/supertab'
-Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'fatih/vim-go'
 Plugin 'freitass/todo.txt-vim.git'
 Plugin 'git@github.com:andersjanmyr/ultisnip-snippets.git'
 Plugin 'godlygeek/tabular'
 Plugin 'groenewege/vim-less'
+Plugin 'junegunn/fzf.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'keith/swift.vim'
-Plugin 'kien/ctrlp.vim'
 Plugin 'luochen1990/rainbow'
 Plugin 'matthias-guenther/hammer.vim'
 Plugin 'mattn/emmet-vim'
@@ -84,8 +85,7 @@ end
 let mapleader = ","
 nnoremap \ ,
 set timeoutlen=500 " the delay before the leader kicks in.
-
-set background=dark " we plan to use a light background
+set background=dark
 set backup " make backup files
 set backupdir=$HOME/.vim/backup " where to put backup files
 set directory=$HOME/.vim/backup " where to put backup files
@@ -208,7 +208,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <leader><space> :noh<cr>
-nnoremap <leader>a <C-^>
 nnoremap <leader>h :Hammer<CR>
 nnoremap <leader>v V`]
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
@@ -224,7 +223,6 @@ nnoremap <leader>p :bufdo set ei-=Syntax \| do Syntax \| hardcopy! >%:t.ps
 
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gb :Gblame<cr>
 nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Git push<cr>
@@ -308,24 +306,10 @@ endfunction
 
 
 
-"CtrlP
-" CtrlP Options
-let g:ctrlp_working_path_mode = 'r'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*~,.git/*,tags,gems.tags,libs.tags,php.tags*/.sass-cache/*,*/target/*
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|node_modules|gems|vendor)$',
-  \ 'file': '\v\.(tags|so)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-let g:ctrlp_map = '<D-t>'
-let g:ctrlp_prompt_mappings = {
-      \ 'ToggleRegex()':        ['<C-t>'],
-      \ 'PrtClearCache()':      ['<C-r>'],
-      \ }
-let g:ctrlp_switch_buffer = 1
-nnoremap <C-p> :CtrlP<cr>
-nnoremap <silent> <Leader>b :CtrlP<cr>
-let g:ctrlp_root_markers = ['.ctrlp']
+"Fzf options
+nnoremap <leader>b :Buffers<CR>
+nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>t :Tags<CR>"
 
 "Surround
 xmap s <Plug>VSurround
@@ -384,6 +368,7 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
 
