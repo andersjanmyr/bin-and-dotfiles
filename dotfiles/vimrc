@@ -32,13 +32,11 @@ Plugin 'matthias-guenther/hammer.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mileszs/ack.vim'
-Plugin 'mtscout6/syntastic-local-eslint.vim'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'sjl/gundo.vim'
 Plugin 'ternjs/tern_for_vim'
@@ -57,9 +55,11 @@ Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-repeat.git'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'vim-airline/vim-airline'
+Plugin 'w0rp/ale'
 call vundle#end()            " required
 filetype plugin indent on
 
@@ -373,7 +373,15 @@ let g:airline#extensions#tabline#enabled = 1
 "0 if you want to enable it later via :RainbowToggle
 let g:rainbow_active = 1
 
-let g:syntastic_javascript_checkers = ['eslint']
+" ALE syntax checking
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
