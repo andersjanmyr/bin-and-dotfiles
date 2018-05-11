@@ -141,7 +141,7 @@ awsconf andersjanmyr
 
 
 function gd() {
-  dir=`find ~/gocode/src/github.com/andersjanmyr -name "$1" -type d -maxdepth 1 | head -1`
+  dir=`find ~/gocode/src -name "$1" -type d -maxdepth 3 | head -1`
   if [ "$dir" != '' ]; then
     pushd "$dir"
   else
