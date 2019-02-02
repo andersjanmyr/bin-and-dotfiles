@@ -1,7 +1,6 @@
-export JAVA_HOME="`/usr/libexec/java_home -v '1.8*'`"
-#export JAVA_HOME=/Library/Java/Home # System Java
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java
 
-export PATH=$HOME/bin:$HOME/Projects/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
+export PATH=$HOME/bin:/snap/bin:$HOME/Projects/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
 
 export EDITOR="$HOME/bin/v -f"
 
@@ -27,7 +26,7 @@ export SHOWOFF_EVAL_RUBY=1
 export RBXOPT='-X19'
 
 
-export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
+# export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
 
 
 # Ruby performance patches
@@ -44,7 +43,7 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 # export GIT_PS1_SHOWSTASHSTATE=true
 
 # MAVEN
-export M2_HOME=`brew --prefix maven`/libexec
+# export M2_HOME=`brew --prefix maven`/libexec
 
 # Postgres psql
 export HISTFILESIZE=
@@ -75,25 +74,11 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/Projects/aws-utils
 export PATH=$PATH:$HOME/Projects/docker.janmyr.com
 
-# RVM
-if [[ -s ~/.rvm/scripts/rvm ]] ; then
-        source ~/.rvm/scripts/rvm ;
-fi
-[[ -s $rvm_path/scripts/completion ]] && source $rvm_path/scripts/completion
-
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
-
-[[ -s `rvm gemdir`/bin/tmuxinator_completion ]] && source `rvm gemdir`/bin/tmuxinator_completion
-
-export NVM_DIR="$HOME/.nvm"
-source "/usr/local/opt/nvm/nvm.sh"
-
 # node debug object print depth
 export DEBUG_DEPTH=9
 
 # fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
