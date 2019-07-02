@@ -1,8 +1,10 @@
 . ~/bin/dotfiles/bash/env
 . ~/bin/dotfiles/bash/config
 . ~/bin/dotfiles/bash/aliases
+. /etc/bash_completion
 [[ -s ~/bin/dotfiles/bash/secret ]] && source ~/bin/dotfiles/bash/secret
 for f in ~/bin/dotfiles/bash/completions/*; do
    . $f
 done
+
 

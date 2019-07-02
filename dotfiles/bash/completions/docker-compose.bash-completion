@@ -1,1 +1,0 @@
-/Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
