@@ -62,7 +62,7 @@ function mcd() {
     cd "$1"
 }
 function pd() {
-  dir=`find ~/Projects ~/External/ -name "$1" -type d -maxdepth 2 | head -1`
+  dir=`find ~/Projects ~/External/ -maxdepth 2 -name "$1" -type d | head -1`
   if [ "$dir" != '' ]; then
     pushd "$dir"
   else
@@ -141,7 +141,7 @@ awsconf andersjanmyr
 
 
 function gd() {
-  dir=`find ~/gocode/src -name "$1" -type d -maxdepth 3 | head -1`
+  dir=`find ~/gocode/src -maxdepth 3 -name "$1" -type d | head -1`
   if [ "$dir" != '' ]; then
     pushd "$dir"
   else
@@ -153,3 +153,5 @@ alias whatismyip='curl http://whatismyip.akamai.com'
 alias audio-dl='youtube-dl --extract-audio --audio-format mp3'
 
 alias iphone='xcrun simctl install booted'
+
+alias vi=nvim

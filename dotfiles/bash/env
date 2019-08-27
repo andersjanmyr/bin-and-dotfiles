@@ -1,6 +1,7 @@
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/bin/java
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
 
-export PATH=$HOME/bin:/snap/bin:$HOME/Projects/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:$SCALA_HOME/bin
+export
+PATH=$HOME/bin:/snap/bin:$HOME/Projects/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:$JAVA_HOME/bin
 
 export EDITOR="$HOME/bin/v -f"
 
