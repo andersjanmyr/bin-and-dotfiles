@@ -20,6 +20,7 @@ replace_file ~/.vimrc ~/bin/dotfiles/vimrc
 replace_file ~/.ackrc ~/bin/dotfiles/ackrc
 replace_file ~/.inputrc ~/bin/dotfiles/inputrc
 replace_file ~/.jshintrc ~/bin/dotfiles/jshintrc
+replace_file ~/.ideavimrc ~/bin/dotfiles/ideavimrc
 mkdir -p .vim/tmp
 mkdir -p .vim/backup
 replace_file ~/.vim/spell ~/bin/dotfiles/vim/spell

@@ -1,0 +1,43 @@
+
+set ideamarks
+set surround 
+set ideajoin
+set commentary
+
+set incsearch
+set ignorecase
+set smartcase
+set visualbell
+set noerrorbells
+
+let mapleader = ","
+
+map <Leader>s :action FileStructurePopup<CR>
+map <Leader>f :action FindUsages<CR>
+map <Leader>U `[v`]~`]
+
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gb :action JumpToLastChange<CR>
+
+nnoremap U :action FindUsages<CR>
+nnoremap R :action RenameElement<CR>
+
+nnoremap == :action ReformatCode<CR>
+vnoremap == :action ReformatCode<CR>
+
+nnoremap <leader>c :action CommentByLineComment<CR>
+vnoremap <leader>c :action CommentByLineComment<CR>
+
+nnoremap <C-CR> :action ShowIntentionActions<CR>
+
+nnoremap ,a :action GotoAction<CR>
+vnoremap ,a :action GotoAction<CR>
+
+nnoremap <leader>n :action ActivateProjectToolWindow<CR>
+nnoremap <C-h> :action ActivateProjectToolWindow<CR>
+nnoremap <leader>nf :action SelectInProjectView<CR>
+nnoremap <C-l> :action ActivateProjectToolWindow<CR>
+
+
