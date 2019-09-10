@@ -1,14 +1,14 @@
 
 set ideamarks
-set surround 
+set surround
 set ideajoin
 set commentary
-
 set incsearch
 set ignorecase
 set smartcase
 set visualbell
 set noerrorbells
+set clipboard+=unnamed
 
 let mapleader = ","
 
@@ -39,5 +39,7 @@ nnoremap <leader>n :action ActivateProjectToolWindow<CR>
 nnoremap <C-h> :action ActivateProjectToolWindow<CR>
 nnoremap <leader>nf :action SelectInProjectView<CR>
 nnoremap <C-l> :action ActivateProjectToolWindow<CR>
+
+nnoremap <C-o> :action Back<CR>
 
 
