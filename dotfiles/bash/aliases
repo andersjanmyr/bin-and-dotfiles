@@ -40,7 +40,10 @@ alias vb='v  ~/bin'
 alias vn='v  /usr/local/etc/nginx/sites-available'
 
 alias less='less -FRSX'
-alias h='history'
+function h() {
+  local pattern=${1-""}
+  history | grep $pattern
+}
 
 # Dirs
 alias la="ls -A -l -G"
