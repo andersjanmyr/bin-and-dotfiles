@@ -41,8 +41,8 @@ alias vn='v  /usr/local/etc/nginx/sites-available'
 
 alias less='less -FRSX'
 function h() {
-  local pattern=${1-""}
-  history | grep $pattern
+  local pattern=${1:-''}
+  history | grep "$pattern"
 }
 
 # Dirs
