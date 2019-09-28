@@ -140,7 +140,7 @@ function d() {
 
 # AWS
 alias awsconf='source ~/bin/awsconf.sh'
-awsconf storage-one
+awsconf andersjanmyr
 
 
 function gd() {
