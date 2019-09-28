@@ -1,7 +1,12 @@
 . ~/bin/dotfiles/bash/env
 . ~/bin/dotfiles/bash/config
 . ~/bin/dotfiles/bash/aliases
-. /usr/local/etc/bash_completion
+if [[ $(uname) == 'Linux' ]]; then
+   . /etc/bash_completion
+   . /usr/lib/git-core/git-sh-prompt
+else
+   . /usr/local/etc/bash_completion
+fi
 
 [[ -s ~/bin/dotfiles/bash/secret ]] && source ~/bin/dotfiles/bash/secret
 for f in ~/bin/dotfiles/bash/completions/*; do

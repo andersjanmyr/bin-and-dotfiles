@@ -2,7 +2,11 @@ set nocompatible               " be iMproved
 filetype off                   " required!
 
 set rtp+=~/.vim/bundle/Vundle.vim/
-set rtp+=/usr/local/opt/fzf
+if has('macunix')
+  set rtp+=/usr/local/opt/fzf
+else
+  set rtp+=~/.fzf
+endif
 
 call vundle#begin()
 
