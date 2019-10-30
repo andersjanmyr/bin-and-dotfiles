@@ -29,7 +29,7 @@ replace_file ~/.tmux.conf ~/bin/dotfiles/tmux.conf
 replace_file /usr/local/etc/nginx/nginx.conf ~/bin/dotfiles/nginx/nginx.conf
 replace_file /usr/local/etc/nginx/sites-available ~/bin/dotfiles/nginx/sites-available
 
-replace_file ~/.rvm/gemsets/global.gems ~/bin/dotfiles/rvm/global.gems
+# replace_file ~/.rvm/gemsets/global.gems ~/bin/dotfiles/rvm/global.gems
 
 replace_file ~/.psqlrc ~/bin/dotfiles/psqlrc
 
