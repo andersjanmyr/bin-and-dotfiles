@@ -20,103 +20,19 @@ Host kperson.jayway.com
   Hostname 31.209.25.138
   User kperson
 
-# Host mini.jayway.com
-#   Hostname mini.jayway.com
-#   User admin
-#   IdentityFile ~/.ssh/macmini
-
-Host mini
-  Hostname mini.jayway.com
-  User admin
-  IdentityFile ~/.ssh/macmini
-
-Host official.heroku.com
-  HostName heroku.com
-  User git
-  IdentitiesOnly yes
-
-Host heroku.anders
-  HostName heroku.com
-  IdentityFile ~/.ssh/anders.identity
-  IdentitiesOnly yes
-
-Host heroku.helios-server
-  HostName heroku.com
-  IdentityFile ~/.ssh/helios-server.identity
-  IdentitiesOnly yes
-
-Host heroku.oredev
-  HostName heroku.com
-  IdentityFile ~/.ssh/oredev-heroku.identity
-  IdentitiesOnly yes
-
-Host heroku.jayway-ruby
-  HostName heroku.com
-  IdentityFile ~/.ssh/jayway-ruby.identity
-  IdentitiesOnly yes
-
-Host gerrit.jayway.com
-  HostName gerrit.jayway.com
-  Port 29418
-  User andersjanmyr
-  IdentityFile ~/.ssh/anders.identity
-
-Host gerrit
-  HostName gerrit.jayway.com
-  Port 29418
-  User andersjanmyr
-  IdentityFile ~/.ssh/anders.identity
-
 Host anders-ec2
   HostName ec2-46-137-135-183.eu-west-1.compute.amazonaws.com
   User ec2-user
   IdentityFile ~/.ssh/anders-ec2.pem
 
-Host sds-ec2
-  HostName ec2-46-137-16-12.eu-west-1.compute.amazonaws.com
-  User ubuntu
-  IdentityFile ~/.ssh/anders-sds
-
-Host *.compute.amazonaws.com
-  User ec2-user
-  IdentityFile ~/.ssh/docker-key.pem
-
-
-Host heroku.sds
-  HostName heroku.com
-  IdentityFile  ~/.ssh/sds-webbutveckling
-  IdentitiesOnly yes
-
-
-Host minecraft
-  HostName ec2-54-217-59-171.eu-west-1.compute.amazonaws.com
-  User ec2-user
-  IdentityFile ~/.ssh/anders-ec2.pem
-
-host hudson
-  user administrator
-  hostname hudson.waygroup.se
-
-Host blog.jayway.com
-  User ubuntu
-
-Host dokku.me
-    Port 2222
-
 Host bitbucket.com
   User git
   IdentityFile ~/.ssh/id_rsa
 
-Host docker.janmyr.com
-  User ec2-user
-  IdentityFile ~/.ssh/anders-andersjanmyr.pem
 
-Host chi.gleerupsportal.se
-  Hostname ec2-52-51-8-66.eu-west-1.compute.amazonaws.com
-  User ec2-user
-  IdentityFile ~/.ssh/jumpbox.cer
-
-Host buildbox.gleerupsportal.se
-  User ec2-user
-  IdentityFile ~/.ssh/jumpbox.cer
+Host mammut.akamai
+  Hostname mammut.upload.akamai.com
+  User sshacs
+  HostKeyAlgorithms ssh-dss
+  IdentityFile ~/.ssh/akamai_upload_id
 
