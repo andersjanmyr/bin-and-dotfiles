@@ -143,15 +143,6 @@ function d() {
 alias awsconf='source ~/bin/awsconf.sh'
 awsconf mammut
 
-
-function gd() {
-  dir=`find ~/gocode/src -maxdepth 3 -name "$1" -type d | head -1`
-  if [ "$dir" != '' ]; then
-    pushd "$dir"
-  else
-    echo "Cannot find project dir with name: $1"
-  fi
-}
 alias whatismyip='curl http://whatismyip.akamai.com'
 
 alias audio-dl='youtube-dl --extract-audio --audio-format mp3'
