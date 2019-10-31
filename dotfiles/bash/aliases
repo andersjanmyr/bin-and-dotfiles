@@ -64,8 +64,9 @@ function mcd() {
     mkdir -p "$1"
     cd "$1"
 }
+
 function pd() {
-  dir=`find ~/Projects ~/External/ -maxdepth 2 -name "$1" -type d | head -1`
+  dir=`find ~/Projects -maxdepth 2 -name "$1" -type d | head -1`
   if [ "$dir" != '' ]; then
     pushd "$dir"
   else
