@@ -149,7 +149,7 @@ alias audio-dl='youtube-dl --extract-audio --audio-format mp3'
 
 alias iphone='xcrun simctl install booted'
 
-alias vi=nvim
+alias vi=~/bin/v
 
 function serve() {
   local port=${1:-8000}
