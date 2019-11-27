@@ -141,7 +141,7 @@ function d() {
 
 # AWS
 alias awsconf='source ~/bin/awsconf.sh'
-awsconf mammut
+awsconf m2-dev
 
 alias whatismyip='curl --silent https://api.myip.com/ | jq -r .ip'
 
