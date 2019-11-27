@@ -155,3 +155,12 @@ function serve() {
   local port=${1:-8000}
   python -m SimpleHTTPServer "$port"
 }
+
+function epoch() {
+  date -u -j -f "%Y-%m-%dT%H:%M:%S" $1 +%s
+}
+
+function iso() {
+  local ts=${1:-$(date +"%s")}
+  date -r $ts -u +"%Y-%m-%dT%H:%M:%S"
+}
