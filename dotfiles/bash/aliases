@@ -157,7 +157,8 @@ function serve() {
 }
 
 function epoch() {
-  date -u -j -f "%Y-%m-%dT%H:%M:%S" $1 +%s
+  local ts=${1:-$(date +"%Y-%m-%dT%H:%M:%S")}
+  date -u -j -f "%Y-%m-%dT%H:%M:%S" $ts +%s
 }
 
 function iso() {
