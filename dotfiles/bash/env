@@ -74,6 +74,20 @@ export FZF_DEFAULT_OPTS='
 --color info:108,prompt:109,spinner:108,pointer:168,marker:168
 '
 export GOROOT=/usr/local/opt/go/libexec
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH=~/go/bin:$GOROOT/bin:$PATH
 
 export PATH=$PATH:$HOME/.cargo/bin
+
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export PATH=$PATH:$HOME/flutter/bin:$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$ANDROID_SDK:platform-tools
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] \
+    && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+
+eval "$(direnv hook bash)"
+
+[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && source /usr/local/opt/chruby/share/chruby/chruby.sh
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
