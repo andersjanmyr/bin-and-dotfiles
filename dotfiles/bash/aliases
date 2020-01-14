@@ -165,3 +165,7 @@ function iso() {
   local ts=${1:-$(date +"%s")}
   date -r $ts -u +"%Y-%m-%dT%H:%M:%S"
 }
+
+function srckey() {
+  jq -c '.Stacks[] |select(.Parameters[]?.ParameterKey == "SrcKey" ) | { StackName, SrcKey: .Parameters[] | select(.ParameterKey == "SrcKey") | .ParameterValue  }'
+}
