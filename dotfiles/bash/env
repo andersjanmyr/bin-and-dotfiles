@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/Projects/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:/usr/local/Frameworks/google-cloud-sdk/bin
+export PATH=$HOME/bin:$HOME/Projects/andersjanmyr/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:/usr/local/Frameworks/google-cloud-sdk/bin:$HOME/Projects/andersjanmyr/aws-utils
 
 export EDITOR="$HOME/bin/v -f"
 
