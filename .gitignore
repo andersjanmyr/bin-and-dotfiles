@@ -5,4 +5,5 @@ nocrap-env
 git-secret.conf
 node_modules/
 kindlegen
+usc
 
