@@ -104,3 +104,5 @@
 [status]
   showUntrackedFiles = all
 
+[url "ssh://git@github.com/mammutmw"]
+  insteadOf = https://github.com/mammutmw
