@@ -8,6 +8,13 @@ Host *
   StrictHostKeyChecking no
   IdentitiesOnly yes
 
+Host *.upload.akamai.com
+  HostKeyAlgorithms ssh-dss
+  User sshacs
+
+Host *.compute.amazonaws.com
+  User ec2-user
+
 Host dcmc
   HostName matrix-dcmc.dyndns.org
   User ubuntu
@@ -36,3 +43,7 @@ Host mammut.akamai
   HostKeyAlgorithms ssh-dss
   IdentityFile ~/.ssh/akamai_upload_id
 
+Host tokyo.jump
+  Hostname 13.114.37.212
+  User ec2-user
+  IdentityFile ~/.ssh/m2-prod-tokyo.pem
