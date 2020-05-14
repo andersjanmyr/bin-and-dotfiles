@@ -88,6 +88,8 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(direnv hook bash)"
 
-[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && source /usr/local/opt/chruby/share/chruby/chruby.sh
-
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+# Remove 2.7 deprecation warnings
+export RUBYOPT='-W:no-deprecated -W:no-experimental'
+
