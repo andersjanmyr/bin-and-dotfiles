@@ -13,6 +13,7 @@
 [alias]
   a = "add"
   aa = "add --all :/"
+  active = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg"
   ai = "add --interactive"
   alias = "!git config -l | grep alias | cut -c 7-"
   amend = "commit --amend"
