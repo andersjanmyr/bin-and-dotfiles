@@ -16,7 +16,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
 Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'andersjanmyr/vim-scratch'
