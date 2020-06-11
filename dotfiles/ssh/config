@@ -47,3 +47,8 @@ Host tokyo.jump
   Hostname 13.114.37.212
   User ec2-user
   IdentityFile ~/.ssh/m2-prod-tokyo.pem
+
+Host dc9.dev
+  Hostname ec2-13-48-114-173.eu-north-1.compute.amazonaws.com
+  User ec2-user
+  IdentityFile ~/.ssh/dc9-dev.pem
