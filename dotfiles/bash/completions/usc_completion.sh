@@ -328,6 +328,62 @@ _usc_delete()
     noun_aliases=()
 }
 
+_usc_head()
+{
+    last_command="usc_head"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--target=")
+    two_word_flags+=("--target")
+    local_nonpersistent_flags+=("--target=")
+    flags+=("--color")
+    flags+=("--json")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_usc_list()
+{
+    last_command="usc_list"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--long")
+    local_nonpersistent_flags+=("--long")
+    flags+=("--recursive")
+    local_nonpersistent_flags+=("--recursive")
+    flags+=("--target=")
+    two_word_flags+=("--target")
+    local_nonpersistent_flags+=("--target=")
+    flags+=("--verbose")
+    local_nonpersistent_flags+=("--verbose")
+    flags+=("--color")
+    flags+=("--json")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
 _usc_md5()
 {
     last_command="usc_md5"
@@ -512,6 +568,8 @@ _usc_root_command()
     commands=()
     commands+=("completion")
     commands+=("delete")
+    commands+=("head")
+    commands+=("list")
     commands+=("md5")
     commands+=("update")
     commands+=("upload")
