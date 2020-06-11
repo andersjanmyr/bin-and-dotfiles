@@ -41,8 +41,8 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 # export M2_HOME=`brew --prefix maven`/libexec
 
 # Postgres psql
-export HISTFILESIZE=
-export HISTSIZE=
+export HISTFILESIZE=9999
+export HISTSIZE=9999
 export PAGER=less
 
 
