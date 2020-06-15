@@ -1,7 +1,6 @@
 _awsconf() {
-  profiles=$((unset AWS_DEFAULT_PROFILE && \
-    COMMAND_LINE="configure --profile" aws_completer) \
-    | grep -v _path)
+  profiles=$(cat ~/.aws/config \
+  |grep '^\[profile' |tr -d '[]' | awk '{print $2}')
 
   COMPREPLY=()   # Array variable storing the possible completions.
 
