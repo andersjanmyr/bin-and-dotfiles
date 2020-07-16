@@ -19,8 +19,7 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 echo "Reveal IP address, hostname, OS version, etc. when clicking the clock in
 the login window"
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo
-HostName
+sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 echo ""
 echo "Check for software updates daily, not just once per week"
@@ -28,8 +27,7 @@ defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 echo ""
 echo "Removing duplicates in the 'Open With' menu"
-/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister
--kill -r -domain local -domain system -domain user
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
 echo ""
 echo "Disable smart quotes and smart dashes"
@@ -41,8 +39,7 @@ echo "Disable the sudden motion sensor (it's not useful for SSDs/current MacBook
 sudo pmset -a sms 0
 
 echo ""
-echo "Enabling full keyboard access for all controls (enable Tab in modal
-dialogs, menu windows, etc.)"
+echo "Enabling full keyboard access for all controls (enable Tab in modal dialogs, menu windows, etc.)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 
