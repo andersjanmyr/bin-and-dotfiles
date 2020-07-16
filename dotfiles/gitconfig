@@ -107,3 +107,5 @@
 
 [url "ssh://git@github.com/mammutmw"]
   insteadOf = https://github.com/mammutmw
+[pull]
+	ff = only
