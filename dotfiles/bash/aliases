@@ -172,4 +172,5 @@ function srckey() {
 
 alias brew='sudo chown -R $(whoami) /usr/local/etc && /usr/local/bin/brew'
 
-alias curl='/usr/local/Cellar/curl/7.70.0/bin/curl'
+alias curl='/usr/local/opt/curl/bin/curl'
+alias ts='date +%s'
