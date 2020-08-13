@@ -170,7 +170,7 @@ function srckey() {
   jq -c '.Stacks[] |select(.Parameters[]?.ParameterKey == "SrcKey" ) | { StackName, SrcKey: .Parameters[] | select(.ParameterKey == "SrcKey") | .ParameterValue  }'
 }
 
-alias brew='sudo chown -R $(whoami) /usr/local/etc && /usr/local/bin/brew'
+alias brew='sudo chown -R $(whoami) /usr/local/{bin,etc,sbin} && /usr/local/bin/brew'
 
 alias curl='/usr/local/opt/curl/bin/curl'
 alias ts='date +%s'
