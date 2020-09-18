@@ -36,9 +36,71 @@ __usc_contains_word()
     return 1
 }
 
+__usc_handle_go_custom_completion()
+{
+    __usc_debug "${FUNCNAME[0]}: cur is ${cur}, words[*] is ${words[*]}, #words[@] is ${#words[@]}"
+
+    local out requestComp lastParam lastChar comp directive args
+
+    # Prepare the command to request completions for the program.
+    # Calling ${words[0]} instead of directly usc allows to handle aliases
+    args=("${words[@]:1}")
+    requestComp="${words[0]} __completeNoDesc ${args[*]}"
+
+    lastParam=${words[$((${#words[@]}-1))]}
+    lastChar=${lastParam:$((${#lastParam}-1)):1}
+    __usc_debug "${FUNCNAME[0]}: lastParam ${lastParam}, lastChar ${lastChar}"
+
+    if [ -z "${cur}" ] && [ "${lastChar}" != "=" ]; then
+        # If the last parameter is complete (there is a space following it)
+        # We add an extra empty parameter so we can indicate this to the go method.
+        __usc_debug "${FUNCNAME[0]}: Adding extra empty parameter"
+        requestComp="${requestComp} \"\""
+    fi
+
+    __usc_debug "${FUNCNAME[0]}: calling ${requestComp}"
+    # Use eval to handle any environment variables and such
+    out=$(eval "${requestComp}" 2>/dev/null)
+
+    # Extract the directive integer at the very end of the output following a colon (:)
+    directive=${out##*:}
+    # Remove the directive
+    out=${out%:*}
+    if [ "${directive}" = "${out}" ]; then
+        # There is not directive specified
+        directive=0
+    fi
+    __usc_debug "${FUNCNAME[0]}: the completion directive is: ${directive}"
+    __usc_debug "${FUNCNAME[0]}: the completions are: ${out[*]}"
+
+    if [ $((directive & 1)) -ne 0 ]; then
+        # Error code.  No completion.
+        __usc_debug "${FUNCNAME[0]}: received error from custom completion go code"
+        return
+    else
+        if [ $((directive & 2)) -ne 0 ]; then
+            if [[ $(type -t compopt) = "builtin" ]]; then
+                __usc_debug "${FUNCNAME[0]}: activating no space"
+                compopt -o nospace
+            fi
+        fi
+        if [ $((directive & 4)) -ne 0 ]; then
+            if [[ $(type -t compopt) = "builtin" ]]; then
+                __usc_debug "${FUNCNAME[0]}: activating no file completion"
+                compopt +o default
+            fi
+        fi
+
+        while IFS='' read -r comp; do
+            COMPREPLY+=("$comp")
+        done < <(compgen -W "${out[*]}" -- "$cur")
+    fi
+}
+
 __usc_handle_reply()
 {
     __usc_debug "${FUNCNAME[0]}"
+    local comp
     case $cur in
         -*)
             if [[ $(type -t compopt) = "builtin" ]]; then
@@ -50,8 +112,8 @@ __usc_handle_reply()
             else
                 allflags=("${flags[*]} ${two_word_flags[*]}")
             fi
-            while IFS='' read -r c; do
-                COMPREPLY+=("$c")
+            while IFS='' read -r comp; do
+                COMPREPLY+=("$comp")
             done < <(compgen -W "${allflags[*]}" -- "$cur")
             if [[ $(type -t compopt) = "builtin" ]]; then
                 [[ "${COMPREPLY[0]}" == *= ]] || compopt +o nospace
@@ -98,17 +160,21 @@ __usc_handle_reply()
     completions=("${commands[@]}")
     if [[ ${#must_have_one_noun[@]} -ne 0 ]]; then
         completions=("${must_have_one_noun[@]}")
+    elif [[ -n "${has_completion_function}" ]]; then
+        # if a go completion function is provided, defer to that function
+        completions=()
+        __usc_handle_go_custom_completion
     fi
     if [[ ${#must_have_one_flag[@]} -ne 0 ]]; then
         completions+=("${must_have_one_flag[@]}")
     fi
-    while IFS='' read -r c; do
-        COMPREPLY+=("$c")
+    while IFS='' read -r comp; do
+        COMPREPLY+=("$comp")
     done < <(compgen -W "${completions[*]}" -- "$cur")
 
     if [[ ${#COMPREPLY[@]} -eq 0 && ${#noun_aliases[@]} -gt 0 && ${#must_have_one_noun[@]} -ne 0 ]]; then
-        while IFS='' read -r c; do
-            COMPREPLY+=("$c")
+        while IFS='' read -r comp; do
+            COMPREPLY+=("$comp")
         done < <(compgen -W "${noun_aliases[*]}" -- "$cur")
     fi
 
@@ -297,9 +363,6 @@ _usc_delete()
 
     flags+=("--debug")
     local_nonpersistent_flags+=("--debug")
-    flags+=("--dir=")
-    two_word_flags+=("--dir")
-    local_nonpersistent_flags+=("--dir=")
     flags+=("--dry")
     local_nonpersistent_flags+=("--dry")
     flags+=("--files=")
@@ -307,9 +370,6 @@ _usc_delete()
     local_nonpersistent_flags+=("--files=")
     flags+=("--quiet")
     local_nonpersistent_flags+=("--quiet")
-    flags+=("--start=")
-    two_word_flags+=("--start")
-    local_nonpersistent_flags+=("--start=")
     flags+=("--target=")
     two_word_flags+=("--target")
     local_nonpersistent_flags+=("--target=")
@@ -324,6 +384,7 @@ _usc_delete()
     flags+=("--json")
 
     must_have_one_flag=()
+    must_have_one_flag+=("--target=")
     must_have_one_noun=()
     noun_aliases=()
 }
@@ -349,6 +410,7 @@ _usc_head()
     flags+=("--json")
 
     must_have_one_flag=()
+    must_have_one_flag+=("--target=")
     must_have_one_noun=()
     noun_aliases=()
 }
@@ -380,6 +442,7 @@ _usc_list()
     flags+=("--json")
 
     must_have_one_flag=()
+    must_have_one_flag+=("--target=")
     must_have_one_noun=()
     noun_aliases=()
 }
@@ -400,9 +463,6 @@ _usc_md5()
 
     flags+=("--debug")
     local_nonpersistent_flags+=("--debug")
-    flags+=("--dir=")
-    two_word_flags+=("--dir")
-    local_nonpersistent_flags+=("--dir=")
     flags+=("--files=")
     two_word_flags+=("--files")
     local_nonpersistent_flags+=("--files=")
@@ -415,7 +475,71 @@ _usc_md5()
     flags+=("--json")
 
     must_have_one_flag=()
-    must_have_one_flag+=("--dir=")
+    must_have_one_flag+=("--target=")
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_usc_targets()
+{
+    last_command="usc_targets"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--color")
+    flags+=("--json")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_usc_undelete()
+{
+    last_command="usc_undelete"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--debug")
+    local_nonpersistent_flags+=("--debug")
+    flags+=("--dry")
+    local_nonpersistent_flags+=("--dry")
+    flags+=("--files=")
+    two_word_flags+=("--files")
+    local_nonpersistent_flags+=("--files=")
+    flags+=("--quiet")
+    local_nonpersistent_flags+=("--quiet")
+    flags+=("--target=")
+    two_word_flags+=("--target")
+    local_nonpersistent_flags+=("--target=")
+    flags+=("--timeout=")
+    two_word_flags+=("--timeout")
+    local_nonpersistent_flags+=("--timeout=")
+    flags+=("--verbose")
+    local_nonpersistent_flags+=("--verbose")
+    flags+=("--wait")
+    local_nonpersistent_flags+=("--wait")
+    flags+=("--color")
+    flags+=("--json")
+
+    must_have_one_flag=()
+    must_have_one_flag+=("--target=")
     must_have_one_noun=()
     noun_aliases=()
 }
@@ -462,9 +586,6 @@ _usc_upload()
 
     flags+=("--debug")
     local_nonpersistent_flags+=("--debug")
-    flags+=("--dir=")
-    two_word_flags+=("--dir")
-    local_nonpersistent_flags+=("--dir=")
     flags+=("--dry")
     local_nonpersistent_flags+=("--dry")
     flags+=("--files=")
@@ -472,9 +593,6 @@ _usc_upload()
     local_nonpersistent_flags+=("--files=")
     flags+=("--quiet")
     local_nonpersistent_flags+=("--quiet")
-    flags+=("--start=")
-    two_word_flags+=("--start")
-    local_nonpersistent_flags+=("--start=")
     flags+=("--target=")
     two_word_flags+=("--target")
     local_nonpersistent_flags+=("--target=")
@@ -489,7 +607,7 @@ _usc_upload()
     flags+=("--json")
 
     must_have_one_flag=()
-    must_have_one_flag+=("--dir=")
+    must_have_one_flag+=("--target=")
     must_have_one_noun=()
     noun_aliases=()
 }
@@ -532,17 +650,11 @@ _usc_wait()
 
     flags+=("--debug")
     local_nonpersistent_flags+=("--debug")
-    flags+=("--dir=")
-    two_word_flags+=("--dir")
-    local_nonpersistent_flags+=("--dir=")
     flags+=("--files=")
     two_word_flags+=("--files")
     local_nonpersistent_flags+=("--files=")
     flags+=("--quiet")
     local_nonpersistent_flags+=("--quiet")
-    flags+=("--start=")
-    two_word_flags+=("--start")
-    local_nonpersistent_flags+=("--start=")
     flags+=("--target=")
     two_word_flags+=("--target")
     local_nonpersistent_flags+=("--target=")
@@ -555,6 +667,7 @@ _usc_wait()
     flags+=("--json")
 
     must_have_one_flag=()
+    must_have_one_flag+=("--target=")
     must_have_one_noun=()
     noun_aliases=()
 }
@@ -571,6 +684,8 @@ _usc_root_command()
     commands+=("head")
     commands+=("list")
     commands+=("md5")
+    commands+=("targets")
+    commands+=("undelete")
     commands+=("update")
     commands+=("upload")
     commands+=("version")
@@ -610,6 +725,7 @@ __start_usc()
     local commands=("usc")
     local must_have_one_flag=()
     local must_have_one_noun=()
+    local has_completion_function
     local last_command
     local nouns=()
 
