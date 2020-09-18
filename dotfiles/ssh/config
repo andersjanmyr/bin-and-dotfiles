@@ -52,3 +52,8 @@ Host dc9.dev
   Hostname ec2-13-48-114-173.eu-north-1.compute.amazonaws.com
   User ec2-user
   IdentityFile ~/.ssh/dc9-dev.pem
+
+Host dc9-ppe.jump
+  Hostname ec2-108-128-209-84.eu-west-1.compute.amazonaws.com
+  User ec2-user
+  IdentityFile ~/.ssh/andersjanmyr-dev.pem
