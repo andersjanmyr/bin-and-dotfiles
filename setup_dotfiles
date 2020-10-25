@@ -11,6 +11,7 @@ function replace_file() {
 
 replace_file ~/.gitconfig ~/bin/dotfiles/gitconfig
 replace_file ~/.gitignore ~/bin/dotfiles/gitignore
+replace_file ~/.gitattributes ~/bin/dotfiles/gitattributes
 
 replace_file ~/.ssh/config ~/bin/dotfiles/ssh/config
 
