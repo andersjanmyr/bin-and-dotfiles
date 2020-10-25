@@ -412,3 +412,5 @@ let g:prettier#autoformat = 1
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+let g:rustfmt_autosave = 1
