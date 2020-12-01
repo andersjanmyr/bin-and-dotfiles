@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/Projects/andersjanmyr/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:/usr/local/Frameworks/google-cloud-sdk/bin:$HOME/Projects/andersjanmyr/aws-utils
+export PATH=$HOME/bin:$HOME/Projects/andersjanmyr/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:$HOME/Projects/andersjanmyr/aws-utils
 
 export EDITOR="$HOME/bin/v -f"
 
@@ -93,3 +93,6 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 # Remove 2.7 deprecation warnings
 export RUBYOPT='-W:no-deprecated -W:no-experimental'
 
+# Google Cloud SDK
+export CLOUDSDK_PYTHON="$(brew --prefix)/opt/python@3.8/libexec/bin/python"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
