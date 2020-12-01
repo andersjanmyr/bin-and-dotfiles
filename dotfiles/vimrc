@@ -15,6 +15,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins
+Plugin 'AndrewRadev/sideways.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
@@ -32,7 +33,6 @@ Plugin 'junegunn/fzf.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'keith/swift.vim'
 Plugin 'luochen1990/rainbow'
-Plugin 'matthias-guenther/hammer.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mileszs/ack.vim'
@@ -207,7 +207,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <leader><space> :noh<cr>
-nnoremap <leader>h :Hammer<CR>
 nnoremap <leader>v V`]
 nnoremap <leader>ev <C-w><C-v><C-l>:e ~/.vimrc<cr>
 map <Leader>n :NERDTreeToggle<CR>
@@ -219,7 +218,7 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 nnoremap <leader>p :bufdo set ei-=Syntax \| do Syntax \| hardcopy! >%:t.ps
 
-
+" Git
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gd :Gdiff<cr>
 nnoremap <leader>gb :Gblame<cr>
@@ -227,6 +226,10 @@ nnoremap <leader>gl :Glog<cr>
 nnoremap <leader>gp :Git push<cr>
 nnoremap <leader>gg :Ggrep <C-R><C-W>
 nnoremap <leader>q :sp ~/bin/dotfiles/vim/vim-quick.md<CR>
+
+" Sideways
+nnoremap <leader>h :SidewaysLeft<cr>
+nnoremap <leader>l :SidewaysRight<cr>
 
 " Replace repeat last substitution to include flags
 nnoremap & :&&<CR>
