@@ -174,3 +174,5 @@ alias brew='sudo chown -R $(whoami) /usr/local/{bin,etc,sbin} && /usr/local/bin/
 
 alias curl='/usr/local/opt/curl/bin/curl'
 alias ts='date +%s'
+
+alias esicurl='curl -v -H "X-AKA-DEBUG: ESIDEBUG"'
