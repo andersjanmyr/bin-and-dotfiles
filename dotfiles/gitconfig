@@ -65,7 +65,7 @@
   rh = "reset --hard"
   rh1 = "reset HEAD^ --hard"
   rh2 = "reset HEAD^^ --hard"
-  recent = "for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+  recent = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
   s = "status -sb"
   sa = "stash apply"
   sha = "rev-list -n 1 HEAD --"
