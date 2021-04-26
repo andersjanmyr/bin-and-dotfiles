@@ -41,11 +41,13 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'neoclide/coc.nvim'
 Plugin 'pangloss/vim-javascript'
-" Plugin 'prettier/vim-prettier'
+Plugin 'preservim/tagbar'
+Plugin 'prettier/vim-prettier'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sebdah/vim-delve'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'sjl/gundo.vim'
+Plugin 'ruanyl/vim-gh-line'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'tomtom/tcomment_vim'
@@ -381,7 +383,7 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_enabled = ['vet', 'golint!', 'errcheck']
 let g:go_metalinter_autosave_enabled = ['vet', 'errcheck']
 let g:go_metalinter_autosave = 1
 
@@ -409,7 +411,8 @@ let g:ale_fixers = {
 
 let g:ale_fix_on_save = 1
 
-let g:prettier#autoformat = 1
+let g:prettier#autoformat_config_present = 1
+
 " autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 if executable('ag')
