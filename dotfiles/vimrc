@@ -29,6 +29,7 @@ Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'git@github.com:andersjanmyr/ultisnip-snippets.git'
 Plugin 'godlygeek/tabular'
+Plugin 'hashivim/vim-terraform'
 Plugin 'junegunn/fzf.vim'
 Plugin 'kana/vim-textobj-user'
 Plugin 'keith/swift.vim'
@@ -41,6 +42,7 @@ Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'nelstrom/vim-visual-star-search'
 Plugin 'neoclide/coc.nvim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'pantharshit00/vim-prisma'
 Plugin 'preservim/tagbar'
 Plugin 'prettier/vim-prettier'
 Plugin 'scrooloose/nerdtree'
@@ -413,10 +415,12 @@ let g:ale_fix_on_save = 1
 
 let g:prettier#autoformat_config_present = 1
 
-" autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 
 let g:rustfmt_autosave = 1
+
+let g:terraform_fmt_on_save=1
