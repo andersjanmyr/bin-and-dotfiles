@@ -153,7 +153,7 @@ alias vi=~/bin/v
 
 function serve() {
   local port=${1:-8000}
-  python -m SimpleHTTPServer "$port"
+  python3 -m http.server "$port"
 }
 
 function epoch() {
