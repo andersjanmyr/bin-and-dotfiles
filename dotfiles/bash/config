@@ -61,7 +61,7 @@ function prompt {
   fi
   timer_stop
   local sha=$(git rev-parse --short HEAD 2>/dev/null)
-  local gcp=$(gcloud config get-value project 2>/dev/null | tail -c 14)
+  local gcp=$(cat ~/.config/gcloud/active_config| tail -c 14)
   export PS1="[\!:${BLUE}${AWS_PROFILE}${NO_COLOR}:${CYAN}${gcp}${NO_COLOR}:${LIGHT_GRAY}\W${NO_COLOR} $sha${GREEN}$(__git_ps1 '@%s')${timer_show}s${NO_COLOR}$status]\n$sign "
 }
 
