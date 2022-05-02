@@ -27,12 +27,6 @@ alias nxr='sudo nginx -s reload'
 # Apache
 alias aps='sudo apachectl restart'
 
-# Chrome
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-alias chromex="chrome --disable-web-security"
-alias canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
-alias canaryx="canary --disable-web-security"
-
 
 # Utility
 alias reload='source ~/.bashrc'
@@ -170,9 +164,10 @@ function srckey() {
   jq -c '.Stacks[] |select(.Parameters[]?.ParameterKey == "SrcKey" ) | { StackName, SrcKey: .Parameters[] | select(.ParameterKey == "SrcKey") | .ParameterValue  }'
 }
 
-alias brew='sudo chown -R $(whoami) /usr/local/{bin,etc,sbin} && /usr/local/bin/brew'
-
 alias curl='/usr/local/opt/curl/bin/curl'
 alias ts='date +%s'
 
 alias esicurl='curl -v -H "X-AKA-DEBUG: ESIDEBUG"'
+
+# Chrome
+alias chrome_beta='open -a Google\ Chrome\ Beta --args --user-data-dir=/tmp/temporary-chrome-profile-dir --disable-web-security --disable-site-isolation-trials'
