@@ -59,7 +59,7 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL=
 
 export PATH=$PATH:$HOME/Projects/aws-utils
-export PATH=$PATH:$HOME/Projects/docker.janmyr.com
+export PATH=$PATH:$HOME/Projects/docker-utils
 
 # node debug object print depth
 export DEBUG_DEPTH=9
@@ -96,3 +96,5 @@ export RUBYOPT='-W:no-deprecated -W:no-experimental'
 # Google Cloud SDK
 export CLOUDSDK_PYTHON="$(brew --prefix)/opt/python@3.8/libexec/bin/python"
 source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
+
+eval "$(thefuck --alias)"
