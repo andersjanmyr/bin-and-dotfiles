@@ -2,7 +2,7 @@
 
 __usc_debug()
 {
-    if [[ -n ${BASH_COMP_DEBUG_FILE} ]]; then
+    if [[ -n ${BASH_COMP_DEBUG_FILE:-} ]]; then
         echo "$*" >> "${BASH_COMP_DEBUG_FILE}"
     fi
 }
@@ -112,7 +112,7 @@ __usc_handle_go_custom_completion()
         $filteringCmd
     elif [ $((directive & shellCompDirectiveFilterDirs)) -ne 0 ]; then
         # File completion for directories only
-        local subDir
+        local subdir
         # Use printf to strip any trailing newline
         subdir=$(printf "%s" "${out[0]}")
         if [ -n "$subdir" ]; then
@@ -165,13 +165,19 @@ __usc_handle_reply()
                     PREFIX=""
                     cur="${cur#*=}"
                     ${flags_completion[${index}]}
-                    if [ -n "${ZSH_VERSION}" ]; then
+                    if [ -n "${ZSH_VERSION:-}" ]; then
                         # zsh completion needs --flag= prefix
                         eval "COMPREPLY=( \"\${COMPREPLY[@]/#/${flag}=}\" )"
                     fi
                 fi
             fi
-            return 0;
+
+            if [[ -z "${flag_parsing_disabled}" ]]; then
+                # If flag parsing is enabled, we have completed the flags and can return.
+                # If flag parsing is disabled, we may not know all (or any) of the flags, so we fallthrough
+                # to possibly call handle_go_custom_completion.
+                return 0;
+            fi
             ;;
     esac
 
@@ -210,13 +216,13 @@ __usc_handle_reply()
     fi
 
     if [[ ${#COMPREPLY[@]} -eq 0 ]]; then
-		if declare -F __usc_custom_func >/dev/null; then
-			# try command name qualified custom func
-			__usc_custom_func
-		else
-			# otherwise fall back to unqualified for compatibility
-			declare -F __custom_func >/dev/null && __custom_func
-		fi
+        if declare -F __usc_custom_func >/dev/null; then
+            # try command name qualified custom func
+            __usc_custom_func
+        else
+            # otherwise fall back to unqualified for compatibility
+            declare -F __custom_func >/dev/null && __custom_func
+        fi
     fi
 
     # available in bash-completion >= 2, not always present on macOS
@@ -250,7 +256,7 @@ __usc_handle_flag()
 
     # if a command required a flag, and we found it, unset must_have_one_flag()
     local flagname=${words[c]}
-    local flagvalue
+    local flagvalue=""
     # if the word contained an =
     if [[ ${words[c]} == *"="* ]]; then
         flagvalue=${flagname#*=} # take in as flagvalue after the =
@@ -269,7 +275,7 @@ __usc_handle_flag()
 
     # keep flag value with flagname as flaghash
     # flaghash variable is an associative array which is only supported in bash > 3.
-    if [[ -z "${BASH_VERSION}" || "${BASH_VERSINFO[0]}" -gt 3 ]]; then
+    if [[ -z "${BASH_VERSION:-}" || "${BASH_VERSINFO[0]:-}" -gt 3 ]]; then
         if [ -n "${flagvalue}" ] ; then
             flaghash[${flagname}]=${flagvalue}
         elif [ -n "${words[ $((c+1)) ]}" ] ; then
@@ -281,7 +287,7 @@ __usc_handle_flag()
 
     # skip the argument to a two word flag
     if [[ ${words[c]} != *"="* ]] && __usc_contains_word "${words[c]}" "${two_word_flags[@]}"; then
-			  __usc_debug "${FUNCNAME[0]}: found a flag ${words[c]}, skip the next argument"
+        __usc_debug "${FUNCNAME[0]}: found a flag ${words[c]}, skip the next argument"
         c=$((c+1))
         # if we are looking for a flags value, don't show commands
         if [[ $c -eq $cword ]]; then
@@ -341,7 +347,7 @@ __usc_handle_word()
         __usc_handle_command
     elif __usc_contains_word "${words[c]}" "${command_aliases[@]}"; then
         # aliashash variable is an associative array which is only supported in bash > 3.
-        if [[ -z "${BASH_VERSION}" || "${BASH_VERSINFO[0]}" -gt 3 ]]; then
+        if [[ -z "${BASH_VERSION:-}" || "${BASH_VERSINFO[0]:-}" -gt 3 ]]; then
             words[c]=${aliashash[${words[c]}]}
             __usc_handle_command
         else
@@ -377,8 +383,12 @@ _usc_completion()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -430,6 +440,8 @@ _usc_delete()
     two_word_flags+=("--older")
     local_nonpersistent_flags+=("--older")
     local_nonpersistent_flags+=("--older=")
+    flags+=("--prioritized")
+    local_nonpersistent_flags+=("--prioritized")
     flags+=("--recursive")
     local_nonpersistent_flags+=("--recursive")
     flags+=("--target=")
@@ -448,8 +460,12 @@ _usc_delete()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -486,8 +502,12 @@ _usc_download()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -522,8 +542,12 @@ _usc_head()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -554,8 +578,12 @@ _usc_help()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -563,6 +591,49 @@ _usc_help()
     must_have_one_flag=()
     must_have_one_noun=()
     has_completion_function=1
+    noun_aliases=()
+}
+
+_usc_key-info()
+{
+    last_command="usc_key-info"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--key=")
+    two_word_flags+=("--key")
+    local_nonpersistent_flags+=("--key")
+    local_nonpersistent_flags+=("--key=")
+    flags+=("--user=")
+    two_word_flags+=("--user")
+    local_nonpersistent_flags+=("--user")
+    local_nonpersistent_flags+=("--user=")
+    flags+=("--color")
+    flags+=("--debug")
+    flags+=("--info-email=")
+    two_word_flags+=("--info-email")
+    flags+=("--info-git=")
+    two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
+    flags+=("--info-slack=")
+    two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
+    flags+=("--json")
+    flags+=("--quiet")
+    flags+=("--verbose")
+
+    must_have_one_flag=()
+    must_have_one_noun=()
     noun_aliases=()
 }
 
@@ -614,8 +685,12 @@ _usc_list()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -662,8 +737,12 @@ _usc_md5()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -702,14 +781,155 @@ _usc_permissions()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
 
     must_have_one_flag=()
     must_have_one_flag+=("--target=")
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_usc_restore()
+{
+    last_command="usc_restore"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--dry")
+    local_nonpersistent_flags+=("--dry")
+    flags+=("--excludes=")
+    two_word_flags+=("--excludes")
+    local_nonpersistent_flags+=("--excludes")
+    local_nonpersistent_flags+=("--excludes=")
+    flags+=("--files=")
+    two_word_flags+=("--files")
+    local_nonpersistent_flags+=("--files")
+    local_nonpersistent_flags+=("--files=")
+    flags+=("--ignore-empty")
+    local_nonpersistent_flags+=("--ignore-empty")
+    flags+=("--includes=")
+    two_word_flags+=("--includes")
+    local_nonpersistent_flags+=("--includes")
+    local_nonpersistent_flags+=("--includes=")
+    flags+=("--limit=")
+    two_word_flags+=("--limit")
+    local_nonpersistent_flags+=("--limit")
+    local_nonpersistent_flags+=("--limit=")
+    flags+=("--newer=")
+    two_word_flags+=("--newer")
+    local_nonpersistent_flags+=("--newer")
+    local_nonpersistent_flags+=("--newer=")
+    flags+=("--older=")
+    two_word_flags+=("--older")
+    local_nonpersistent_flags+=("--older")
+    local_nonpersistent_flags+=("--older=")
+    flags+=("--prioritized")
+    local_nonpersistent_flags+=("--prioritized")
+    flags+=("--recursive")
+    local_nonpersistent_flags+=("--recursive")
+    flags+=("--target=")
+    two_word_flags+=("--target")
+    local_nonpersistent_flags+=("--target")
+    local_nonpersistent_flags+=("--target=")
+    flags+=("--timeout=")
+    two_word_flags+=("--timeout")
+    local_nonpersistent_flags+=("--timeout")
+    local_nonpersistent_flags+=("--timeout=")
+    flags+=("--to=")
+    two_word_flags+=("--to")
+    local_nonpersistent_flags+=("--to")
+    local_nonpersistent_flags+=("--to=")
+    flags+=("--wait")
+    local_nonpersistent_flags+=("--wait")
+    flags+=("--color")
+    flags+=("--debug")
+    flags+=("--info-email=")
+    two_word_flags+=("--info-email")
+    flags+=("--info-git=")
+    two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
+    flags+=("--info-slack=")
+    two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
+    flags+=("--json")
+    flags+=("--quiet")
+    flags+=("--verbose")
+
+    must_have_one_flag=()
+    must_have_one_flag+=("--target=")
+    must_have_one_noun=()
+    noun_aliases=()
+}
+
+_usc_rotate-key()
+{
+    last_command="usc_rotate-key"
+
+    command_aliases=()
+
+    commands=()
+
+    flags=()
+    two_word_flags=()
+    local_nonpersistent_flags=()
+    flags_with_completion=()
+    flags_completion=()
+
+    flags+=("--key=")
+    two_word_flags+=("--key")
+    local_nonpersistent_flags+=("--key")
+    local_nonpersistent_flags+=("--key=")
+    flags+=("--project=")
+    two_word_flags+=("--project")
+    local_nonpersistent_flags+=("--project")
+    local_nonpersistent_flags+=("--project=")
+    flags+=("--provider=")
+    two_word_flags+=("--provider")
+    local_nonpersistent_flags+=("--provider")
+    local_nonpersistent_flags+=("--provider=")
+    flags+=("--secret=")
+    two_word_flags+=("--secret")
+    local_nonpersistent_flags+=("--secret")
+    local_nonpersistent_flags+=("--secret=")
+    flags+=("--token=")
+    two_word_flags+=("--token")
+    local_nonpersistent_flags+=("--token")
+    local_nonpersistent_flags+=("--token=")
+    flags+=("--color")
+    flags+=("--debug")
+    flags+=("--info-email=")
+    two_word_flags+=("--info-email")
+    flags+=("--info-git=")
+    two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
+    flags+=("--info-slack=")
+    two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
+    flags+=("--json")
+    flags+=("--quiet")
+    flags+=("--verbose")
+
+    must_have_one_flag=()
     must_have_one_noun=()
     noun_aliases=()
 }
@@ -734,8 +954,12 @@ _usc_targets()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -787,6 +1011,8 @@ _usc_undelete()
     two_word_flags+=("--older")
     local_nonpersistent_flags+=("--older")
     local_nonpersistent_flags+=("--older=")
+    flags+=("--prioritized")
+    local_nonpersistent_flags+=("--prioritized")
     flags+=("--recursive")
     local_nonpersistent_flags+=("--recursive")
     flags+=("--target=")
@@ -805,8 +1031,12 @@ _usc_undelete()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -837,8 +1067,12 @@ _usc_update()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -886,6 +1120,10 @@ _usc_upload()
     two_word_flags+=("--older")
     local_nonpersistent_flags+=("--older")
     local_nonpersistent_flags+=("--older=")
+    flags+=("--prioritized")
+    local_nonpersistent_flags+=("--prioritized")
+    flags+=("--recursive")
+    local_nonpersistent_flags+=("--recursive")
     flags+=("--target=")
     two_word_flags+=("--target")
     local_nonpersistent_flags+=("--target")
@@ -902,8 +1140,12 @@ _usc_upload()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -934,8 +1176,12 @@ _usc_user()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -965,75 +1211,17 @@ _usc_version()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
 
     must_have_one_flag=()
-    must_have_one_noun=()
-    noun_aliases=()
-}
-
-_usc_wait()
-{
-    last_command="usc_wait"
-
-    command_aliases=()
-
-    commands=()
-
-    flags=()
-    two_word_flags=()
-    local_nonpersistent_flags=()
-    flags_with_completion=()
-    flags_completion=()
-
-    flags+=("--excludes=")
-    two_word_flags+=("--excludes")
-    local_nonpersistent_flags+=("--excludes")
-    local_nonpersistent_flags+=("--excludes=")
-    flags+=("--files=")
-    two_word_flags+=("--files")
-    local_nonpersistent_flags+=("--files")
-    local_nonpersistent_flags+=("--files=")
-    flags+=("--ignore-empty")
-    local_nonpersistent_flags+=("--ignore-empty")
-    flags+=("--includes=")
-    two_word_flags+=("--includes")
-    local_nonpersistent_flags+=("--includes")
-    local_nonpersistent_flags+=("--includes=")
-    flags+=("--newer=")
-    two_word_flags+=("--newer")
-    local_nonpersistent_flags+=("--newer")
-    local_nonpersistent_flags+=("--newer=")
-    flags+=("--older=")
-    two_word_flags+=("--older")
-    local_nonpersistent_flags+=("--older")
-    local_nonpersistent_flags+=("--older=")
-    flags+=("--target=")
-    two_word_flags+=("--target")
-    local_nonpersistent_flags+=("--target")
-    local_nonpersistent_flags+=("--target=")
-    flags+=("--timeout=")
-    two_word_flags+=("--timeout")
-    local_nonpersistent_flags+=("--timeout")
-    local_nonpersistent_flags+=("--timeout=")
-    flags+=("--color")
-    flags+=("--debug")
-    flags+=("--info-email=")
-    two_word_flags+=("--info-email")
-    flags+=("--info-git=")
-    two_word_flags+=("--info-git")
-    flags+=("--info-slack=")
-    two_word_flags+=("--info-slack")
-    flags+=("--json")
-    flags+=("--quiet")
-    flags+=("--verbose")
-
-    must_have_one_flag=()
-    must_have_one_flag+=("--target=")
     must_have_one_noun=()
     noun_aliases=()
 }
@@ -1050,16 +1238,22 @@ _usc_root_command()
     commands+=("download")
     commands+=("head")
     commands+=("help")
+    commands+=("key-info")
     commands+=("list")
     commands+=("md5")
     commands+=("permissions")
+    commands+=("restore")
+    commands+=("rotate-key")
+    if [[ -z "${BASH_VERSION:-}" || "${BASH_VERSINFO[0]:-}" -gt 3 ]]; then
+        command_aliases+=("rotate-keys")
+        aliashash["rotate-keys"]="rotate-key"
+    fi
     commands+=("targets")
     commands+=("undelete")
     commands+=("update")
     commands+=("upload")
     commands+=("user")
     commands+=("version")
-    commands+=("wait")
 
     flags=()
     two_word_flags=()
@@ -1073,8 +1267,12 @@ _usc_root_command()
     two_word_flags+=("--info-email")
     flags+=("--info-git=")
     two_word_flags+=("--info-git")
+    flags+=("--info-product=")
+    two_word_flags+=("--info-product")
     flags+=("--info-slack=")
     two_word_flags+=("--info-slack")
+    flags+=("--info-team=")
+    two_word_flags+=("--info-team")
     flags+=("--json")
     flags+=("--quiet")
     flags+=("--verbose")
@@ -1086,7 +1284,7 @@ _usc_root_command()
 
 __start_usc()
 {
-    local cur prev words cword
+    local cur prev words cword split
     declare -A flaghash 2>/dev/null || :
     declare -A aliashash 2>/dev/null || :
     if declare -F _init_completion >/dev/null 2>&1; then
@@ -1096,17 +1294,20 @@ __start_usc()
     fi
 
     local c=0
+    local flag_parsing_disabled=
     local flags=()
     local two_word_flags=()
     local local_nonpersistent_flags=()
     local flags_with_completion=()
     local flags_completion=()
     local commands=("usc")
+    local command_aliases=()
     local must_have_one_flag=()
     local must_have_one_noun=()
-    local has_completion_function
-    local last_command
+    local has_completion_function=""
+    local last_command=""
     local nouns=()
+    local noun_aliases=()
 
     __usc_handle_word
 }
