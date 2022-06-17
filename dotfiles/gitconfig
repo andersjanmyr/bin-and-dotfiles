@@ -109,3 +109,5 @@
   insteadOf = https://github.com/mammutmw
 [pull]
 	ff = only
+[advice]
+        skippedCherryPicks = false
