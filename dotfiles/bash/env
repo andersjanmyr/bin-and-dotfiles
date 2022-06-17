@@ -1,4 +1,9 @@
-export PATH=$HOME/bin:$HOME/Projects/andersjanmyr/docker-utils:/usr/local/bin:$PATH:/usr/local/sbin:$HOME/Projects/andersjanmyr/aws-utils
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/sbin
+
+if [ -d "/usr/local/opt/ruby/bin" ]; then
+  export PATH=/usr/local/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
 
 export EDITOR="$HOME/bin/v -f"
 
