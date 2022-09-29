@@ -109,6 +109,10 @@
 
 [url "ssh://git@github.com/mammutmw"]
   insteadOf = https://github.com/mammutmw
+
+[url "ssh://git@github.com/ingka-group-digital"]
+  insteadOf = https://github.com/ingka-group-digital
+
 [pull]
 	ff = only
 [advice]
