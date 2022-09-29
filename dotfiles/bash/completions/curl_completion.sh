@@ -3,7 +3,7 @@ _curl() {
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts="--cookie --data --data-binary --data-url-encode --form --form-string --header --head --referer --request --user --user-agent --verbose"
+    opts="--cookie --compressed --data --data-binary --data-url-encode --dump-header --fail --form --form-string --header --head --json --output --referer --request --silent --user --user-agent --verbose"
 
     if [[ ${cur} == -* ]] ; then
         COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
