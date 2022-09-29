@@ -34,6 +34,7 @@
   conflicts = "!git ls-files -u | cut -f 2 | sort -u"
   cp = "cherry-pick"
   d = "diff --word-diff=color"
+  dw = "diff --ws-error-highlight=all"
   dl = "diff --word-diff=color HEAD^"
   ds = "diff --word-diff=color --staged"
   du = "diff --word-diff=color origin/master..master"
