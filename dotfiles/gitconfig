@@ -92,7 +92,8 @@
 [heroku]
 	account = anders
 [push]
-  default = tracking
+  default = current
+  autoSetupRemote = true
   followTags = true
 [grep]
 	extendRegexp = true
