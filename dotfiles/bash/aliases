@@ -192,3 +192,13 @@ function calc() {
   fi
   printf "\n"
 }
+
+alias filldisk='dd if=/dev/random of=~/tmp/largefile bs=15m'
+
+function jwt(){
+    jq -R 'split(".") | .[1] | @base64d | fromjson' <<< "$1"
+}
+
+function jwth(){
+    jq -R 'split(".") | .[0] | @base64d | fromjson' <<< "$1"
+}
