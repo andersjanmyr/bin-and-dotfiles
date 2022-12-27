@@ -421,7 +421,7 @@ let g:ale_fix_on_save = 1
 
 let g:prettier#autoformat_config_present = 1
 
-autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
