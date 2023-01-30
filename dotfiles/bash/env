@@ -80,6 +80,7 @@ export FZF_DEFAULT_OPTS='
 '
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=~/go/bin:$GOROOT/bin:$PATH
+GOPRIVATE=github.com/ingka-group-digital
 
 export PATH=$PATH:$HOME/.cargo/bin
 
@@ -105,3 +106,5 @@ source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.i
 eval "$(thefuck --alias)"
 
 export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
+
+export GREP_OPTIONS=--color
