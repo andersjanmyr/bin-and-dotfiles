@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -o errexit
+
+model="gpt-3.5-turbo"
+
+curl_gpt() {
+    local prompt="$1"
+    local json=$(cat <<-EOT
+    {
+        "model": "$model",
+        "messages": [{"role": "user", "content": "'$prompt'"}],
+        "temperature": 0.7,
+        "stream": true
+    }
+EOT
+)
+    curl https://api.openai.com/v1/chat/completions -s \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $OPENAI_KEY" \
+        -d "$json"
+}
+
+data=$(curl_gpt "$*" | tee gpt.txt)
+# data=$(cat gpt.txt)
+readarray -t lines <<<"$data"
+
+for line in "${lines[@]}"; do
+    case "$line" in
+        *DONE*)
+            break;;
+        *role*)
+            continue;;
+        *content*)
+            echo -n "$line" | sed 's/data: //' | tee -a a.txt | jq -r -j '.choices[0].delta.content';;
+        *)
+            continue;;
+    esac
+done
+
+
+
