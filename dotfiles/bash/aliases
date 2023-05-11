@@ -92,6 +92,7 @@ function g() {
 function gg() {
     git ci -m "$*"
 }
+alias gd="cd $(git rev-parse --show-toplevel)"
 alias ungit="find . -name '.git' -exec rm -rf {} \;"
 alias vg='v .git/config'
 alias vgg='v ~/.gitconfig'
@@ -202,3 +203,5 @@ function jwt(){
 function jwth(){
     jq -R 'split(".") | .[0] | @base64d | fromjson' <<< "$1"
 }
+
+alias colima_start='colima start --mount-type 9p'

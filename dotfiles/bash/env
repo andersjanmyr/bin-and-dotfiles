@@ -80,7 +80,7 @@ export FZF_DEFAULT_OPTS='
 '
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=~/go/bin:$GOROOT/bin:$PATH
-GOPRIVATE=github.com/ingka-group-digital
+export GOPRIVATE=github.com/ingka-group-digital
 
 export PATH=$PATH:$HOME/.cargo/bin
 
