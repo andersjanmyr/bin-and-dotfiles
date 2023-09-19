@@ -5,11 +5,11 @@ set -o errexit
 model="gpt-3.5-turbo"
 
 curl_gpt() {
-    local prompt="$1"
+    local prompt="$(jq -R -s '.' <<< "$1")"
     local json=$(cat <<-EOT
     {
         "model": "$model",
-        "messages": [{"role": "user", "content": "'$prompt'"}],
+        "messages": [{"role": "user", "content": $prompt}],
         "temperature": 0.7,
         "stream": true
     }
@@ -21,7 +21,11 @@ EOT
         -d "$json"
 }
 
-data=$(curl_gpt "$*" | tee gpt.txt)
+prompt="$*"
+if [[ $# == 0 ]]; then
+    prompt=$(</dev/stdin)
+fi
+data=$(curl_gpt "$prompt" | tee gpt.txt)
 # data=$(cat gpt.txt)
 readarray -t lines <<<"$data"
 
