@@ -1,7 +1,9 @@
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/sbin
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export BREW_HOME=/opt/homebrew
+export PATH=$HOME/bin:$BREW_HOME/bin:$PATH:$BREW_HOME/sbin
 
-if [ -d "/usr/local/opt/ruby/bin" ]; then
-  export PATH=/usr/local/opt/ruby/bin:$PATH
+if [ -d "$BREW_HOME/opt/ruby/bin" ]; then
+  export PATH=$BREW_HOME/opt/ruby/bin:$PATH
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
 
@@ -11,11 +13,11 @@ export CLICOLOR=1
 
 export UDS_HOME=~/tmp
 
-export PGDATA=/usr/local/var/postgres
+export PGDATA=$BREW_HOME/var/postgres
 
-export NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules:/usr/local/lib/jsctags
+export NODE_PATH=$BREW_HOME/lib/node:$BREW_HOME/g/lib/node_modules:/usr/local/lib/jsctags
 export NODE_ENV=development
-export PATH=./node_modules/.bin:/usr/local/share/npm/bin:$PATH
+export PATH=./node_modules/.bin:$BREW_HOME/share/npm/bin:$PATH
 
 
 export HISTIGNORE="&:[a-z]:[a-z][a-z]:[a-z][a-z][a-z]"
@@ -26,7 +28,6 @@ export SHOWOFF_EVAL_RUBY=1
 export RBXOPT='-X19'
 
 
-# export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages
 export PATH=~/.local/bin:$PATH
 
 # Ruby performance patches
@@ -78,19 +79,16 @@ export FZF_DEFAULT_OPTS='
 --color fg:242,bg:236,hl:65,fg+:15,bg+:239,hl+:108
 --color info:108,prompt:109,spinner:108,pointer:168,marker:168
 '
-export GOROOT=/usr/local/opt/go/libexec
+export GOROOT=$BREW_HOME/opt/go/libexec
 export PATH=~/go/bin:$GOROOT/bin:$PATH
 export GOPRIVATE=github.com/ingka-group-digital
 
 export PATH=$PATH:$HOME/.cargo/bin
 
-export ANDROID_SDK=$HOME/Library/Android/sdk
-export PATH=$PATH:$HOME/flutter/bin:$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$ANDROID_SDK:platform-tools
-
 export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] \
-    && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+[ -s "$BREW_HOME/opt/nvm/nvm.sh" ] && . "$BREW_HOME/g/opt/nvm/nvm.sh"
+[ -s "$BREW_HOME/opt/nvm/etc/bash_completion.d/nvm" ] \
+    && . "$BREW_HOME/opt/nvm/etc/bash_completion.d/nvm"
 
 eval "$(direnv hook bash)"
 
@@ -98,10 +96,6 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 # Remove 2.7 deprecation warnings
 export RUBYOPT='-W:no-deprecated -W:no-experimental'
-
-# Google Cloud SDK
-export CLOUDSDK_PYTHON="$(brew --prefix)/opt/python@3.8/libexec/bin/python"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc"
 
 eval "$(thefuck --alias)"
 
