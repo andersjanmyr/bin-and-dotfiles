@@ -33,8 +33,8 @@ mkdir -p .vim/backup
 replace_file ~/.vim/spell ~/bin/dotfiles/vim/spell
 
 replace_file ~/.tmux.conf ~/bin/dotfiles/tmux.conf
-replace_file /usr/local/etc/nginx/nginx.conf ~/bin/dotfiles/nginx/nginx.conf
-replace_file /usr/local/etc/nginx/sites-available ~/bin/dotfiles/nginx/sites-available
+replace_file $BREW_HOME/etc/nginx/nginx.conf ~/bin/dotfiles/nginx/nginx.conf
+replace_file $BREW_HOME/etc/nginx/sites-available ~/bin/dotfiles/nginx/sites-available
 
 # replace_file ~/.rvm/gemsets/global.gems ~/bin/dotfiles/rvm/global.gems
 
