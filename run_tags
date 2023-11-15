@@ -4,7 +4,7 @@
 # the current dir, called from a git callback, or install itself as a
 # git post-merge and post-commit callback.
 
-CTAGS = '/usr/local/bin/ctags'
+CTAGS = "$BREW_HOME/bin/ctags"
 HOOKS = %w{ post-merge post-commit post-checkout }
 HOOKS_DIR = '.git/hooks'
 
@@ -13,7 +13,7 @@ def install
     $stderr.print "The install option [-i] can only be used within a git repo; exiting.\n"
     exit 1
   end
-  
+
   HOOKS.each { |hook| install_hook("#{HOOKS_DIR}/#{hook}") }
 end
 
@@ -31,7 +31,7 @@ def install_hook(hook)
     $stderr.print "A file already exists at #{hook}, and will NOT be replaced.\n"
     return
   end
-  
+
   print "Linking #{__FILE__} to #{hook}\n"
   %x{ln -s #{__FILE__}  #{hook}}
 end

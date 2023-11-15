@@ -1,1 +1,1 @@
-complete -C /usr/local/bin/terraform terraform
+complete -C $BREW_HOME/bin/terraform terraform

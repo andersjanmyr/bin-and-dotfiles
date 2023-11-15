@@ -15,7 +15,7 @@ export UDS_HOME=~/tmp
 
 export PGDATA=$BREW_HOME/var/postgres
 
-export NODE_PATH=$BREW_HOME/lib/node:$BREW_HOME/g/lib/node_modules:/usr/local/lib/jsctags
+export NODE_PATH=$BREW_HOME/lib/node:$BREW_HOME/g/lib/node_modules
 export NODE_ENV=development
 export PATH=./node_modules/.bin:$BREW_HOME/share/npm/bin:$PATH
 

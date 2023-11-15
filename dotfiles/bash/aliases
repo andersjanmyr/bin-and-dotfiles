@@ -10,15 +10,15 @@ alias mysqlstart='mysql.server start'
 alias mysqlstop='mysql.server stop'
 
 # Postgres
-alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/log/postgres.log start'
-alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias pgstart="pg_ctl -D $BREW_HOME/var/postgres -l $BREW_HOME/var/log/postgres.log start"
+alias pgstop="pg_ctl -D $BREW_HOME/var/postgres stop -s -m fast"
 
 # MongoDB
-alias mongostart='mongod --fork --config /usr/local/etc/mongod.conf'
-alias mongostop='mongod --shutdown --config /usr/local/etc/mongod.conf'
+alias mongostart="mongod --fork --config $BREW_HOME/etc/mongod.conf"
+alias mongostop="mongod --shutdown --config $BREW_HOME/etc/mongod.conf"
 
 # Redis
-alias redisstart='redis-server /usr/local/etc/redis.conf'
+alias redisstart="redis-server $BREW_HOME/etc/redis.conf"
 
 # Nginx
 alias nx='sudo nginx'
@@ -31,7 +31,7 @@ alias aps='sudo apachectl restart'
 # Utility
 alias reload='source ~/.bashrc'
 alias vb='v  ~/bin'
-alias vn='v  /usr/local/etc/nginx/sites-available'
+alias vn="v  $BREW_HOME/etc/nginx/sites-available"
 
 alias less='less -FRSX'
 function h() {
@@ -168,7 +168,7 @@ function srckey() {
   jq -c '.Stacks[] |select(.Parameters[]?.ParameterKey == "SrcKey" ) | { StackName, SrcKey: .Parameters[] | select(.ParameterKey == "SrcKey") | .ParameterValue  }'
 }
 
-alias curl='/usr/local/opt/curl/bin/curl'
+alias curl="$BREW_HOME/opt/curl/bin/curl"
 alias ts='date +%s'
 
 # Chrome

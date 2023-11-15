@@ -3,7 +3,7 @@ filetype off                   " required!
 
 set rtp+=~/.vim/bundle/Vundle.vim/
 if has('macunix')
-  set rtp+=/usr/local/opt/fzf
+  set rtp+=$BREW_HOME/opt/fzf
 else
   set rtp+=~/.fzf
 endif

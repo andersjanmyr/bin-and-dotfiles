@@ -27,21 +27,21 @@ server {
   }
 
   location ~ \.cgi$ {
-    root /usr/local/Cellar/nagios/3.5.1/cgi-bin;
+    root $BREW_HOME/Cellar/nagios/3.5.1/cgi-bin;
 
     rewrite ^/cgi-bin/nagios3/(.*)$ /$1;
 
-    include /usr/local/etc/nginx/fastcgi_params;
+    include $BREW_HOME/etc/nginx/fastcgi_params;
 
     fastcgi_param AUTH_USER $remote_user;
     fastcgi_param REMOTE_USER $remote_user;
-    fastcgi_param SCRIPT_FILENAME /usr/local/Cellar/nagios/3.5.1/cgi-bin/$fastcgi_script_name;
+    fastcgi_param SCRIPT_FILENAME $BREW_HOME/Cellar/nagios/3.5.1/cgi-bin/$fastcgi_script_name;
 
     fastcgi_pass fcgiwrap;
   }
 
   location ~ \.php$ {
-    include /usr/local/etc/nginx/fastcgi_params;
+    include $BREW_HOME/etc/nginx/fastcgi_params;
     fastcgi_pass php;
   }
 }
