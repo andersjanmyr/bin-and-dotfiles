@@ -16,9 +16,13 @@ set visualbell
 set noerrorbells
 set clipboard+=unnamed
 
+nnoremap j gj
+nnoremap k gk
+inoremap jj <Esc>
+inoremap :w <Esc>:w<CR>
 
 map <Leader>s :action FileStructurePopup<CR>
-map <Leader>f :action FindUsages<CR>
+map <Leader>f :action GotoFile<CR>
 map <Leader>U `[v`]~`]
 
 nnoremap gd :action GotoDeclaration<CR>
