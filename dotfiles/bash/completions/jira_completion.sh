@@ -1,0 +1,1 @@
+source <(jira completion bash)
