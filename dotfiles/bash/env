@@ -99,6 +99,9 @@ export RUBYOPT='-W:no-deprecated -W:no-experimental'
 
 eval "$(thefuck --alias)"
 
-export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
-
 export GREP_OPTIONS=--color
+
+. ~/.smrtrc
+
+export PATH="$PATH:/opt/homebrew/opt/php@7.4/bin"
+export PATH="$PATH:/opt/homebrew/opt/php@7.4/sbin"
