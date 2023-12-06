@@ -24,7 +24,7 @@ replace_file ~/.jshintrc ~/bin/dotfiles/jshintrc
 replace_file ~/.ideavimrc ~/bin/dotfiles/ideavimrc
 
 replace_file ~/.editorconfig ~/bin/dotfiles/editorconfig
-replace_file ~/.editrc ~/bin/dotfiles.editrc
+replace_file ~/.editrc ~/bin/dotfiles/editrc
 replace_file ~/.eslintignore ~/bin/dotfiles/eslintignore
 replace_file ~/.pythonrc ~/bin/dotfiles/pythonrc
 
