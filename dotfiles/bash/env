@@ -7,6 +7,8 @@ if [ -d "$BREW_HOME/opt/ruby/bin" ]; then
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
 
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 export EDITOR="$HOME/bin/v -f"
 
 export CLICOLOR=1
@@ -80,7 +82,8 @@ export FZF_DEFAULT_OPTS='
 --color info:108,prompt:109,spinner:108,pointer:168,marker:168
 '
 export GOROOT=$BREW_HOME/opt/go/libexec
-export PATH=~/go/bin:$GOROOT/bin:$PATH
+export GOBIN=$HOME/go/bin
+export PATH=$GOBIN:$GOROOT/bin:$PATH
 export GOPRIVATE=github.com/ingka-group-digital
 
 export PATH=$PATH:$HOME/.cargo/bin

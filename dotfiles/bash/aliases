@@ -154,7 +154,7 @@ function serve() {
   python3 -m http.server "$port"
 }
 
-function epoch() {
+function unix() {
   local ts=${1:-$(date +"%Y-%m-%dT%H:%M:%S")}
   date -u -j -f "%Y-%m-%dT%H:%M:%S" $ts +%s
 }
@@ -213,3 +213,4 @@ function jwth(){
 }
 
 alias colima_start='colima start --mount-type 9p'
+

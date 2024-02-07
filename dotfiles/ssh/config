@@ -1,33 +1,12 @@
-Include /Users/anjan9/.colima/ssh_config
-
-# http://interrobeng.com/2013/08/25/speed-up-git-5x-to-50x/
-# ControlMaster auto
-# ControlPath /tmp/%r@%h:%p
-# ControlPersist yes
-
 Host *
   ServerAliveInterval 60
   StrictHostKeyChecking no
   IdentitiesOnly yes
-
-Host *.upload.akamai.com
-  HostKeyAlgorithms ssh-dss
-  User sshacs
+  UseKeychain yes
+  AddKeysToAgent yes
 
 Host *.compute.amazonaws.com
   User ec2-user
-
-Host dcmc
-  HostName matrix-dcmc.dyndns.org
-  User ubuntu
-
-Host bob.jayway.com
-  Hostname 213.50.11.49
-  User kperson
-
-Host kperson.jayway.com
-  Hostname 31.209.25.138
-  User kperson
 
 Host anders-ec2
   HostName ec2-46-137-135-183.eu-west-1.compute.amazonaws.com
@@ -38,24 +17,66 @@ Host bitbucket.com
   User git
   IdentityFile ~/.ssh/id_rsa
 
+host i-* mi-*
+    ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --profile cdk-qa3 --parameters 'portNumber=%p'"
 
-Host mammut.akamai
-  Hostname mammut.upload.akamai.com
-  User sshacs
-  HostKeyAlgorithms ssh-dss
-  IdentityFile ~/.ssh/akamai_upload_id
+Host vpn-buildkit-node
+        User ec2-user
+        #HostName docker-buildkit-vpn-node.internal.smrtapp.com
+        HostName docker-buildkit-vpn-node
 
-Host tokyo.jump
-  Hostname 13.114.37.212
-  User ec2-user
-  IdentityFile ~/.ssh/m2-prod-tokyo.pem
+Host vpn-tailscale-nat-stockholm
+        User ec2-user
+        HostName stockholm-exit-node
+        IdentityFile ~/.ssh/johan-stockholm.pem
 
-Host dc9.dev
-  Hostname ec2-13-48-114-173.eu-north-1.compute.amazonaws.com
-  User ec2-user
-  IdentityFile ~/.ssh/dc9-dev.pem
+Host vpn-tailscale-nat-ohio
+        User ec2-user
+        HostName ohio-exit-node
+        IdentityFile ~/.ssh/johan-ohio.pem
 
-Host dc9-ppe.jump
-  Hostname ec2-108-128-209-84.eu-west-1.compute.amazonaws.com
-  User ec2-user
-  IdentityFile ~/.ssh/andersjanmyr-dev.pem
+
+Host prod5-jump
+        User ec2-user
+        HostName couch-prod5-jump
+
+Host prod5-c1
+        User ec2-user
+        ProxyJump  prod5-jump
+        HostName 192.168.1.10
+        StrictHostKeyChecking no
+
+Host prod5-c2
+        User ec2-user
+        ProxyJump  prod5-jump
+        HostName 192.168.4.10
+        StrictHostKeyChecking no
+
+Host prod5-c3
+        User ec2-user
+        ProxyJump  prod5-jump
+        HostName 192.168.3.10
+        StrictHostKeyChecking no
+
+Host qa-jump
+        User ec2-user
+        #HostName 34.200.253.147
+        HostName couch-qa-jump
+
+Host qa-c1
+        User ec2-user
+        ProxyJump  qa-jump
+        HostName 192.168.1.10
+        StrictHostKeyChecking no
+
+Host qa-c2
+        User ec2-user
+        ProxyJump  qa-jump
+        HostName 192.168.2.10
+        StrictHostKeyChecking no
+
+Host qa-c3
+        User ec2-user
+        ProxyJump  qa-jump
+        HostName 192.168.3.10
+        StrictHostKeyChecking no
