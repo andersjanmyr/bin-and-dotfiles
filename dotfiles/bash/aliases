@@ -214,3 +214,6 @@ function jwth(){
 
 alias colima_start='colima start --mount-type 9p'
 
+get_couch_url() {
+  aws secretsmanager get-secret-value --secret-id $1EnvironmentSecrets --query 'SecretString' --output text --profile cdk-$1|jq -r '.COUCH_PROTECTED_SERVER_URL'
+}

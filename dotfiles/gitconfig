@@ -13,82 +13,90 @@
 [alias]
   a = "add"
   aa = "add --all :/"
-  active = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg"
-  ai = "add --interactive"
-  alias = "!git config -l | grep alias | cut -c 7-"
-  amend = "commit --amend"
-  amendc = "commit --amend --no-edit"
-  ap = "add --patch"
-  assume = "update-index --assume-unchanged"
-  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
-  au = "add --update :/"
-  b = "branch"
-  br = "branch"
-  brd = "!git remote prune origin; git branch --merged | egrep -v '(^\\*|master|main)' | xargs git branch -d"
-  bis = "bisect start"
-  bir = "bisect run"
-  churn = "!git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g"
-  ci = "commit -v"
-  cia = "commit -va"
-  co = "checkout"
-  conflicts = "!git ls-files -u | cut -f 2 | sort -u"
-  cp = "cherry-pick"
-  d = "diff --word-diff=color"
-  dw = "diff --ws-error-highlight=all"
-  dl = "diff --word-diff=color HEAD^"
-  ds = "diff --word-diff=color --staged"
-  du = "diff --word-diff=color origin/master..master"
-  dump = "cat-file -p"
-  f = "ls-files"
-  fa = "log --diff-filter=A --summary"
-  fd = "log --diff-filter=D --summary"
-  ff = "!git ls-files | grep -i"
-  fm = "log --diff-filter=M --summary"
-  gr = "grep -Ii --break --heading --line-number --color"
-  l = "!git log-hist"
-  ll = "!git log-stat"
-  log-hist = "!git log-pretty --graph"
-  log-pretty = "log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar'"
-  log-stat = "log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an] %C(magenta)%ar' --decorate --stat"
-  lp = "log --patch"
-  ls = "!git log-stat"
-  lt = "!git log-hist --simplify-by-decoration --all"
-  lu = "!git log-hist origin/master..master"
-  m = "merge --no-ff"
-  mf = "merge --ff-only"
-  pf = "pull --ff-only"
-  pub = "!git push -u ${1:-origin} `git symbolic-ref HEAD`"
-  pnp = "!git pull --rebase && git push"
-  ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
-  r = "reset"
-  r1 = "reset HEAD^"
-  r2 = "reset HEAD^^"
-  rh = "reset --hard"
-  rh1 = "reset HEAD^ --hard"
-  rh2 = "reset HEAD^^ --hard"
-  recent = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
-  s = "status -sb"
-  sa = "stash apply"
-  sha = "rev-list -n 1 HEAD --"
-  sl = "stash list"
-  sp = "stash pop"
-  ss = "stash save -u"
-  suba = "submodule add"
-  subr = "!git-submodule-rm"
-  subs = "submodule sync"
-  subu = "submodule update --recursive --init"
-  subp = "submodule foreach git pull origin master"
-  type = "cat-file -t"
-  theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
-  unassume = "update-index --no-assume-unchanged"
-  unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
-  untracked = "ls-files -o -X.gitignore --exclude=.*"
-  users = "!git log --format='%an' | sort | uniq -c | sort -nr"
+active = "!git log --format=format: --name-only | egrep -v '^$' | sort | uniq -c | sort -rg"
+ai = "add --interactive"
+alias = "!git config -l | grep alias | cut -c 7-"
+amend = "commit --amend"
+amendc = "commit --amend --no-edit"
+ap = "add --patch"
+assume = "update-index --assume-unchanged"
+assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+au = "add --update :/"
+b = "branch"
+br = "branch"
+brd = "!git remote prune origin; git branch --merged | egrep -v '(^\\*|master|main)' | xargs git branch -d"
+bis = "bisect start"
+bir = "bisect run"
+churn = "!git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g"
+ci = "commit -v"
+cia = "commit -va"
+co = "checkout"
+conflicts = "!git ls-files -u | cut -f 2 | sort -u"
+cp = "cherry-pick"
+d = "diff --word-diff=color"
+dw = "diff --ws-error-highlight=all"
+dl = "diff --word-diff=color HEAD^"
+ds = "diff --word-diff=color --staged"
+du = "diff --word-diff=color origin/master..master"
+dump = "cat-file -p"
+f = "ls-files"
+fa = "log --diff-filter=A --summary"
+fd = "log --diff-filter=D --summary"
+ff = "!git ls-files | grep -i"
+fm = "log --diff-filter=M --summary"
+gr = "grep -Ii --break --heading --line-number --color"
+l = "!git log-hist"
+ll = "!git log-stat"
+log-hist = "!git log-pretty --graph"
+log-pretty = "log --pretty='format:%C(blue)%h%C(red)%d%C(yellow) %s %C(green)%an%Creset, %ar'"
+log-stat = "log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an] %C(magenta)%ar' --decorate --stat"
+lp = "log --patch"
+ls = "!git log-stat"
+lt = "!git log-hist --simplify-by-decoration --all"
+lu = "!git log-hist origin/master..master"
+m = "merge --no-ff"
+mf = "merge --ff-only"
+pf = "pull --ff-only"
+pub = "!git push -u ${1:-origin} `git symbolic-ref HEAD`"
+pnp = "!git pull --rebase && git push"
+ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+r = "reset"
+r1 = "reset HEAD^"
+r2 = "reset HEAD^^"
+rh = "reset --hard"
+rh1 = "reset HEAD^ --hard"
+rh2 = "reset HEAD^^ --hard"
+recent = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
+s = "status -sb"
+sa = "stash apply"
+sha = "rev-list -n 1 HEAD --"
+sl = "stash list"
+sp = "stash pop"
+ss = "stash save -u"
+suba = "submodule add"
+subr = "!git-submodule-rm"
+subs = "submodule sync"
+subu = "submodule update --recursive --init"
+subp = "submodule foreach git pull origin master"
+type = "cat-file -t"
+theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+unassume = "update-index --no-assume-unchanged"
+unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+untracked = "ls-files -o -X.gitignore --exclude=.*"
+users = "!git log --format='%an' | sort | uniq -c | sort -nr"
+pushf = push
 
 [core]
-  whitespace = space-before-tab,blank-at-eol
-  excludesfile = ~/.gitignore
-  autocrlf = input
+whitespace = space-before-tab,blank-at-eol
+excludesfile = ~/.gitignore
+autocrlf = input
+pager = delta
+[interactive]
+diffFilter = delta --color-only
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    syntax-theme = Solarized (dark)
+    line-numbers = true
 [heroku]
 	account = anders
 [push]
@@ -101,7 +109,8 @@
 [github]
 	user = andersjanmyr
 [diff]
-	algorithm = patience
+	algorithm = histogram
+    color-moved = default
 [help]
 	autocorrect = 5
 [status]
@@ -122,3 +131,13 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[branch]
+	sort = -committerdate
+[merge]
+	conflictstyle = zdiff3
+[init]
+	defaultBranch = main
+[commit]
+	verbose = true
+[maintenance]
+	repo = /Users/andersjanmyr/projects/smrt-system

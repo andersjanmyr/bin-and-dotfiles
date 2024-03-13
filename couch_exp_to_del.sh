@@ -13,6 +13,11 @@ if [[ ! -f $tmp_file ]]; then
     cat $1 | jq -c '.rows[] | { _id: .id, _rev: .value.rev, "_deleted": true }' > $tmp_file
 fi
 
+if [[ ! -s $tmp_file ]]; then
+    echo "No rows in $exp_file" 2>&1
+    exit 1
+fi
+
 split -l 10000 $tmp_file $out_dir/
 
 for f in $out_dir/??; do
