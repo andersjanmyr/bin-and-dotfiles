@@ -9,9 +9,8 @@ exp_file=${1?exported file is required}
 out_dir=${2:-.}
 mkdir -p $out_dir
 tmp_file=$out_dir/exp_del.tmp
-if [[ ! -f $tmp_file ]]; then
-    cat $1 | jq -c '.rows[] | { _id: .id, _rev: .value.rev, "_deleted": true }' > $tmp_file
-fi
+
+cat $exp_file | jq -c '.rows[] | { _id: .id, _rev: .value.rev, "_deleted": true }' > $tmp_file
 
 if [[ ! -s $tmp_file ]]; then
     echo "No rows in $exp_file" 2>&1
