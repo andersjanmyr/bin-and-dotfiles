@@ -16,6 +16,7 @@ function couch() {
         "$couch_url$path" "$@"
 }
 
+echo $db
 mkdir -p $tmp_dir
 couch "/$db/_all_docs?start_key=\"RackLog\"&end_key=\"RackLog_z\"" > $tmp_file
 $script_dir/couch_exp_to_del.sh $tmp_file $tmp_dir
