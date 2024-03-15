@@ -80,3 +80,9 @@ Host qa-c3
         ProxyJump  qa-jump
         HostName 192.168.3.10
         StrictHostKeyChecking no
+
+Host qa-c4
+        User ec2-user
+        ProxyJump  qa-jump
+        HostName 192.168.1.20
+        StrictHostKeyChecking no
