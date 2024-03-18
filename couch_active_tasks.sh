@@ -7,7 +7,9 @@ couchp () {
 }
 
 couchp /_active_tasks \
-    | jq -r -c '.[] | "\(.node) \(.process_status) \(.changes_done)/\(.total_changes) \(.changes_done*100/.total_changes|round) \(.database) \(.type) \(.design_document)"' \
+    | jq -c '.[]' \
+    | grep -v "replication" \
     | grep "$filter" \
+    | jq -r '"\(.node) \(.process_status) \(.changes_done)/\(.total_changes) \(.changes_done*100/.total_changes|round) \(.database) \(.type) \(.design_document)"' \
     | sed 's/couchdb@//' | sed 's/\.smrt\.internal//' | sed 's#shards/00000000-ffffffff/##' \
     | column -t
