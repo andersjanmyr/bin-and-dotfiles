@@ -89,6 +89,7 @@ export GOPRIVATE=github.com/ingka-group-digital
 export PATH=$PATH:$HOME/.cargo/bin
 
 export NVM_DIR="$HOME/.nvm"
+export PATH="$NVM_DIR/bin:$PATH"
 [ -s "$BREW_HOME/opt/nvm/nvm.sh" ] && . "$BREW_HOME/opt/nvm/nvm.sh"
 [ -s "$BREW_HOME/opt/nvm/etc/bash_completion.d/nvm" ] \
     && . "$BREW_HOME/opt/nvm/etc/bash_completion.d/nvm"
@@ -108,3 +109,4 @@ export GREP_OPTIONS=--color
 
 export PATH="$PATH:/opt/homebrew/opt/php@7.4/bin"
 export PATH="$PATH:/opt/homebrew/opt/php@7.4/sbin"
+export PATH="$PATH:$HOME/projects/smrt-system/infrastructure/scripts/couchdb:$HOME/projects/smrt-system/infrastructure/scripts/elastic"

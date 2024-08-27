@@ -58,43 +58,79 @@ Host prod5-c3
         HostName 192.168.3.10
         StrictHostKeyChecking no
 
+Host prod5-c11
+        User ec2-user
+        ProxyJump  prod5-jump
+        HostName 192.168.1.11
+        StrictHostKeyChecking no
+
+Host prod5-c12
+        User ec2-user
+        ProxyJump  prod5-jump
+        HostName 192.168.4.12
+        StrictHostKeyChecking no
+
+Host prod5-c13
+        User ec2-user
+        ProxyJump  prod5-jump
+        HostName 192.168.3.13
+        StrictHostKeyChecking no
+
+Host prod5-c14
+        User ec2-user
+        ProxyJump  prod5-jump
+        HostName 192.168.1.14
+        StrictHostKeyChecking no
+
+Host prod5-c15
+        User ec2-user
+        ProxyJump  prod5-jump
+        HostName 192.168.4.15
+        StrictHostKeyChecking no
+
+Host prod5-c16
+        User ec2-user
+        ProxyJump  prod5-jump
+        HostName 192.168.3.16
+        StrictHostKeyChecking no
 Host qa-jump
         User ec2-user
         #HostName 34.200.253.147
         HostName couch-qa-jump
 
-Host qa-c1
+Host qa-c11
         User ec2-user
         ProxyJump  qa-jump
-        HostName 192.168.1.10
+        HostName 192.168.1.11
+        StrictHostKeyChecking no
+Host qa-c12
+        User ec2-user
+        ProxyJump  qa-jump
+        HostName 192.168.2.12
+        StrictHostKeyChecking no
+Host qa-c13
+        User ec2-user
+        ProxyJump  qa-jump
+        HostName 192.168.3.13
+        StrictHostKeyChecking no
+Host qa-c14
+        User ec2-user
+        ProxyJump  qa-jump
+        HostName 192.168.1.14
+        StrictHostKeyChecking no
+Host qa-c15
+        User ec2-user
+        ProxyJump  qa-jump
+        HostName 192.168.2.15
+        StrictHostKeyChecking no
+Host qa-c16
+        User ec2-user
+        ProxyJump  qa-jump
+        HostName 192.168.3.16
         StrictHostKeyChecking no
 
-Host qa-c2
-        User ec2-user
-        ProxyJump  qa-jump
-        HostName 192.168.2.10
-        StrictHostKeyChecking no
+Host bubblepay-prod
+  User ec2-user
+Host bubblepay-uat
+  User ec2-user
 
-Host qa-c3
-        User ec2-user
-        ProxyJump  qa-jump
-        HostName 192.168.3.10
-        StrictHostKeyChecking no
-
-Host qa-c4
-        User ec2-user
-        ProxyJump  qa-jump
-        HostName 192.168.1.20
-        StrictHostKeyChecking no
-
-Host qa-c5
-        User ec2-user
-        ProxyJump  qa-jump
-        HostName 192.168.2.20
-        StrictHostKeyChecking no
-
-Host qa-c6
-        User ec2-user
-        ProxyJump  qa-jump
-        HostName 192.168.3.20
-        StrictHostKeyChecking no
