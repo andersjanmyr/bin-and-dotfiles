@@ -40,24 +40,6 @@ Host prod5-jump
         User ec2-user
         HostName couch-prod5-jump
 
-Host prod5-c1
-        User ec2-user
-        ProxyJump  prod5-jump
-        HostName 192.168.1.10
-        StrictHostKeyChecking no
-
-Host prod5-c2
-        User ec2-user
-        ProxyJump  prod5-jump
-        HostName 192.168.4.10
-        StrictHostKeyChecking no
-
-Host prod5-c3
-        User ec2-user
-        ProxyJump  prod5-jump
-        HostName 192.168.3.10
-        StrictHostKeyChecking no
-
 Host prod5-c11
         User ec2-user
         ProxyJump  prod5-jump

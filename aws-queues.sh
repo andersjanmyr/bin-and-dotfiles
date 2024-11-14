@@ -42,7 +42,10 @@ deadletters() {
   for q in ${queues[@]}; do
     #echo "https://sqs.us-east-1.amazonaws.com/$(get_aws_account_id $aws_profile)/production_phpweb-$(strip_cdk $1)$q"
     queue="production_phpweb-$(strip_cdk $1)$q"
-    echo "$queue: $(get_number_of_msgs $queue)"
+    number_of_messages=$(get_number_of_msgs $queue)
+    if (( $number_of_messages > 0 )); then
+        echo "$queue: $number_of_messages"
+    fi
   done
 }
 
@@ -52,7 +55,10 @@ queues() {
     #echo "https://sqs.us-east-1.amazonaws.com/$(get_aws_account_id $aws_profile)/production_phpweb-$(strip_cdk $1)$q"
     dead_queue="production_phpweb-$(strip_cdk $1)$q"
     queue="$(strip_deadletter $dead_queue)"
-    echo "$queue: $(get_number_of_msgs $queue)"
+    number_of_messages=$(get_number_of_msgs $queue)
+    if (( $number_of_messages > 0 )); then
+        echo "$queue: $number_of_messages"
+    fi
   done
 }
 [ -z "$2" ] && deadletters "$1" || queues "$1"
