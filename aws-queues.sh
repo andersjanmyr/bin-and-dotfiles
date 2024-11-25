@@ -33,6 +33,15 @@ strip_deadletter() {
   echo "$1" |sed 's/_deadletter//g'
 }
 
+queue_name() {
+    local q=$1
+    if [[ "$aws_profile" == 'cdk-qa3' ]]; then
+        echo "qa_smrtqa$q"
+    else
+        echo "production_phpweb-$(strip_cdk $aws_profile)$q"
+    fi
+}
+
 get_number_of_msgs(){
   aws sqs get-queue-attributes --attribute-names ApproximateNumberOfMessages \
   --queue-url https://sqs.us-east-1.amazonaws.com/$(get_aws_account_id $aws_profile)/$1 \
@@ -41,7 +50,7 @@ get_number_of_msgs(){
 deadletters() {
   for q in ${queues[@]}; do
     #echo "https://sqs.us-east-1.amazonaws.com/$(get_aws_account_id $aws_profile)/production_phpweb-$(strip_cdk $1)$q"
-    queue="production_phpweb-$(strip_cdk $1)$q"
+    queue=$(queue_name "$q")
     number_of_messages=$(get_number_of_msgs $queue)
     if (( $number_of_messages > 0 )); then
         echo "$queue: $number_of_messages"
@@ -53,7 +62,7 @@ queues() {
   echo "queues"
   for q in ${queues[@]}; do
     #echo "https://sqs.us-east-1.amazonaws.com/$(get_aws_account_id $aws_profile)/production_phpweb-$(strip_cdk $1)$q"
-    dead_queue="production_phpweb-$(strip_cdk $1)$q"
+    dead_queue=$(queue_name "$q")
     queue="$(strip_deadletter $dead_queue)"
     number_of_messages=$(get_number_of_msgs $queue)
     if (( $number_of_messages > 0 )); then

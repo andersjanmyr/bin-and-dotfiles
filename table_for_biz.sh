@@ -1,10 +1,8 @@
 #!/bin/bash
 
-pattern=${1?'biz pattern is required'}
+biz=${1?'biz is required'}
 table=${2:-'.*'}
 env=${env:-prod}
-
-biz=$(env=$env biz.sh $pattern)
 
 if [[ $env == 'qa' ]]; then
     grep "_${biz}_${table}" ~/tmp/couch_all_dbs_qa.txt
