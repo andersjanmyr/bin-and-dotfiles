@@ -1,2 +1,1 @@
-
-complete -F _docker d
+complete -o default -o nospace -F __start_docker d
