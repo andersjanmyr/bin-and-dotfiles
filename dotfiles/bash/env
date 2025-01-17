@@ -101,8 +101,6 @@ export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 # Remove 2.7 deprecation warnings
 export RUBYOPT='-W:no-deprecated -W:no-experimental'
 
-eval "$(thefuck --alias)"
-
 export GREP_OPTIONS=--color
 
 . ~/.smrtrc
