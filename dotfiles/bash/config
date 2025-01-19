@@ -45,7 +45,11 @@ function timer_start {
 }
 
 function timer_stop {
-  timer_show=$(($SECONDS - $timer))
+  if [[ -n "$timer" ]]; then
+      timer_show=$(($SECONDS - $timer))
+  else
+    timer_show=0
+  fi
   unset timer
 }
 
