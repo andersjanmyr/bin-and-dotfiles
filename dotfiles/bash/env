@@ -104,6 +104,7 @@ export RUBYOPT='-W:no-deprecated -W:no-experimental'
 export GREP_OPTIONS=--color
 
 . ~/.smrtrc
+pyenv activate smrt
 
 export PATH="$PATH:/opt/homebrew/opt/php@7.4/bin"
 export PATH="$PATH:/opt/homebrew/opt/php@7.4/sbin"

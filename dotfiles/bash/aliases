@@ -136,7 +136,6 @@ function d() {
 
 # AWS
 alias awsconf='source ~/bin/awsconf.sh'
-awsconf cdk-exp
 
 # alias whatismyip='curl --silent https://api.myip.com/ | jq -r .ip'
 alias whatismyip='dig @resolver1.opendns.com ANY myip.opendns.com +short -4'

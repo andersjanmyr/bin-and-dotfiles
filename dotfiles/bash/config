@@ -71,4 +71,4 @@ function prompt {
 PROMPT_COMMAND='prompt'
 # eval "$(starship init bash)"
 
-
+eval "$(atuin init bash --disable-up-arrow)"

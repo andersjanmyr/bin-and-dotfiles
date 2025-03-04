@@ -24,7 +24,7 @@ assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 au = "add --update :/"
 b = "branch"
 br = "branch"
-brd = "!git remote prune origin; git branch --merged | egrep -v '(^\\*|master|main)' | xargs git branch -d"
+brd = "!git remote prune origin; git branch --merged | egrep -v '(^\\*|master|main)' | xargs git branch -D"
 bis = "bisect start"
 bir = "bisect run"
 churn = "!git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g"
@@ -67,6 +67,7 @@ rh = "reset --hard"
 rh1 = "reset HEAD^ --hard"
 rh2 = "reset HEAD^^ --hard"
 recent = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads"
+rbm = "!git fetch origin main:main && git rebase main"
 s = "status -sb"
 sa = "stash apply"
 sha = "rev-list -n 1 HEAD --"
@@ -111,19 +112,16 @@ diffFilter = delta --color-only
 [diff]
 	algorithm = histogram
     color-moved = default
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [help]
 	autocorrect = 5
 [status]
   showUntrackedFiles = all
 
-[url "ssh://git@github.com/mammutmw"]
-  insteadOf = https://github.com/mammutmw
-
-[url "ssh://git@github.com/ingka-group-digital"]
-  insteadOf = https://github.com/ingka-group-digital
-
 [pull]
-	ff = only
+	rebase = true
 [advice]
         skippedCherryPicks = false
 [filter "lfs"]
@@ -141,3 +139,14 @@ diffFilter = delta --color-only
 	verbose = true
 [maintenance]
 	repo = /Users/andersjanmyr/projects/smrt-system
+[column]
+	ui = auto
+[tag]
+	sort = version:refname
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[rerere]
+	enabled = true
+	autoupdate = true
