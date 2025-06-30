@@ -18,7 +18,7 @@ queues=(
 )
 
 
-aws_profile="$1"
+aws_profile="cdk-$1"
 [ -z "$1" ] && echo "please specify aws profile" && exit
 
 get_aws_account_id() {
@@ -35,16 +35,22 @@ strip_deadletter() {
 
 queue_name() {
     local q=$1
-    if [[ "$aws_profile" == 'cdk-qa3' ]]; then
-        echo "qa_smrtqa$q"
-    else
-        echo "production_phpweb-$(strip_cdk $aws_profile)$q"
-    fi
+    case "$aws_profile" in
+        cdk-qa3)
+            echo "qa_smrtqa$q"
+            ;;
+        cdk-prod*)
+            echo "production_phpweb-$(strip_cdk $aws_profile)$q"
+            ;;
+        *)
+            echo "production_$(strip_cdk $aws_profile)$q"
+            ;;
+    esac
 }
 
-get_number_of_msgs(){
-  aws sqs get-queue-attributes --attribute-names ApproximateNumberOfMessages \
-  --queue-url https://sqs.us-east-1.amazonaws.com/$(get_aws_account_id $aws_profile)/$1 \
+    get_number_of_msgs(){
+      aws sqs get-queue-attributes --attribute-names ApproximateNumberOfMessages \
+      --queue-url https://sqs.us-east-1.amazonaws.com/$(get_aws_account_id $aws_profile)/$1 \
   --profile $aws_profile|jq -r .Attributes.ApproximateNumberOfMessages
 }
 deadletters() {

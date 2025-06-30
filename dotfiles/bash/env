@@ -109,3 +109,7 @@ pyenv activate smrt
 export PATH="$PATH:/opt/homebrew/opt/php@7.4/bin"
 export PATH="$PATH:/opt/homebrew/opt/php@7.4/sbin"
 export PATH="$PATH:$HOME/projects/smrt-system/infrastructure/scripts/couchdb:$HOME/projects/smrt-system/infrastructure/scripts/elastic"
+
+eval "$(fzf --bash)"
+
+export AIDER_EDITOR=v

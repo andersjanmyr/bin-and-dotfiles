@@ -1,4 +1,4 @@
 #!/bin/bash
 
-NVIM_APPNAME="kickstart-modular.nvim" nvim "$@"
+NVIM_APPNAME="kickstart.nvim" nvim "$@"
 

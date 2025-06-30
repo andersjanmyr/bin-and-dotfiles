@@ -8,6 +8,7 @@ if [[ "$1" == "-f" ]]; then
 fi
 
 elastic() {
+    echo "curl -k --fail --silent -Hcontent-type:application/json $url$@" 1>&2
     curl -k --fail --silent -Hcontent-type:application/json $url$@
 }
 

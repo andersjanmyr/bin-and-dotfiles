@@ -10,6 +10,8 @@ Host *
   UseKeychain yes
   AddKeysToAgent yes
 
+Host *.compute-1.amazonaws.com
+  User ec2-user
 Host *.compute.amazonaws.com
   User ec2-user
 
@@ -80,6 +82,7 @@ Host prod5-c16
         ProxyJump  prod5-jump
         HostName 192.168.3.16
         StrictHostKeyChecking no
+
 Host qa-jump
         User ec2-user
         #HostName 34.200.253.147

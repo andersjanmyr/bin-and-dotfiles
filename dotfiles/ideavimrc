@@ -14,7 +14,8 @@ set ignorecase
 set smartcase
 set visualbell
 set noerrorbells
-set clipboard+=unnamed
+set clipboard+=unnamedplus
+set idearefactormode=visual
 
 nnoremap j gj
 nnoremap k gk
@@ -50,3 +51,5 @@ nnoremap <leader>nf :action SelectInProjectView<CR>
 nnoremap <C-l> :action ActivateProjectToolWindow<CR>
 
 nnoremap <C-o> :action Back<CR>
+
+nnoremap <leader>r :action Refactorings.QuickListPopupAction<CR>

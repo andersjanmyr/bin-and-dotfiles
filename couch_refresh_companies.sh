@@ -19,4 +19,6 @@ refresh_company() {
 refresh_company $COUCH_PROD phpweb-prod3
 refresh_company $COUCH_PROD phpweb-prod5
 refresh_company $COUCH_PROD phpweb-prod6
+refresh_company $COUCH_PROD apac
+refresh_company $COUCH_PROD emea
 refresh_company $COUCH_QA smrtqa
