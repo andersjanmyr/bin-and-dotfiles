@@ -223,15 +223,15 @@ alias nvim-kickstart='NVIM_APPNAME="kickstart-modular.nvim" nvim'
 
 
 couch() {
-    curl --silent -Hcontent-type:application/json ${COUCH_LOCAL}$1 $2 $3 $4 $5 $6 $7
+    curl --fail --silent -Hcontent-type:application/json ${COUCH_LOCAL}$1 $2 $3 $4 $5 $6 $7
 }
 
 function couchp() {
-    curl --silent -H 'Content-Type:application/json' ${COUCH_PROD}$1 $2 $3 $4 $5 $6 $7
+    curl --fail --silent -H 'Content-Type:application/json' ${COUCH_PROD}$1 $2 $3 $4 $5 $6 $7
 }
 
 
 function couchqa() {
-    curl --silent -H 'Content-Type:application/json' ${COUCH_QA}$1 $2 $3 $4 $5 $6 $7
+    curl --fail --silent -H 'Content-Type:application/json' ${COUCH_QA}$1 $2 $3 $4 $5 $6 $7
 }
 
