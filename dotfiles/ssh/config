@@ -121,10 +121,13 @@ Host qa-c16
 
 Host bubblepay-prod
   User ec2-user
+Host bubblepay-prod-2
+  User ec2-user
 Host bubblepay-uat
   User ec2-user
 Host bubblepay-dev
   User ec2-user
 Host buildnode-amd64
   User ec2-user
-
+Host bubblepay-dev-2
+  User ec2-user

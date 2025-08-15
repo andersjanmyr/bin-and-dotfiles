@@ -12,6 +12,7 @@ queues=(
 "_aaa_elastic_report_jobs_deadletter"
 "_aaa_import_jobs_deadletter"
 "_aaa_marketing_jobs_deadletter.fifo"
+"_aaa_notification_jobs_deadletter"
 "_aaa_pdf_jobs_deadletter.fifo"
 "_aaa_slow_jobs_deadletter"
 "_aaa_sysop_jobs_deadletter"
