@@ -1,0 +1,58 @@
+#!/usr/bin/awk -f
+
+BEGIN {
+    print "{"
+    first = 1
+}
+
+# Skip empty lines and comments
+/^[[:space:]]*$/ { next }
+/^[[:space:]]*#/ { next }
+
+# Process KEY=VALUE lines
+/^[[:space:]]*[A-Za-z_][A-Za-z0-9_]*[[:space:]]*=/ {
+    # Remove leading/trailing whitespace
+    gsub(/^[[:space:]]+|[[:space:]]+$/, "")
+
+    # Find the first = sign
+    eq_pos = index($0, "=")
+    if (eq_pos == 0) next
+
+    # Extract key and value
+    key = substr($0, 1, eq_pos - 1)
+    value = substr($0, eq_pos + 1)
+
+    # Remove whitespace around key
+    gsub(/^[[:space:]]+|[[:space:]]+$/, "", key)
+
+    # Escape backslashes and other JSON special characters
+    gsub(/\\/, "\\\\", value)
+    gsub(/\n/, "\\n", value)
+    gsub(/\r/, "\\r", value)
+    gsub(/\t/, "\\t", value)
+
+    # Handle quoted values
+    if (match(value, /^".*"$/)) {
+        # Remove outer quotes and escape internal quotes
+        value = substr(value, 2, length(value) - 2)
+        gsub(/"/, "\\\"", value)
+    } else if (match(value, /^'.*'$/)) {
+        # Remove outer single quotes and escape internal quotes
+        value = substr(value, 2, length(value) - 2)
+        gsub(/"/, "\\\"", value)
+    } else {
+        # Escape quotes in unquoted values
+        gsub(/"/, "\\\"", value)
+    }
+
+
+    # Print comma for all but first entry
+    if (!first) print ","
+    printf "  \"%s\": \"%s\"", key, value
+    first = 0
+}
+
+END {
+    if (!first) print ""
+    print "}"
+}
