@@ -7,6 +7,8 @@ if [ -d "$BREW_HOME/opt/ruby/bin" ]; then
   export PATH=`gem environment gemdir`/bin:$PATH
 fi
 
+source /Users/andersjanmyr/.rvm/scripts/rvm
+
 export JAVA_HOME=$(/usr/libexec/java_home)
 
 export EDITOR="$HOME/bin/v -f"

@@ -85,7 +85,7 @@ unassume = "update-index --no-assume-unchanged"
 unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
 untracked = "ls-files -o -X.gitignore --exclude=.*"
 users = "!git log --format='%an' | sort | uniq -c | sort -nr"
-pushf = push
+squash = "!git-squash.sh"
 
 [core]
 whitespace = space-before-tab,blank-at-eol
@@ -146,4 +146,7 @@ diffFilter = delta --color-only
 [fetch]
 	prune = true
 	pruneTags = true
-	all = true
+    all = true
+
+[url "git@github.com:"]
+    insteadOf = https://github.com/
