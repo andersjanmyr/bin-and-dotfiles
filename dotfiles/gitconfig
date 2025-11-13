@@ -85,7 +85,6 @@ unassume = "update-index --no-assume-unchanged"
 unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
 untracked = "ls-files -o -X.gitignore --exclude=.*"
 users = "!git log --format='%an' | sort | uniq -c | sort -nr"
-squash = "!git-squash.sh"
 
 [core]
 whitespace = space-before-tab,blank-at-eol
