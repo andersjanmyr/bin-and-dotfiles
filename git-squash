@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# git-squash in PATH
+# Squash branch into current branch
+# Usage: git squash $branch
 
 branch=${1?'branch is required'}
 
