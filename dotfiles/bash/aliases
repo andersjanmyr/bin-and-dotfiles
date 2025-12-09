@@ -235,3 +235,4 @@ function couchqa() {
     curl --fail --silent -H 'Content-Type:application/json' ${COUCH_QA}$1 $2 $3 $4 $5 $6 $7
 }
 
+alias cd..='cd ..'
