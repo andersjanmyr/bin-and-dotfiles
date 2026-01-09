@@ -14,7 +14,7 @@ if [[ -z $query ]]; then
 fi
 env=${env:-prod}
 
-prod_envs=$(ls ~/tmp/phpweb-prod{3,5,6}.json ~/tmp/apac.json ~/tmp/emea.json)
+prod_envs=$(ls ~/tmp/phpweb-prod{5,6}.json ~/tmp/apac.json ~/tmp/emea.json)
 
 if [[ $env == 'qa' ]]; then
     cat ~/tmp/smrtqa.json | jq -c .rows[].doc | grep "$pattern" | jq -r "$query"
