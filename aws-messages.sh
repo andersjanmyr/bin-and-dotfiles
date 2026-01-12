@@ -4,6 +4,7 @@ set -o errexit
 
 queue=${1?'queue is required'}
 count=${2:-1}
+wait_time=${3:-2}
 
 calc_env() {
     case "$1" in
@@ -31,4 +32,5 @@ aws_profile="cdk-$env"
 aws --profile $aws_profile sqs receive-message \
     --queue-url https://sqs.us-east-1.amazonaws.com/$queue \
     --max-number-of-messages $count \
+    --wait-time-seconds $wait_time \
     | jq -c '.Messages[].Body | fromjson'
