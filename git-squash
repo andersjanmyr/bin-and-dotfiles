@@ -6,5 +6,20 @@
 
 branch=${1?'branch is required'}
 
-git merge --squash $branch
-git commit -m "$branch squashed"
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+temp_branch='temp-squash-branch'
+
+git fetch --quiet origin main:main
+git checkout --quiet $branch
+git checkout --quiet -b $temp_branch
+git rebase --quiet main
+commit_log=$(git log --reverse --pretty=format:"* %s (%h)" "main..")
+git reset --quiet main
+message="$branch squashed
+
+$commit_log
+"
+git commit --quiet -am "$message"
+git checkout --quiet $current_branch
+git cherry-pick --quiet $temp_branch
+git branch --quiet -D $temp_branch
