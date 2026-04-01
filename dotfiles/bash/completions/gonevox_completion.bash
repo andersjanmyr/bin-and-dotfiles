@@ -1,1 +1,1 @@
-/Users/andersjanmyr/projects/smrt-system/bin/gonevox_completion.bash
+/Users/andersjanmyr/projects/smrt-system/mine/bin/gonevox_completion.bash

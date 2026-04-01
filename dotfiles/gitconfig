@@ -56,7 +56,7 @@ lt = "!git log-hist --simplify-by-decoration --all"
 lu = "!git log-hist origin/master..master"
 m = "merge --no-ff"
 mf = "merge --ff-only"
-pf = "pull --ff-only"
+pf = "push --force-with-lease"
 pub = "!git push -u ${1:-origin} `git symbolic-ref HEAD`"
 pnp = "!git pull --rebase && git push"
 ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
@@ -85,6 +85,10 @@ unassume = "update-index --no-assume-unchanged"
 unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
 untracked = "ls-files -o -X.gitignore --exclude=.*"
 users = "!git log --format='%an' | sort | uniq -c | sort -nr"
+wt = "worktree"
+wta = "worktree add"
+wtr = "worktree remove"
+wtl = "worktree list"
 
 [core]
 whitespace = space-before-tab,blank-at-eol
@@ -149,3 +153,5 @@ diffFilter = delta --color-only
 
 [url "git@github.com:"]
     insteadOf = https://github.com/
+[rebase]
+	instructionFormat = (%al) %s

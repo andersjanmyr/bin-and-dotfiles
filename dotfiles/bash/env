@@ -32,7 +32,7 @@ export SHOWOFF_EVAL_RUBY=1
 export RBXOPT='-X19'
 
 
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:./bin:$PATH
 
 # Ruby performance patches
 export RUBY_GC_HEAP_INIT_SLOTS=1000000
@@ -110,7 +110,8 @@ pyenv activate smrt
 
 export PATH="$PATH:/opt/homebrew/Cellar/php@8.4/8.4.15/bin"
 export PATH="$PATH:/opt/homebrew/opt/php@8.4/sbin"
-export PATH="$PATH:$HOME/projects/smrt-system/infrastructure/scripts/couchdb:$HOME/projects/smrt-system/infrastructure/scripts/elastic"
+mine=$HOME/projects/smrt-system/mine
+export PATH="$PATH:$mine/bin:$mine/infrastructure/scripts/couchdb:$mine/infrastructure/scripts/elastic"
 
 eval "$(fzf --bash)"
 

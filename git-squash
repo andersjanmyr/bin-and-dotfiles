@@ -4,10 +4,17 @@
 # Squash branch into current branch
 # Usage: git squash $branch
 
+set -o errexit
+
 branch=${1?'branch is required'}
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 temp_branch='temp-squash-branch'
+
+cleanup() {
+    git branch --quiet -D $temp_branch
+}
+trap cleanup EXIT
 
 git fetch --quiet origin main:main
 git checkout --quiet $branch
@@ -19,7 +26,7 @@ message="$branch squashed
 
 $commit_log
 "
-git commit --quiet -am "$message"
+git add :/ .
+git commit --quiet -m "$message"
 git checkout --quiet $current_branch
 git cherry-pick --quiet $temp_branch
-git branch --quiet -D $temp_branch
